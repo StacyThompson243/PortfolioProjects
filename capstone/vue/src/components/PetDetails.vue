@@ -2,9 +2,9 @@
   <!-- <router-link v-bind:to="{ name: 'petDetails', params: { id: pet.petId } }"> -->
     <div class="info">
       <h2 class="pet-name">{{ pet.name }}</h2>
-      <img src="pet.img" />
-      <h3 class="pet-type">{{ pet.type }}</h3>
-      <h3 class="pet-breed">{{ pet.breed }}</h3>
+      <img :src='pet.img'/>
+      <h3 class='pet-type'>{{ pet.type }}</h3>
+      <h3 class='pet-breed'>{{ pet.breed }}</h3>
       <p class="description">{{ pet.description }}</p>
     </div>
   <!-- </router-link> -->
@@ -19,6 +19,11 @@ export default {
 </script>
 
 <style>
+img{
+  height: 100px;
+  width: auto;
+}
+
 .info {
   border: 2px solid black;
   border-radius: 10px;
