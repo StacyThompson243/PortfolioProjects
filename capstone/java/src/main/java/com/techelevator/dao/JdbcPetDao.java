@@ -43,12 +43,19 @@ public class JdbcPetDao implements PetDao{
 
     @Override
     public Pet addNewPet(Pet pet) {
-        return null;
+        Pet newPet = null;
+        String sql = "INSERT INTO pets(pet_image, name, type, age, gender, weight, breed, description, adopted) VALUES(?,?,?,?,?,?,?,?,?) RETURNING pet_id;";
+        Integer petId;
+
+        petId = jdbcTemplate.queryForObject(sql, Integer.class, pet.getPetImage(), pet.getPetName(), pet.getType(), pet.getAge(), pet.getGender(), pet.getWeight(), pet.getBreed(), pet.getDescription(), pet.isAdopted());
+
+        return getPetById(petId);
     }
 
     @Override
     public void editPet(int id, Pet pet) {
-
+        String sql = "UPDATE pets SET pet_image = ?, name = ?, type = ?, age = ?, gender = ?, weight = ?, breed = ?, description = ?, adopted = ? WHERE pet_id = ?";
+        jdbcTemplate.update(sql, pet.getPetImage(), pet.getPetName(), pet.getType(), pet.getAge(), pet.getGender(), pet.getWeight(), pet.getBreed(), pet.getDescription(), pet.isAdopted(), id);
     }
 
     private Pet mapRowToPet(SqlRowSet rowSet){

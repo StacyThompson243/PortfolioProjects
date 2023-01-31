@@ -28,14 +28,14 @@ public class PetController {
     }
 
     // add/edit pet here not in volunteer controller
-    @PreAuthorize("hasRole('ROLE_ADMIN', 'ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @PostMapping(path = "/add")
     public Pet addNewPet(@Valid @RequestBody Pet pet){
         Pet newPet = petDAO.addNewPet(pet);
         return newPet;
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN', 'ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @PutMapping(path = "/{id}/edit")
     public void editPet(@PathVariable int id, @RequestBody Pet pet){
         petDAO.editPet(id, pet);
