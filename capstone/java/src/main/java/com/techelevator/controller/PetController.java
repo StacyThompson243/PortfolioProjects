@@ -14,18 +14,18 @@ public class PetController {
 
     @GetMapping()
     public List<Pet> getAllPets(){
-        return petDAO.getAllPets;
+        return petDAO.getAllPets();
     }
 
     // add/edit pet here not in volunteer controller
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('ROLE_ADMIN', 'ROLE_USER')")
     @PostMapping(path = "/add")
     public Pet addNewPet(@Valid @RequestBody Pet pet){
         Pet newPet = petDAO.addPet(pet);
         return newPet;
     }
 
-    @PreAuthorize("hasRole('Admin', 'Volunteer')")
+    @PreAuthorize("hasRole('ROLE_ADMIN', 'ROLE_USER')")
     @PutMapping(path = "/{id}/edit")
     public void updatePetDetails(@PathVariable int id, @RequestBody Pet pet){
         petDAO.editPet(id, pet);

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Locale;
 
-@RequestMapping(path = "/volunteers")
+@RequestMapping(path = "/volunteer")
 public class VolunteerController {
 
     @Autowired
@@ -17,7 +17,7 @@ public class VolunteerController {
         return volunteerDAO.getAllVolunteers();
     }
 
-    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     //Admin has permission to approve applications
     @GetMapping(path = "/applications")
     public List<Volunteer> approveDenyApplication(){
@@ -25,7 +25,7 @@ public class VolunteerController {
     }
 
     // Where to get hasRole name
-    @PreAuthorize("hasRole('Admin')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping(path = "/{id}")
     public void approveDenyApplication(@PathVariable int id, @RequestParam boolean approvalStatus){
         if(approvalStatus){
