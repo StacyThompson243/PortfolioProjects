@@ -9,5 +9,4 @@ values ('https://res.cloudinary.com/difcq8eki/image/upload/v1675116167/Dogs/pexe
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675116120/Dogs/pexels-ylanite-koppens-612813_oddfwy.jpg', 'Frank', 'dog', 2, 'male', 40, 'mixed', 'This guy will love you and protect your home forever!', false),
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675186216/Dogs/pexels-vadim-b-127028_byvb2r.jpg', 'Peach', 'cat', 1, 'female', 5, 'scottish fold mix', 'Just a baby', false);
 
-
 COMMIT TRANSACTION;
