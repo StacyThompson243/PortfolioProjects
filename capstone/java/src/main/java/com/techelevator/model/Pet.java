@@ -10,6 +10,7 @@ public class Pet {
     private String breed;
     private String description;
     private boolean adopted;
+    private String petImage;
 
     public int getPetId() {
         return petId;
@@ -83,17 +84,11 @@ public class Pet {
         this.adopted = adopted;
     }
 
-    /*
-pet_id
-pet_image
-name
-type
-age
-gender
-weight
-breed
-description
-adopted (boolean)
-adopter_id: [null] FK
-     */
+    public String getPetImage() {
+        return petImage;
+    }
+
+    public void setPetImage(String petImage) {
+        this.petImage = petImage;
+    }
 }
