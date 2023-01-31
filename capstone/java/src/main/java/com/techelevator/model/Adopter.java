@@ -2,22 +2,22 @@ package com.techelevator.model;
 
 public class Adopter {
 
-    private int id;
-    private String name;
+    private int adopterId;
+    private String adopterName;
 
-    public int getId() {
-        return id;
+    public int getAdopterId() {
+        return adopterId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAdopterId(int adopterId) {
+        this.adopterId = adopterId;
     }
 
-    public String getName() {
-        return name;
+    public String getAdopterName() {
+        return adopterName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAdopterName(String adopterName) {
+        this.adopterName = adopterName;
     }
 }

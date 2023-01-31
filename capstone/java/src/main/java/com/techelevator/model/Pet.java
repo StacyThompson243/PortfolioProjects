@@ -1,8 +1,8 @@
 package com.techelevator.model;
 
 public class Pet {
-    private int id;
-    private String name;
+    private int petId;
+    private String petName;
     private String type;
     private int age;
     private String gender;
@@ -11,20 +11,20 @@ public class Pet {
     private String description;
     private boolean adopted;
 
-    public int getId() {
-        return id;
+    public int getPetId() {
+        return petId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPetId(int petId) {
+        this.petId = petId;
     }
 
-    public String getName() {
-        return name;
+    public String getPetName() {
+        return petName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPetName(String petName) {
+        this.petName = petName;
     }
 
     public String getType() {
