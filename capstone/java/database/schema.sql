@@ -17,7 +17,7 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(10) NOT NULL,
-	application_id int NOT NULL,
+	application_id int,
 	CONSTRAINT PK_user PRIMARY KEY (user_id),
 	CONSTRAINT FK_user FOREIGN KEY (application_id) REFERENCES volunteers (application_id)
 );
@@ -39,7 +39,7 @@ weight int NOT NULL,
 breed varchar(70) NOT NULL,
 description varchar(1000) NOT NULL,
 adopted boolean NOT NULL,
-adopter_id varchar(100),
+adopter_id int,
 CONSTRAINT PK_pets PRIMARY KEY (pet_id),
 CONSTRAINT FK_pets FOREIGN KEY (adopter_id) REFERENCES adopter (adopter_id)
 );
