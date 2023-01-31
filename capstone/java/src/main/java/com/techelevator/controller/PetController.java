@@ -1,16 +1,19 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.PetDao;
+import com.techelevator.model.Pet;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RequestMapping(path = "/pets")
 @RestController
 public class PetController {
 
-    private PetDAO petDAO;
+    private PetDao petDAO;
 
     @GetMapping()
     public List<Pet> getAllPets(){

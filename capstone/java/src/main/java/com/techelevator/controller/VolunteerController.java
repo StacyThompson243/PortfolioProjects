@@ -1,19 +1,22 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.VolunteerDao;
+import com.techelevator.model.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Locale;
 
 @RequestMapping(path = "/volunteer")
 public class VolunteerController {
 
     @Autowired
-    private VolunteerDAO volunteerDAO;
+    private VolunteerDao volunteerDAO;
 
     @GetMapping(path = "/directory")
-    public List<Volunteers> getAllVolunteers(){
+    public List<Volunteer> getAllVolunteers(){
         return volunteerDAO.getAllVolunteers();
     }
 
