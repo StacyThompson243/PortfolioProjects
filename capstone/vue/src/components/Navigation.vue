@@ -22,7 +22,7 @@
    padding: 30px;
    display: flex;
    flex-direction: row;
-   background-color: #43F5D2;
+   background-color:#90EBDD;
 }
 
 nav{

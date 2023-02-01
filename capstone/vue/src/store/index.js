@@ -66,7 +66,7 @@ export default new Vuex.Store({
      ]
   },
     getters: {
-      book(state) {
+      pet(state) {
         return state.pets.find(p => p.petId == state.activePet);
       }
   },
@@ -89,6 +89,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_ACTIVE_PET(state, petId){
+      state.activePet = petId;
     }
   }
 })

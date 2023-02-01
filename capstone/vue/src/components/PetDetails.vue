@@ -1,13 +1,15 @@
 <template>
-  <!-- <router-link v-bind:to="{ name: 'petDetails', params: { id: pet.petId } }"> -->
+  <!-- <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}"> -->
     <div class="info">
-      <h2 class="pet-name">{{ pet.name }}</h2>
-      <img :src='pet.img'/>
-      <h3 class='pet-type'>{{ pet.type }}</h3>
-      <h3 class='pet-breed'>{{ pet.breed }}</h3>
-      <p class="description">{{ pet.description }}</p>
-    </div>
-  <!-- </router-link> -->
+      <h2 class="pet-name">Hi, I'm {{ pet.petName }}!</h2>
+      <img :src='pet.petImage'/>
+      <h3 class='pet-type'>Type: {{ pet.type }}</h3>
+      <h3 class='pet-breed'>Breed: {{ pet.breed }}</h3>
+      <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">
+      <button v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">Learn More</button>
+   </router-link> 
+   </div>
+
 </template>
 
 <script>
@@ -18,17 +20,20 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 img{
   height: 100px;
   width: auto;
 }
 
 .info {
+  color: #6F2CF0;
   border: 2px solid black;
   border-radius: 10px;
   width: 250px;
   height: 550px;
+  text-align: center;
   margin: 20px;
+  background-color:#C7EADD;
 }
 </style>
