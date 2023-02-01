@@ -31,7 +31,7 @@ img{
   border: 2px solid black;
   border-radius: 10px;
   width: 250px;
-  height: 550px;
+  height: 400px;
   text-align: center;
   margin: 20px;
   background-color:#C7EADD;

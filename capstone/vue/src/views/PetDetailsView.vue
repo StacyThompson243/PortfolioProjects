@@ -5,7 +5,7 @@
        <h2>I am a {{pet.type}}.</h2>
       <h2>My breed is: {{pet.breed}}.</h2>
       <h2>I weigh {{pet.weight}} lbs.</h2>
-      <h2>I am {{pet.age}} years old</h2>
+      <h2>I am {{pet.age}} years old.</h2>
       <h2>About Me...</h2>
       <p>{{pet.description}}</p>
       </div>
