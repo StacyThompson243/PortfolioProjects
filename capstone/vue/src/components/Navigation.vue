@@ -5,8 +5,8 @@
         <li><router-link v-bind:to="{name: 'home'}">Home</router-link></li>
         <li><router-link v-bind:to="{name: 'pets'}">Browse Pets</router-link></li>
         <li><router-link v-bind:to="{name: 'volunteer'}">Volunteer</router-link></li>
-        <li><router-link v-bind:to="{path: 'login'}">Log In</router-link></li>
-        
+        <li v-if="$store.state.token == '' "><router-link  v-bind:to="{path: 'login'}">Log In</router-link></li>
+        <li v-else><router-link  v-bind:to="{path: 'logout'}">Logout</router-link></li>
     </ul>
 </nav>
 </div>
