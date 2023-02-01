@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.UserDao;
 import com.techelevator.dao.VolunteerDao;
+import com.techelevator.model.User;
 import com.techelevator.model.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,6 +40,8 @@ public class VolunteerController {
     public void approveDenyApplication(@PathVariable int id, @RequestParam String approvalStatus){
         if(approvalStatus.equals("Approved")){
             volunteerDao.updateStatus(id, "Approved");
+            Volunteer volunteer = volunteerDao.getVolunteerById(id);
+            userDao.create(volunteer.getVolunteerFirstName() + "." + volunteer.getVolunteerLastName(), "" + (int)(Math.random() * 100), "ROLE_USER" );
         }else{
             volunteerDao.updateStatus(id, "Denied");
         }
