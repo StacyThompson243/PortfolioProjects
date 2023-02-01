@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.VolunteerDao;
 import com.techelevator.model.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Locale;
 
+@CrossOrigin
 @RequestMapping(path = "/volunteer")
 @RestController
 public class VolunteerController {
@@ -40,6 +42,7 @@ public class VolunteerController {
         }
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/apply")
     public Volunteer applyToVolunteer(@Valid @RequestBody Volunteer volunteer){
         Volunteer newApplication = volunteerDao.applyToVolunteer(volunteer);
