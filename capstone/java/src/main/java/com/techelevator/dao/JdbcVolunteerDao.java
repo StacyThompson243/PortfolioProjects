@@ -7,7 +7,6 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -21,19 +20,13 @@ public class JdbcVolunteerDao implements VolunteerDao{
 
     @Override
     public List<Volunteer> getAllVolunteers() {
-        List<Volunteer> volunteersList = new ArrayList<>();
-        String sql = "SELECT application_id, name, email, over_18, status FROM volunteers";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while (results.next()){
-            volunteersList.add(mapRowToVolunteer(results));
-        }
-        return volunteersList;
+        return null;
     }
 
     @Override
     public Volunteer getVolunteerById(int id) {
         Volunteer volunteer = null;
-        String sql = "SELECT application_id, name, email, over_18, status FROM volunteers WHERE application_id = ?";
+        String sql = "SELECT application_id, first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status FROM volunteers WHERE application_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         if(results.next()) {
             volunteer = mapRowToVolunteer(results);
@@ -43,30 +36,21 @@ public class JdbcVolunteerDao implements VolunteerDao{
 
     @Override
     public List<Volunteer> getAllPendingVolunteers() {
-        List<Volunteer> volunteersList = new ArrayList<>();
-        String sql = "SELECT application_id, name, email, over_18, status FROM volunteers WHERE status = 'Pending'";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-
-        while(results.next()){
-            volunteersList.add(mapRowToVolunteer(results));
-        }
-        return volunteersList;
+        return null;
     }
 
     @Override
     public void updateStatus(int id, String approvalStatus) {
-        String sql = "UPDATE volunteers SET status = ? WHERE application_id = ?";
-        jdbcTemplate.update(sql, approvalStatus, id);
+
     }
 
     @Override
     public Volunteer applyToVolunteer(Volunteer volunteer) {
-        String sql = "INSERT INTO volunteers (name, email, over_18, status) VALUES(?,?,?,?) RETURNING application_id";
+        String sql = "INSERT INTO volunteers (first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status) VALUES(?,?,?,?,?,?,?,?,?) RETURNING application_id";
 
         Integer applicationId;
 
-        applicationId = jdbcTemplate.queryForObject(sql, Integer.class, volunteer.getVolunteerName(), volunteer.getEmail(), volunteer.isOver18(), volunteer.getStatus());
+        applicationId = jdbcTemplate.queryForObject(sql, Integer.class, volunteer.getVolunteerFirstName(), volunteer.getVolunteerLastName(), volunteer.getEmail(), volunteer.isOver18(), volunteer.isVeterinary(), volunteer.isCleaning(), volunteer.isDataEntry(), volunteer.isPhotography(), volunteer.getStatus());
 
         return getVolunteerById(applicationId);
     }
@@ -74,9 +58,14 @@ public class JdbcVolunteerDao implements VolunteerDao{
     private Volunteer mapRowToVolunteer(SqlRowSet rowSet){
         Volunteer volunteer = new Volunteer();
         volunteer.setApplicationId(rowSet.getInt("application_id"));
-        volunteer.setVolunteerName(rowSet.getString("name"));
+        volunteer.setVolunteerFirstName(rowSet.getString("first_name"));
+        volunteer.setVolunteerLastName(rowSet.getString("last_name"));
         volunteer.setEmail(rowSet.getString("email"));
         volunteer.setOver18(rowSet.getBoolean("over_18"));
+        volunteer.setVeterinary(rowSet.getBoolean("veterinary"));
+        volunteer.setCleaning(rowSet.getBoolean("cleaning"));
+        volunteer.setDataEntry(rowSet.getBoolean("data_entry"));
+        volunteer.setPhotography(rowSet.getBoolean("photography"));
         volunteer.setStatus(rowSet.getString("status"));
         return volunteer;
     }

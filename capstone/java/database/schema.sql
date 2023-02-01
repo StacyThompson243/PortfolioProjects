@@ -4,21 +4,26 @@ DROP TABLE IF EXISTS volunteers, users, adopter, pets;
 
 CREATE TABLE volunteers  (
 application_id SERIAL,
-name varchar(100) NOT NULL,
+first_name varchar(100) NOT NULL,
+last_name varchar(100) NOT NULL,
 email varchar(50) NOT NULL,
 over_18 boolean NOT NULL,
+veterinary boolean NOT NULL,
+cleaning boolean NOT NULL,
+data_entry boolean NOT NULL,
+photography boolean NOT NULL,
 status varchar(15) NOT NULL,
 CONSTRAINT PK_volunteers PRIMARY KEY (application_id)
 );
 
 CREATE TABLE users (
-	user_id SERIAL,
-	username varchar(50) NOT NULL UNIQUE,
-	password_hash varchar(200) NOT NULL,
-	role varchar(10) NOT NULL,
-	application_id int,
-	CONSTRAINT PK_user PRIMARY KEY (user_id),
-	CONSTRAINT FK_user FOREIGN KEY (application_id) REFERENCES volunteers (application_id)
+   user_id SERIAL,
+   username varchar(50) NOT NULL UNIQUE,
+   password_hash varchar(200) NOT NULL,
+   role varchar(10) NOT NULL,
+   application_id int,
+   CONSTRAINT PK_user PRIMARY KEY (user_id),
+   CONSTRAINT FK_user FOREIGN KEY (application_id) REFERENCES volunteers (application_id)
 );
 
 CREATE TABLE adopter (
