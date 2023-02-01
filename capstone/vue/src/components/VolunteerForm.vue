@@ -6,17 +6,39 @@
   v-on:submit.prevent="saveVolunteer()"
   >
         <div>
-            <label for="name">Name:</label>
-            <input v-model="volunteer.volunteerName" id="name" name="name" type="text" required/>
+            <label for="first-name">First Name:</label>
+            <input v-model="volunteer.volunteerFirstName" id="first-name" name="first-name" type="text" required/>
+        </div>
+               <div>
+            <label for="last-name">Last Name:</label>
+            <input v-model="volunteer.volunteerLastName" id="last-name" name="last-name" type="text" required/>
         </div>
         <div>
             <label for="email">Email:</label>
             <input v-model="volunteer.email" id="email" name="email" type="email" required/>
         </div>
-        <div>
+                <div>
             <label for="confirmation">Are you over 18?:</label>
             <input v-model="volunteer.over18" id="confirmation" name="confirmation" type="checkbox"/>
         </div>
+<div>Areas of Interest:</div>
+                <div>
+            <label for="veterinary">Veterinary: </label>
+            <input v-model="volunteer.veterinary" id="veterinary" name="veterinary" type="checkbox"/>
+        </div>
+                <div>
+            <label for="cleaning">Cleaning: </label>
+            <input v-model="volunteer.cleaning" id="cleaning" name="cleaning" type="checkbox"/>
+        </div>
+                <div>
+            <label for="dataEntry">Data Entry: </label>
+            <input v-model="volunteer.dataEntry" id="dataEntry" name="dataEntry" type="checkbox"/>
+        </div>
+                <div>
+            <label for="photography">Photography: </label>
+            <input v-model="volunteer.photography" id="photography" name="photography" type="checkbox"/>
+        </div>
+
         <input type="submit">
     </form>
   </div>
@@ -27,9 +49,14 @@ export default {
   data(){
     return {
       volunteer: {
-        volunteerName: '',
+        volunteerFirstName: '',
+        volunteerLastName: '',
         email: '',
         over18: false,
+        veterinary: false,
+        cleaning: false,
+        dataEntry: false,
+        photography: false,
       }
     }
   },
@@ -46,17 +73,16 @@ methods: {
     },
     resetForm(){
       this.volunteer = {
-        volunteerName: '',
+        volunteerFirstName: '',
+        volunteerLastName: '',
         email: '',
         over18: false,
+        veterinary: false,
+        cleaning: false,
+        dataEntry: false,
+        photography: false,
       }
     }
-//     resetForm(){
-//       this.volunteer= {
-//         name: '',
-//         email: '',
-//         over18: false,
-//       },
  }
 }
 </script>
@@ -71,7 +97,7 @@ methods: {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   align-content: stretch;
 }
 </style>

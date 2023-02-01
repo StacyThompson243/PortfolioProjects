@@ -12,9 +12,9 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Locale;
 
-@CrossOrigin
 @RequestMapping(path = "/volunteer")
 @RestController
+@CrossOrigin
 public class VolunteerController {
 
     @Autowired
