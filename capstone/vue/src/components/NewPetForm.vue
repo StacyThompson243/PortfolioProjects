@@ -1,5 +1,5 @@
 <template>
-<div class="form">
+<div class="newform">
   <h1>New Pet Form </h1>
   <form class="new-pet-form" v-on:submit.prevent="savePet">
       <label for="petName">Name:</label>
@@ -20,6 +20,11 @@
       <input class="description" type="text" name ="description" placeholder="Description" v-model="pet.description"/>
       <button class='btn'>Save Pet</button>
       </form>
+      
+      <div class='cancel'>
+      <button v-on:click="cancel">Cancel</button>
+      </div>
+  
 </div>
 </template>
 
@@ -50,6 +55,9 @@ savePet(){
     }
   })
 },
+cancel(){
+    this.$router.push("/pets")
+}
 
 }
 }
@@ -57,8 +65,9 @@ savePet(){
 
 <style scoped>
 
-.form{
-    align-items: center;
+
+.newform{
+   text-align: center;
 }
 
 .new-pet-form{
@@ -72,7 +81,13 @@ savePet(){
 
 .btn{
     margin-top: 20px;
+    
 }
+.cancel{
+    margin-top: 20px;
+}
+
+
 
 
 </style>
