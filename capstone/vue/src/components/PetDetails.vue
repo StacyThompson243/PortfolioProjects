@@ -33,7 +33,7 @@ img{
   width: 250px;
   height: 400px;
   text-align: center;
-  margin: 20px;
+  margin: 20px 50px;
   background-color:#C7EADD;
 }
 </style>

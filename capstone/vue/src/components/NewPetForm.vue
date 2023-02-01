@@ -1,9 +1,11 @@
 <template>
-<div>
+<div class="form">
   <h1>New Pet Form </h1>
   <form class="new-pet-form" v-on:submit.prevent="savePet">
       <label for="petName">Name:</label>
       <input class="name-input" type="text" name="petName" placeholder="Pet Name" v-model="pet.petName"/>
+      <label for="petImage">Image URL:</label>
+      <input class="image-input" type="text" name="petImage" placeholder="Pet Image" v-model="pet.petImage"/>
       <label for="petType">Pet Type:</label>
       <input class="type-input" type="text" name ="petType" placeholder="Pet Type" v-model="pet.type"/>
       <label for="petAge">Age:</label>
@@ -16,7 +18,7 @@
       <input class="weight-input" type="text" name ="petWeight" placeholder="Weight" v-model="pet.weight"/>
       <label for="description">Description:</label>
       <input class="description" type="text" name ="description" placeholder="Description" v-model="pet.description"/>
-      <button v-on:click="redirect">Save Pet</button>
+      <button class='btn'>Save Pet</button>
       </form>
 </div>
 </template>
@@ -47,11 +49,30 @@ savePet(){
       this.$router.push("/pets")
     }
   })
-}
+},
+
 }
 }
 </script>
 
-<style>
+<style scoped>
+
+.form{
+    align-items: center;
+}
+
+.new-pet-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.65em;
+}
+
+.btn{
+    margin-top: 20px;
+}
+
 
 </style>

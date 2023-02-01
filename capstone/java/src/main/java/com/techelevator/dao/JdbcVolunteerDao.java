@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -20,7 +21,13 @@ public class JdbcVolunteerDao implements VolunteerDao{
 
     @Override
     public List<Volunteer> getAllVolunteers() {
-        return null;
+        List<Volunteer> volunteersList = new ArrayList<>();
+        String sql = "SELECT application_id, first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status FROM volunteers";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()){
+            volunteersList.add(mapRowToVolunteer(results));
+        }
+        return volunteersList;
     }
 
     @Override
@@ -36,12 +43,21 @@ public class JdbcVolunteerDao implements VolunteerDao{
 
     @Override
     public List<Volunteer> getAllPendingVolunteers() {
-        return null;
+        List<Volunteer> volunteersList = new ArrayList<>();
+        String sql = "SELECT application_id, first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status FROM volunteers WHERE status = 'Pending'";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        while(results.next()){
+            volunteersList.add(mapRowToVolunteer(results));
+        }
+        return volunteersList;
     }
 
     @Override
     public void updateStatus(int id, String approvalStatus) {
-
+        String sql = "UPDATE volunteers SET status = ? WHERE application_id = ?";
+        jdbcTemplate.update(sql, approvalStatus, id);
     }
 
     @Override
