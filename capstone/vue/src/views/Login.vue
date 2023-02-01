@@ -81,3 +81,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.text-center{
+  text-align: center;
+}
+
+
+</style>

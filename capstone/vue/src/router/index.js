@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import AdoptablePets from '../views/AdoptablePets.vue'
 import NewVolunteer from '../views/NewVolunteer.vue'
+import PetDetailsView from '../views/PetDetailsView.vue'
 
 Vue.use(Router)
 
@@ -70,7 +71,14 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: '/pets/:petId',
+      name: "petDetailsView",
+      component: PetDetailsView,
+      props: true
     }
+
   ]
 })
 

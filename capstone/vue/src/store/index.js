@@ -19,9 +19,61 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    activePet: 0,
+    pets: [
+//       {petId: 1,
+//       img: 'https://res.cloudinary.com/difcq8eki/image/upload/v1675116167/Dogs/pexels-helena-lopes-1938126_dvvvya.jpg',
+//       name: 'Fido',
+//       type: 'dog',
+//       age: 3,
+//       gender: 'male',
+//       weight: 35,
+//       breed: 'mixed',
+//       description: 'Sweet Dog Loves people, squirrels, and mailman',
+//       adopted: false
+// },
+//     {petId: 2,
+//       img: 'https://res.cloudinary.com/difcq8eki/image/upload/v1675116130/Dogs/pexels-pixabay-257519_ebxcag.jpg',
+//       name: 'Jayna',
+//       type: 'dog',
+//       age: 3,
+//       gender: 'female',
+//       weight: 9,
+//       breed: 'dachschund',
+//       description: 'Looking for a home for this little abandoned guy',
+//       adopted: false},
+//     {petId: 3,
+//       img: 'https://res.cloudinary.com/difcq8eki/image/upload/v1675116120/Dogs/pexels-ylanite-koppens-612813_oddfwy.jpg',
+//       name: 'Frank',
+//       type: 'dog',
+//       age: 2,
+//       gender: 'male',
+//       weight: 40,
+//       breed: 'mixed',
+//       description: 'This guy will love you and protect your home forever!',
+//       adopted: false},
+//     {petId: 4,
+//       img: 'https://res.cloudinary.com/difcq8eki/image/upload/v1675186216/Dogs/pexels-vadim-b-127028_byvb2r.jpg',
+//       name: 'Peach',
+//       type: 'cat',
+//       age: 1,
+//       gender: 'female',
+//       weight: 5,
+//       breed: 'scottish fold mix',
+//       description: 'Just a baby',
+//       adopted: false}
+     ]
+  },
+    getters: {
+      pet(state) {
+        return state.pets.find(p => p.petId == state.activePet);
+      }
   },
   mutations: {
+    SET_PETS(state, payload){
+      state.pets=payload;
+    },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
@@ -37,6 +89,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_ACTIVE_PET(state, petId){
+      state.activePet = petId;
     }
   }
 })

@@ -1,33 +1,39 @@
 <template>
-    <router-link v-bind:to="{name: 'petDetails', params: {id: pet.id}}">
-    <div class="pet-info">
-    <h2 class="pet-name">Pet Name</h2>
-    <img v-bind:src="'https://res.cloudinary.com/difcq8eki/image/upload/v1675116120/Dogs/pexels-ylanite-koppens-612813_oddfwy.jpg'" />
-    <h3 class="pet-type">Pet Type</h3>
-    <h3 class="pet breed">Pet Breed</h3>
-    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi exercitationem minima, dolore deserunt autem eius harum recusandae magnam illum fugiat.</p>
-    
-  </div>
-    </router-link>
-  
-  
- 
+  <!-- <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}"> -->
+    <div class="info">
+      <h2 class="pet-name">Hi, I'm {{ pet.petName }}!</h2>
+      <img :src='pet.petImage'/>
+      <h3 class='pet-type'>Type: {{ pet.type }}</h3>
+      <h3 class='pet-breed'>Breed: {{ pet.breed }}</h3>
+      <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">
+      <button v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">Learn More</button>
+   </router-link> 
+   </div>
+
 </template>
 
 <script>
 export default {
-
-}
+  name: "pet-details",
+  props: 
+    ['pet'],
+};
 </script>
 
-<style>
-.pet-info {
-    border: 2px solid black;
-    border-radius: 10px;
-    width: 250px;
-    height: 550px;
-    margin: 20px;
+<style scoped>
+img{
+  height: 100px;
+  width: auto;
 }
 
-
+.info {
+  color: #6F2CF0;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 250px;
+  height: 400px;
+  text-align: center;
+  margin: 20px;
+  background-color:#C7EADD;
+}
 </style>

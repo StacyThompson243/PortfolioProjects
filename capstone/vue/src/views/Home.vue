@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <h1>Home Page Under Construction</h1>
+    
   </div>
 </template>
 
@@ -10,3 +10,11 @@ export default {
   name: "home"
 };
 </script>
+
+<style scoped>
+.home{
+  text-align: center;
+}
+
+
+</style>
