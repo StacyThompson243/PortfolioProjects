@@ -7,7 +7,6 @@ application_id SERIAL,
 name varchar(100) NOT NULL,
 email varchar(50) NOT NULL,
 over_18 boolean NOT NULL,
-role varchar(20),
 status varchar(15) NOT NULL,
 CONSTRAINT PK_volunteers PRIMARY KEY (application_id)
 );
