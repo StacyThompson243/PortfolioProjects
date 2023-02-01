@@ -3,12 +3,12 @@ package com.techelevator.controller;
 import com.techelevator.dao.PetDao;
 import com.techelevator.model.Pet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
 @CrossOrigin
 @RequestMapping(path = "/pets")
 @RestController
@@ -28,6 +28,7 @@ public class PetController {
     }
 
     // add/edit pet here not in volunteer controller
+    @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @PostMapping(path = "/add")
     public Pet addNewPet(@Valid @RequestBody Pet pet){
