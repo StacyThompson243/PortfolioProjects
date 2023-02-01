@@ -7,7 +7,7 @@ public class Volunteer {
     private String email;
     private boolean over18;
     private String volunteerRole = "ROLE_USER";
-    private String status;
+    private String status = "Pending";
 
     public int getApplicationId() {
         return applicationId;
