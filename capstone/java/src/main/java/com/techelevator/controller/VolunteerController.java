@@ -20,6 +20,8 @@ public class VolunteerController {
 
     @Autowired
     private VolunteerDao volunteerDao;
+
+    @Autowired
     private UserDao userDao;
 
     @GetMapping(path = "/directory")
@@ -38,13 +40,14 @@ public class VolunteerController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping(path = "/{id}")
     public void approveDenyApplication(@PathVariable int id, @RequestParam String approvalStatus){
-        if(approvalStatus.equals("Approved")){
-            volunteerDao.updateStatus(id, "Approved");
-            Volunteer volunteer = volunteerDao.getVolunteerById(id);
-            userDao.create(volunteer.getVolunteerFirstName() + "." + volunteer.getVolunteerLastName(), "" + (int)(Math.random() * 100), "ROLE_USER" );
-        }else{
-            volunteerDao.updateStatus(id, "Denied");
-        }
+
+            if (approvalStatus.equals("Approved")) {
+                volunteerDao.updateStatus(id, "Approved");
+                Volunteer volunteer = volunteerDao.getVolunteerById(id);
+                userDao.create(volunteer.getVolunteerFirstName() + "." + volunteer.getVolunteerLastName(), "" + (int) (Math.random() * 100), "ROLE_USER");
+            } else {
+                volunteerDao.updateStatus(id, "Denied");
+            }
     }
 
     @ResponseStatus(HttpStatus.CREATED)
