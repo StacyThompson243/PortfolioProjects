@@ -53,14 +53,6 @@ public class Volunteer {
         this.over18 = over18;
     }
 
-    public String getVolunteerRole() {
-        return volunteerRole;
-    }
-
-    public void setVolunteerRole(String volunteerRole) {
-        this.volunteerRole = volunteerRole;
-    }
-
     public String getStatus() {
         return status;
     }
