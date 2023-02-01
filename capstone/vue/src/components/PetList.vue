@@ -19,7 +19,6 @@ data(){
   }
 },
 created(){
-  // this.pets=this.$store.state.pets;
   PetService.getAdoptablePets().then((response)=>{
   this.pets=response.data;
   this.$store.commit('SET_PETS', this.pets)
