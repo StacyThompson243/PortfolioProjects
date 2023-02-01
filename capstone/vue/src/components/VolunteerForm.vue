@@ -6,17 +6,23 @@
   v-on:submit.prevent="saveVolunteer()"
   >
         <div>
+<<<<<<< HEAD
             <label for="first-name">First Name:</label>
             <input v-model="volunteer.volunteerFirstName" id="first-name" name="first-name" type="text" required/>
         </div>
                <div>
             <label for="last-name">Last Name:</label>
             <input v-model="volunteer.volunteerLastName" id="last-name" name="last-name" type="text" required/>
+=======
+            <label for="name">Name:</label>
+            <input v-model="volunteer.volunteerName" id="name" name="name" type="text" required/>
+>>>>>>> main
         </div>
         <div>
             <label for="email">Email:</label>
             <input v-model="volunteer.email" id="email" name="email" type="email" required/>
         </div>
+<<<<<<< HEAD
                 <div>
             <label for="confirmation">Are you over 18?:</label>
             <input v-model="volunteer.over18" id="confirmation" name="confirmation" type="checkbox"/>
@@ -39,17 +45,27 @@
             <input v-model="volunteer.photography" id="photography" name="photography" type="checkbox"/>
         </div>
 
+=======
+        <div>
+            <label for="confirmation">Are you over 18?:</label>
+            <input v-model="volunteer.over18" id="confirmation" name="confirmation" type="checkbox"/>
+        </div>
+>>>>>>> main
         <input type="submit">
     </form>
   </div>
 </template>
 <script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 import VolunteerService from "../services/VolunteerService"
 export default {
   data(){
     return {
       volunteer: {
+<<<<<<< HEAD
         volunteerFirstName: '',
         volunteerLastName: '',
         email: '',
@@ -58,6 +74,11 @@ export default {
         cleaning: false,
         dataEntry: false,
         photography: false,
+=======
+        volunteerName: '',
+        email: '',
+        over18: false,
+>>>>>>> main
       }
     }
   },
@@ -68,14 +89,21 @@ methods: {
     if(response.status === 201){
      alert("Thank you for applying to be a volunteer!")
       this.$router.push("/volunteer/apply")
+<<<<<<< HEAD
       this.resetForm();
     }
   }) 
       
+=======
+    }
+  })
+      this.resetForm();
+>>>>>>> main
     },
     resetForm(){
       this.volunteer = {
         volunteerName: '',
+<<<<<<< HEAD
         volunteerLastName: '',
         email: '',
         over18: false,
@@ -85,6 +113,18 @@ methods: {
         photography: false,
       }
     }
+=======
+        email: '',
+        over18: false,
+      }
+    }
+//     resetForm(){
+//       this.volunteer= {
+//         name: '',
+//         email: '',
+//         over18: false,
+//       },
+>>>>>>> main
  }
 }
 </script>
@@ -99,7 +139,11 @@ methods: {
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
+<<<<<<< HEAD
   align-items: flex-start;
+=======
+  align-items: center;
+>>>>>>> main
   align-content: stretch;
 }
 </style>

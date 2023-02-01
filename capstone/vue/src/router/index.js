@@ -8,6 +8,7 @@ import store from '../store/index'
 import AdoptablePets from '../views/AdoptablePets.vue'
 import NewVolunteer from '../views/NewVolunteer.vue'
 import PetDetailsView from '../views/PetDetailsView.vue'
+import AddNewPet from '../views/AddNewPet.vue'
 
 Vue.use(Router)
 
@@ -76,6 +77,12 @@ const router = new Router({
       path: '/pets/:petId',
       name: "petDetailsView",
       component: PetDetailsView,
+      props: true
+    },
+    {
+      path: '/pets/add',
+      name: "newPetForm",
+      component: AddNewPet,
       props: true
     }
 

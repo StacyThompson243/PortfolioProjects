@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.UserDao;
 import com.techelevator.dao.VolunteerDao;
 import com.techelevator.model.Volunteer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class VolunteerController {
 
     @Autowired
     private VolunteerDao volunteerDao;
+    private UserDao userDao;
 
     @GetMapping(path = "/directory")
     public List<Volunteer> getAllVolunteers(){
@@ -27,7 +29,7 @@ public class VolunteerController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     //Admin has permission to approve applications
     @GetMapping(path = "/applications")
-    public List<Volunteer> approveDenyApplication(){
+    public List<Volunteer> getAllPendingVolunteers(){
         return volunteerDao.getAllPendingVolunteers();
     }
 

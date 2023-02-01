@@ -4,14 +4,10 @@ DROP TABLE IF EXISTS volunteers, users, adopter, pets;
 
 CREATE TABLE volunteers  (
 application_id SERIAL,
-first_name varchar(100) NOT NULL,
-last_name varchar(100) NOT NULL,
+name varchar(100) NOT NULL,
 email varchar(50) NOT NULL,
 over_18 boolean NOT NULL,
-veterinary boolean NOT NULL,
-cleaning boolean NOT NULL,
-data_entry boolean NOT NULL,
-photography boolean NOT NULL,
+role varchar(20),
 status varchar(15) NOT NULL,
 CONSTRAINT PK_volunteers PRIMARY KEY (application_id)
 );
