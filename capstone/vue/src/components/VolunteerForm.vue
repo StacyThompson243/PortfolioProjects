@@ -39,7 +39,7 @@
             <input v-model="volunteer.photography" id="photography" name="photography" type="checkbox"/>
         </div>
 
-        <input type="submit">
+        <input class='btn' type="submit">
     </form>
   </div>
 </template>
