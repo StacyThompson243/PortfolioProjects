@@ -6,7 +6,6 @@ public class Volunteer {
     private String volunteerName;
     private String email;
     private boolean over18;
-    private String volunteerRole = "ROLE_USER";
     private String status = "Pending";
 
     public int getApplicationId() {
@@ -39,14 +38,6 @@ public class Volunteer {
 
     public void setOver18(boolean over18) {
         this.over18 = over18;
-    }
-
-    public String getVolunteerRole() {
-        return volunteerRole;
-    }
-
-    public void setVolunteerRole(String volunteerRole) {
-        this.volunteerRole = volunteerRole;
     }
 
     public String getStatus() {
