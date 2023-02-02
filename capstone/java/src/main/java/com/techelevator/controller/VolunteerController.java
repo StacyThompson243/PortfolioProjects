@@ -54,7 +54,6 @@ public class VolunteerController {
     @PostMapping(path = "/apply")
     public Volunteer applyToVolunteer(@Valid @RequestBody Volunteer volunteer){
         Volunteer newApplication = volunteerDao.applyToVolunteer(volunteer);
-//        newApplication.setStatus("Pending");
         return newApplication;
     }
 
