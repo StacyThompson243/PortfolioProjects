@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.PasswordChangeDTO;
 import com.techelevator.model.User;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface UserDao {
 
     void switchFirstTime(User user);
 
-    void changePassword(User user);
+    void changePassword(PasswordChangeDTO user);
 
     boolean create(String username, String password, String role);
 }
