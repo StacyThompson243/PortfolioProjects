@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
-INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC',false,'ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC',false,'ROLE_ADMIN');
 
 insert into pets (pet_image, name, type, age, gender, weight, breed, description, adopted)
 values ('https://res.cloudinary.com/difcq8eki/image/upload/v1675116167/Dogs/pexels-helena-lopes-1938126_dvvvya.jpg', 'Fido', 'dog', 3, 'male', 35, 'mixed', 'Sweet dog who loves people, squirrels, and the mailman', false),

@@ -16,10 +16,9 @@ public class User {
    private String password;
    @JsonIgnore
    private boolean activated;
+   private boolean firstTime = true;
    private String role = "ROLE_USER";
    private Set<Authority> authorities = new HashSet<>();
-
-
 
    public User() { }
 
@@ -29,14 +28,6 @@ public class User {
       this.password = password;
       if(authorities != null) this.setAuthorities(authorities);
       this.activated = true;
-   }
-
-   public String getRole() {
-      return role;
-   }
-
-   public void setRole(String role) {
-      this.role = role;
    }
 
    public int getId() {
@@ -69,6 +60,22 @@ public class User {
 
    public void setActivated(boolean activated) {
       this.activated = activated;
+   }
+
+   public boolean isFirstTime() {
+      return firstTime;
+   }
+
+   public void setFirstTime(boolean firstTime) {
+      this.firstTime = firstTime;
+   }
+
+   public String getRole() {
+      return role;
+   }
+
+   public void setRole(String role) {
+      this.role = role;
    }
 
    public Set<Authority> getAuthorities() {

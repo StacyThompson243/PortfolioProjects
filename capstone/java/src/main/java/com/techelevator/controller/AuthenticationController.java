@@ -35,13 +35,16 @@ public class AuthenticationController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginDto loginDto) {
 
+        // getting token
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
 
+        // are you authenticated(?)
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        // create JWToken
         String jwt = tokenProvider.createToken(authentication, false);
-        
+        // create user
         User user = userDao.findByUsername(loginDto.getUsername());
 
         HttpHeaders httpHeaders = new HttpHeaders();
