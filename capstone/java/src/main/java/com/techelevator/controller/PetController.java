@@ -36,6 +36,7 @@ public class PetController {
         return newPet;
     }
 
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @PutMapping(path = "/{id}/edit")
     public void editPet(@PathVariable int id, @RequestBody Pet pet){

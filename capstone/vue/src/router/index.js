@@ -94,15 +94,24 @@ const router = new Router({
       props: true
     },
     {
+<<<<<<< HEAD
       path: '/volunteer/applications',
+=======
+      path: 'volunteer/applications',
+>>>>>>> d8dfd7edf9aa4fd509d1d2377ffe9e1754e2bd08
       name: "volunteerApplications",
       component: VolunteerApps,
       meta: {
       requiresAuth: true
       }
+<<<<<<< HEAD
       },
 
   ]
+=======
+    }
+]
+>>>>>>> d8dfd7edf9aa4fd509d1d2377ffe9e1754e2bd08
 })
 
 router.beforeEach((to, from, next) => {

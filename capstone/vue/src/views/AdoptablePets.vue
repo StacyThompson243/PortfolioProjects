@@ -5,7 +5,7 @@
       <div class="btn">
       <router-link v-bind:to="{name: 'newPetForm'}">
       <button v-if="$store.state.token != ''">Add To Adoptable Pets</button>
-      </router-link>
+       </router-link>
       </div>
   </div>
   </div>
