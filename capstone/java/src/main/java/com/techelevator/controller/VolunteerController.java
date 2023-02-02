@@ -39,9 +39,8 @@ public class VolunteerController {
     // Where to get hasRole name
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping(path = "/{id}")
-    public void approveDenyApplication(@PathVariable int id, @RequestParam String approvalStatus){
-
-            if (approvalStatus.equals("Approved")) {
+    public void approveDenyApplication(@PathVariable int id, @RequestBody Volunteer application){
+            if (application.getStatus().equals("Approved")) {
                 volunteerDao.updateStatus(id, "Approved");
                 Volunteer volunteer = volunteerDao.getVolunteerById(id);
                 userDao.create(volunteer.getVolunteerFirstName() + "." + volunteer.getVolunteerLastName(), "" + (int) (Math.random() * 100), "ROLE_USER");
