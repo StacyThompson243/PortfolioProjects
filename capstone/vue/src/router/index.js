@@ -9,6 +9,8 @@ import AdoptablePets from '../views/AdoptablePets.vue'
 import NewVolunteer from '../views/NewVolunteer.vue'
 import PetDetailsView from '../views/PetDetailsView.vue'
 import AddNewPet from '../views/AddNewPet.vue'
+import UpdatePetView from '../views/UpdatePetView.vue'
+import VolunteerApps from '../views/VolunteerApps.vue'
 
 Vue.use(Router)
 
@@ -84,9 +86,22 @@ const router = new Router({
       name: "newPetForm",
       component: AddNewPet,
       props: true
+    },
+    {
+      path: '/pets/:petId/edit',
+      name: "updatePet",
+      component: UpdatePetView,
+      props: true
+    },
+    {
+      path: 'volunteer/applications',
+      name: "volunteerApplications",
+      component: VolunteerApps,
+      meta: {
+      requiresAuth: true
+      }
     }
-
-  ]
+]
 })
 
 router.beforeEach((to, from, next) => {
