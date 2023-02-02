@@ -20,6 +20,7 @@ CREATE TABLE users (
    user_id SERIAL,
    username varchar(50) NOT NULL UNIQUE,
    password_hash varchar(200) NOT NULL,
+   first_time boolean NOT NULL,
    role varchar(10) NOT NULL,
    application_id int,
    CONSTRAINT PK_user PRIMARY KEY (user_id),

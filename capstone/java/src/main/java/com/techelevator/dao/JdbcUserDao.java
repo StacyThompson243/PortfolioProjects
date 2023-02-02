@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.techelevator.model.PasswordChangeDTO;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -74,6 +75,19 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public void switchFirstTime(User user) {
+        String sql = "UPDATE users SET first_time = false WHERE user_id = ?";
+        jdbcTemplate.update(sql, user.getId());
+    }
+
+    @Override
+    public void changePassword(PasswordChangeDTO user) {
+        String sql = "UPDATE users SET password_hash = ? WHERE user_id = ?";
+        String password_hash = new BCryptPasswordEncoder().encode(user.getPassword());
+        jdbcTemplate.update(sql, password_hash, user.getId());
+    };
+
+    @Override
     public boolean create(String username, String password, String role) {
         String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
@@ -87,6 +101,7 @@ public class JdbcUserDao implements UserDao {
         user.setId(rs.getInt("user_id"));
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password_hash"));
+        user.setFirstTime(rs.getBoolean("first_time"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
         return user;
