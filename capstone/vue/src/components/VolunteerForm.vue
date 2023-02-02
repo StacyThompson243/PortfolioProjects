@@ -86,7 +86,7 @@ methods: {
  }
 }
 </script>
-<style>
+<style scoped>
 .form-title{
     display:flex;
     justify-content: space-evenly;

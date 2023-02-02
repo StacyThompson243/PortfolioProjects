@@ -20,7 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    activePet: 0,
+    activePet: {},
     pets: [
 //       {petId: 1,
 //       img: 'https://res.cloudinary.com/difcq8eki/image/upload/v1675116167/Dogs/pexels-helena-lopes-1938126_dvvvya.jpg',
@@ -92,6 +92,7 @@ export default new Vuex.Store({
     },
     SET_ACTIVE_PET(state, petId){
       state.activePet = petId;
-    }
+    },
+    
   }
 })

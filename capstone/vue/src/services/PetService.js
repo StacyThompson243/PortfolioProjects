@@ -15,4 +15,8 @@ export default{
     addPet(pet){
         return axios.post('/pets/add', pet)
     },
+
+    updatePet(id, pet){
+        return axios.put(`/pets/${id}/edit`, pet)
+    }
 }
