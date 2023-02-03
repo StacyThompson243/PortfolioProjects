@@ -26,7 +26,6 @@
                   <td>{{volunteer.cleaning}}</td>
                   <td>{{volunteer.dataEntry}}</td>
                   <td>{{volunteer.photography}}</td>
-                  
               </tr>
           </tbody>
       </table>

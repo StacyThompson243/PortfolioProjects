@@ -17,7 +17,7 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private boolean firstTime = true;
-   private String role = "ROLE_USER";
+   private String role;
    private Set<Authority> authorities = new HashSet<>();
 
    public User() { }
@@ -90,6 +90,7 @@ public class User {
       String[] roles = authorities.split(",");
       for(String role : roles) {
          String authority = role.contains("ROLE_") ? role : "ROLE_" + role;
+         this.role = authority;
          this.authorities.add(new Authority(authority));
       }
    }

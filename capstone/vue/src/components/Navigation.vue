@@ -15,21 +15,19 @@
 </template>
 
 <script>
-
 </script>
 
 <style>
-
-.header{
-   padding: 30px;
-   display: flex;
-   flex-direction: row;
-   background-color:#90EBDD;
+.header {
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  background-color: #90ebdd;
 }
 
-nav{
-   flex-grow: 1;
-} 
+nav {
+  flex-grow: 1;
+}
 
 nav ul {
   margin: 0;
@@ -39,7 +37,6 @@ nav ul {
   flex-direction: row;
   justify-content: flex-end;
   flex-wrap: wrap;
-
 }
 
 li {
@@ -50,12 +47,11 @@ li {
   margin-left: 20px;
 }
 
-a:hover{
-  color: #6F2CF0;
+a:hover {
+  color: #6f2cf0;
 }
 
-a{
+a {
   text-decoration: none;
 }
-
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    
     <h1>Home Page Under Construction</h1>
     <img class="catpic" src='https://res.cloudinary.com/difcq8eki/image/upload/v1675282767/Dogs/pexels-alena-koval-982300_zuyvsa.jpg'/>
     

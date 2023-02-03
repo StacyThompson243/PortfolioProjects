@@ -61,12 +61,7 @@ computed: {
             } 
             return false;
         }) 
-    },
-    // pendingApplications(){
-    //     return this.volunteerList.filter(eachVolunteer => {
-    //         return eachVolunteer.status === "Pending";
-    //     })
-    // }
+    }
 },
 created(){
 VolunteerService.viewVolunteer().then((response) =>{
