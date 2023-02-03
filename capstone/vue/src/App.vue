@@ -30,6 +30,11 @@ html {
   background-color: #D4EEF9;
 }
 
+h1 {
+  margin: 20px 0;
+  text-align: center;
+}
+
 ul {
   list-style-type: none;
 }
@@ -38,4 +43,3 @@ a {
   text-decoration: none;
 }
 </style>
-
