@@ -40,19 +40,19 @@ public class JdbcVolunteerDao implements VolunteerDao{
         }
         return volunteer;
     }
-
     @Override
-    public List<Volunteer> getAllPendingVolunteers() {
+    public List<Volunteer> getVolunteersByStatus(String status) {
         List<Volunteer> volunteersList = new ArrayList<>();
-        String sql = "SELECT application_id, first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status FROM volunteers WHERE status = 'Pending'";
+        String sql = "SELECT application_id, first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status FROM volunteers WHERE status = ?";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, status);
 
         while(results.next()){
             volunteersList.add(mapRowToVolunteer(results));
         }
         return volunteersList;
     }
+
 
     @Override
     public void updateStatus(int id, String approvalStatus) {
