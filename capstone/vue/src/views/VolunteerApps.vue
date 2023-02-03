@@ -22,11 +22,11 @@
                   <td>{{volunteer.applicationId}}</td>
                   <td>{{volunteer.volunteerFirstName}} {{volunteer.volunteerLastName}}</td>
                   <td>{{volunteer.email}}</td>
-                  <td>{{volunteer.over18}}</td>
-                  <td>{{volunteer.veterinary}}</td>
-                  <td>{{volunteer.cleaning}}</td>
-                  <td>{{volunteer.dataEntry}}</td>
-                  <td>{{volunteer.photography}}</td>
+                  <td>{{volunteer.over18 ? "Yes" : "No"}}</td>
+                  <td>{{volunteer.veterinary ? "Yes" : "No"}}</td>
+                  <td>{{volunteer.cleaning ? "Yes" : "No"}}</td>
+                  <td>{{volunteer.dataEntry ? "Yes" : "No"}}</td>
+                  <td>{{volunteer.photography ? "Yes" : "No"}}</td>
                   
                   <td>
                       <select 
@@ -50,6 +50,17 @@ export default {
 data(){
     return {
         volunteerList: [],
+        filters: ['Veterinary Skills'],
+    }
+},
+computed: {
+    filterApplications(){
+       return this.volunteerList.filter( eachVolunteer => {
+            if(this.filters.includes('Veterinary Skills')){
+                return eachVolunteer.veterinary;
+            } 
+            return false;
+        }) 
     }
 },
 created(){
@@ -61,11 +72,13 @@ if(response.status === 200){
 },  
 methods:{
     updateStatus(volunteer){
-        
         if(confirm('Click OK to confirm status change') == true){
         VolunteerService.updateVolunteerStatus(volunteer.applicationId, volunteer).then((response) =>{ 
             if(response.status === 200){
             alert("Volunteer has been updated")
+            this.volunteerList = this.volunteerList.filter(eachVolunteer => {
+            return eachVolunteer.status === "Pending";
+        })
             }
         })
     }

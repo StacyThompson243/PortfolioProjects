@@ -1,4 +1,4 @@
-BEGIN TRANSACTION;
+gitBEGIN TRANSACTION;
 
 INSERT INTO users (username,password_hash,first_time,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC',false,'ROLE_USER');
 INSERT INTO users (username,password_hash,first_time,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC',false,'ROLE_ADMIN');
@@ -15,9 +15,11 @@ values ('https://res.cloudinary.com/difcq8eki/image/upload/v1675116167/Dogs/pexe
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675282740/Dogs/guineapig_fmq2l9.jpg', 'Peanut', 'Guinea Pig', 1, 'Male', 2, 'American Guinea Pig', 'I love lettuce, hiding in small boxes, and when you scratch my forehead!', false),
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675116141/Dogs/pexels-alexandru-rotariu-733416_wweugv.jpg', 'Cookie', 'Dog', 3, 'Female', 55, 'Pit Bull Mix', 'I love lettuce, hiding in small boxes, and when you scratch my forehead!', false),
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675137374/Dogs/russelterrier_hamxuo.jpg"', 'Loki', 'Dog', 2, 'Male', 22, 'Jack Russel', 'Plays well with others and very active!', false),
+('https://res.cloudinary.com/difcq8eki/image/upload/v1675137374/Dogs/russelterrier_hamxuo.jpg"', 'Loki', 'Dog', 2, 'Male', 22, 'Jack Russel', '"Plays well with others and very active!"', false),
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675282748/Dogs/white_cat_z6khf4.jpg', 'Elsa', 'Cat', 7, 'Female', 14, 'Turkish Angora', 'Apex predator disguised as a fluffy white cloud.', false),
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675137387/Dogs/whitespikeyears_cghjnw.jpg', 'Spock', 'Dog', 5, 'Male', 45, 'Pit Bull Mix', 'Just waiting for you to throw me a ball!', false),
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675287694/Dogs/Ella_al1ax3.jpg', 'Ella', 'Dog', 4, 'Female', 42, 'Blue Heeler', 'I am very protective over the people I love and do not want to live in a house with children.', false),
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675287682/Dogs/seth_bkbfzc.jpg', 'Seth', 'Dog', 8, 'Male', 70, 'Husky', 'Retired guard dog looking for a loving home.', false);
+
 
 COMMIT TRANSACTION;

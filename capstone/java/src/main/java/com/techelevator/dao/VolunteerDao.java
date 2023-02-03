@@ -10,7 +10,7 @@ public interface VolunteerDao {
 
     Volunteer getVolunteerById(int id);
 
-    List<Volunteer> getAllPendingVolunteers();
+    List<Volunteer> getVolunteersByStatus(String status);
 
     void updateStatus(int id, String approvalStatus);
 
