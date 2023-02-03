@@ -24,16 +24,23 @@ public class VolunteerController {
     @Autowired
     private UserDao userDao;
 
+//    @GetMapping(path = "/directory")
+//    public List<Volunteer> getAllVolunteers(){
+//        return volunteerDao.getAllVolunteers();
+//    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //Admin has permission to approve applications
     @GetMapping(path = "/directory")
-    public List<Volunteer> getAllVolunteers(){
-        return volunteerDao.getAllVolunteers();
+    public List<Volunteer> getAllApprovedVolunteers(){
+        return volunteerDao.getVolunteersByStatus("Approved");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     //Admin has permission to approve applications
     @GetMapping(path = "/applications")
     public List<Volunteer> getAllPendingVolunteers(){
-        return volunteerDao.getAllPendingVolunteers();
+        return volunteerDao.getVolunteersByStatus("Pending");
     }
 
     // Where to get hasRole name
