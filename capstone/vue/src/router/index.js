@@ -11,6 +11,8 @@ import PetDetailsView from '../views/PetDetailsView.vue'
 import AddNewPet from '../views/AddNewPet.vue'
 import UpdatePetView from '../views/UpdatePetView.vue'
 import VolunteerApps from '../views/VolunteerApps.vue'
+import VolunteerDirectory from '../views/VolunteerDirectory.vue'
+
 Vue.use(Router)
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -91,9 +93,17 @@ const router = new Router({
       props: true
     },
     {
-      path: 'volunteer/applications',
+      path: '/volunteer/applications',
       name: "volunteerApplications",
       component: VolunteerApps,
+      meta: {
+      requiresAuth: true
+      }
+    },
+    {
+      path: '/volunteer/directory',
+      name: "volunteerDirectory",
+      component: VolunteerDirectory,
       meta: {
       requiresAuth: true
       }

@@ -10,5 +10,8 @@ export default{
     },
     updateVolunteerStatus(id, volunteer){
         return axios.put(`/volunteer/${id}`, volunteer)
+    },
+    viewDirectory(){
+        return axios.get('/volunteer/directory')
     }
 }
