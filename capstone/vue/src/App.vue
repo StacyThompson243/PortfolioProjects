@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <navigation />
     <router-view />
   </div>
@@ -19,11 +19,23 @@ export default{
 </script>
 
 <style>
-
-#app{
-  background-color: #EEE6FA;
-  height: 200vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Comfortaa', cursive;
 }
 
+html {
+  background-color: #D4EEF9;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
 </style>
 

@@ -1,57 +1,59 @@
 <template>
-<div class='header'>
-     <nav class="navigation">
-    <ul>
-        <li><router-link v-bind:to="{name: 'home'}">Home</router-link></li>
-        <li><router-link v-bind:to="{name: 'pets'}">Browse Pets</router-link></li>
-        <li><router-link v-bind:to="{name: 'volunteer'}">Volunteer</router-link></li>
-        <li v-if="$store.state.user.role === 'ROLE_ADMIN'"><router-link v-bind:to="{name: 'volunteerApplications'}">Volunteer Apps</router-link></li>
+  <nav class="navigation">      
+    <div class="logoContainer">
+      <ul>
+        <li><router-link v-bind:to="{ name: 'home' }">Home</router-link></li>
+      </ul>
+    </div>
+    <div class="buttonsContainer">
+      <ul>
+        <li><router-link v-bind:to="{ name: 'pets' }">Browse Pets</router-link></li>
+        <li><router-link v-bind:to="{ name: 'volunteer' }">Volunteer</router-link></li>
+        <li v-if="$store.state.user.role === 'ROLE_ADMIN'"><router-link v-bind:to="{ name: 'volunteerApplications' }">Volunteer Apps</router-link></li>
         <!-- possibly v-on hover, toggle visibility v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN' " -->
-        <li v-if="$store.state.token == '' "><router-link  to="/login">Log In</router-link></li>
-        <li v-else><router-link  to="/logout">Logout</router-link></li>
-    </ul>
-</nav>
-</div>
+        <li v-if="$store.state.token == ''"><router-link to="/login">Log In</router-link></li>
+        <li v-else><router-link to="/logout">Logout</router-link></li>
+      </ul>
+    </div>      
+  </nav>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style>
-.header {
-  padding: 30px;
-  display: flex;
-  flex-direction: row;
-  background-color: #90ebdd;
-}
-
 nav {
-  flex-grow: 1;
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: #0B0A38;
+  border-bottom: 0.5px solid black;
 }
 
-li {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  color: black;
-  padding: 0 30px 0 0;
-  margin-left: 20px;
+nav div {
+  display: inline-block;
 }
 
-a:hover {
-  color: #6f2cf0;
+.buttonsContainer ul {
+  display: flex;
+}
+
+.buttonsContainer ul li {
+  margin: 0 25px;
+  /* padding: 15px 40px; */
+  /* border-radius: 10px; */
+  /* box-shadow: 1px 1px 2px #110F55; */
+  /* background-color: #8C8AEA; */
 }
 
 a {
-  text-decoration: none;
+  color: #ffffffd2;
+}
+
+a:hover {
+  /* color: #792c2cd2; */
+  /* font-size: 18px; */
+  font-weight: 500;
+  color: #82F2C1;
+  transition: 0.25s;
 }
 </style>
