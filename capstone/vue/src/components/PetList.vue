@@ -1,33 +1,36 @@
 <template>
   <div class="pet-list">
-    <h1>Adoptable Pets</h1>
-    <div class="search">
-       <label for="pet type">Pet Type:</label>
-      <input name='pet type' type="text" v-model="filter.type" placeholder="search pet type" />
-     
-      <label for="breed">Breed:</label>
-      <input name='breed' type="text" v-model="filter.breed" placeholder="search breed" />
+    <h1>Adoptable Pets</h1>    
+    <div class="bottomLine"></div>
+    <div class="divHorizonAlign">
+      <div class="search">
+        <label for="pet type">Pet Type:</label>
+        <input name='pet type' type="text" v-model="filter.type" placeholder="search pet type" />
       
-      <label for="search gender">Gender:</label>
-      <select 
-      v-model="filter.gender" name="search gender" placeholder="search gender">
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-      </select>
+        <label for="breed">Breed:</label>
+        <input name='breed' type="text" v-model="filter.breed" placeholder="search breed" />
+        
+        <label for="search gender">Gender:</label>
+        <select 
+        v-model="filter.gender" name="search gender" placeholder="search gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        </select>
 
-       <label for="weight">Weight:</label>
-      <input name='weight' type="text" v-model="filter.weight" placeholder="search weight" />
-      
-       <label for="age">Age:</label>
-      <input name="age" type="text" v-model="filter.age" placeholder="search age" />
-    </div>
+        <label for="weight">Weight:</label>
+        <input name='weight' type="text" v-model="filter.weight" placeholder="search weight" />
+        
+        <label for="age">Age:</label>
+        <input name="age" type="text" v-model="filter.age" placeholder="search age" />
+      </div>
 
-    <div class="pet-container">
-      <pet-details
-        v-bind:pet="pet"
-        v-for="pet in filteredPets"
-        v-bind:key="pet.petId"
-      />
+      <div class="pet-container">
+        <pet-details
+          v-bind:pet="pet"
+          v-for="pet in filteredPets"
+          v-bind:key="pet.petId"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -112,5 +115,17 @@ select{
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.divHorizonAlign {
+  display: flex;
+  /* position: sticky; */
+  /* top: 0px; */
+}
+
+.search {
+  background-color: brown;
+  position: sticky;
+  top: 0px;
 }
 </style>

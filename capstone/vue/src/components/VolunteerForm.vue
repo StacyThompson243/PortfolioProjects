@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="page">
     <h1>New Volunteer Form</h1>
+    <div class="bottomLine"></div>
     <!-- <a><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc5rUXlj9__lDBWQhbUfWbKfDY7n_c7gDRajhMNgXD4wGQ2pQ/viewform?embedded=true" width="640" height="1050" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></a> -->
     <form class="form" v-on:submit.prevent="saveVolunteer()">
+      <div class="topContainer">
       <div class="namesDiv">
         <div>
           <label for="first-name">First Name:</label>
@@ -35,6 +37,8 @@
           required
         />
       </div>
+      </div>
+      <div class="bottomContainer">
       <div class="checkBoxDiv">
         <label for="confirmation">Are you over 18?</label>
         <input
@@ -45,6 +49,7 @@
         />
       </div>
       <!-- <div>Areas of Interest:</div> -->
+      
         <div class="checkBoxDiv">
           <label for="veterinary">Veterinary: </label>
           <input
@@ -80,6 +85,7 @@
             name="photography"
             type="checkbox"
           />
+        </div>
         </div>
       <input class="btn" type="submit" />
     </form>
@@ -130,18 +136,45 @@ export default {
 </script>
 <style scoped>
 
+h1 {
+  margin-top: 85px;
+  padding: 20px 0 15px 0;
+}
+
+* {
+  color: black;
+}
+/* .bottomLine {
+  border-bottom: 2px solid #82F2C1;
+  width: 200px;
+  margin: auto;
+  margin-bottom: 15px;
+} */
+
+.page {
+  background-image: url("https://static.onecms.io/wp-content/uploads/sites/34/2018/07/12170256/cat-playing-getty-845697720.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  position: fixed;
+  top: 0px;
+  z-index: -1;
+}
+
 .form {
   margin: auto;
   background-color: #c5c4f4;
+  background: rgba(204, 204, 204, 0);
+  background: rgba(204, 204, 204, 0.4);
+  box-shadow: 8px 8px 16px rgba(255, 255, 255, 0.2);
   width: 500px;
   padding: 30px 50px;
   border-radius: 8px;
+  font-weight: 300;
 }
 
-.form div {
-  margin: 4px 0;
-  /* display: flex; */
-  /* justify-content: space-between; */
+.topContainer div, .bottomContainer div {
+  margin-top: 4px;
 }
 
 .namesDiv {
@@ -159,12 +192,30 @@ export default {
   flex-direction: column;
 }
 
-.checkBoxDiv {
-  display: flex;
-  justify-content: space-between;
+.emailDiv label {
+  margin-top: 4px;
 }
 
-input[type="text"] {
+.checkBoxDiv {
+  display: flex;
+  justify-content: space-between;  
+  padding: 4px 0;
+}
+
+.bottomContainer div:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.bottomContainer div:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.checkBoxDiv label {
+  width: 95%;
+}
+
+input[type="text"], input[type="email"] {
+  padding: 10px 6px;
   height: 20px;
 }
 
@@ -173,8 +224,12 @@ input[type="checkbox"] {
   width: 20px;
 }
 
+input[type="checkbox"]:checked {
+  /* background-color: brown; */
+}
+
 .btn {
-  background-color: #d3d2f7;
+  background-color: rgba(255, 255, 255);
   border: none;
   color: black;
   padding: 18px 54px;
@@ -184,19 +239,11 @@ input[type="checkbox"] {
 }
 
 .btn:hover {
+  background-color: #A1F5D0;
+  transition: 0.5s;
+}
+
+.btn:hover {
   cursor: pointer;
 }
-/* .form-title{
-    display:flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-.form{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  align-content: stretch;
-} */
 </style>

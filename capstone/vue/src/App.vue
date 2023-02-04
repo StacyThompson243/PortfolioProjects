@@ -35,6 +35,13 @@ h1 {
   text-align: center;
 }
 
+.bottomLine {
+  border-bottom: 2px solid #82F2C1;
+  width: 200px;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
 ul {
   list-style-type: none;
 }
