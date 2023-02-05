@@ -27,16 +27,17 @@ export default{
 }
 
 html {
-  background-color: #D4EEF9;
+  background-color: #F2FAFD;
 }
 
-h1 {
-  margin: 20px 0;
+h1 {  
+  padding: 20px 0 15px 0;
   text-align: center;
+  /* border-bottom: 2px solid #82F2C1; */
 }
 
-.bottomLine {
-  border-bottom: 2px solid #82F2C1;
+#bottomLine {
+  border-bottom: 2px solid #63EFB2;
   width: 200px;
   margin: auto;
   margin-bottom: 15px;

@@ -1,30 +1,37 @@
 <template>
-  <div class="pet-list">
-    <h1>Adoptable Pets</h1>    
-    <div class="bottomLine"></div>
-    <div class="divHorizonAlign">
-      <div class="search">
-        <label for="pet type">Pet Type:</label>
-        <input name='pet type' type="text" v-model="filter.type" placeholder="search pet type" />
-      
-        <label for="breed">Breed:</label>
-        <input name='breed' type="text" v-model="filter.breed" placeholder="search breed" />
-        
-        <label for="search gender">Gender:</label>
-        <select 
-        v-model="filter.gender" name="search gender" placeholder="search gender">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        </select>
-
-        <label for="weight">Weight:</label>
-        <input name='weight' type="text" v-model="filter.weight" placeholder="search weight" />
-        
-        <label for="age">Age:</label>
-        <input name="age" type="text" v-model="filter.age" placeholder="search age" />
+  <div class="pet-list">    
+    <h1>Adoptable Pets</h1>
+    <div id="bottomLine"></div>
+    <div class="wrapper">
+      <div id="sidebar">      
+        <div>
+          <label for="pet type">Pet Type:</label>
+          <input name='pet type' type="text" v-model="filter.type"/>
+        </div>
+        <div>
+          <label for="breed">Breed:</label>
+          <input name='breed' type="text" v-model="filter.breed"/>
+        </div>
+        <div>
+          <label for="search gender">Gender:</label>
+          <select 
+          v-model="filter.gender" name="search gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          </select>
+        </div>
+        <div>
+          <label for="weight">Weight:</label>
+          <input name='weight' type="text" v-model="filter.weight"/>
+        </div>
+        <div>
+          <label for="age">Age:</label>
+          <input name="age" type="text" v-model="filter.age"/>
+        </div>
       </div>
+      <div id="sideBorder"></div>
 
-      <div class="pet-container">
+      <div id="pet-container">
         <pet-details
           v-bind:pet="pet"
           v-for="pet in filteredPets"
@@ -98,34 +105,45 @@ export default {
 </script>
 
 <style scoped>
-.pet-list {
-  text-align: center;
+.wrapper {
+  display: flex
 }
 
-input{
-  margin-right: 20px;
+#sidebar {
+  /* background-color: #D4EEF9; */
+  height: 25vh;  
+  margin: 0 30px 0 30px;
+  position: sticky;
+  top: 20vh;
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  padding: 2px;
 }
 
-select{
-  margin-right: 20px;
+#sidebar div {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0px;
+  margin-bottom: 10px;
 }
 
-.pet-container {
+#sidebar div:hover {
+  transition: 0.25s;
+  background-color: #82F2C1;
+  
+} 
+
+#sideBorder {
+  height: 60vh;
+  border-right: 2px solid #7ACAED;
+  position: sticky;
+  top: 20vh
+}
+
+#pet-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
-}
-
-.divHorizonAlign {
-  display: flex;
-  /* position: sticky; */
-  /* top: 0px; */
-}
-
-.search {
-  background-color: brown;
-  position: sticky;
-  top: 0px;
 }
 </style>

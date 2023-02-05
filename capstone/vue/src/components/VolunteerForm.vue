@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <h1>New Volunteer Form</h1>
-    <div class="bottomLine"></div>
+    <div id="bottomLine"></div>
     <!-- <a><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc5rUXlj9__lDBWQhbUfWbKfDY7n_c7gDRajhMNgXD4wGQ2pQ/viewform?embedded=true" width="640" height="1050" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></a> -->
     <form class="form" v-on:submit.prevent="saveVolunteer()">
       <div class="topContainer">
@@ -38,7 +38,7 @@
         />
       </div>
       </div>
-      <div class="bottomContainer">
+      
       <div class="checkBoxDiv">
         <label for="confirmation">Are you over 18?</label>
         <input
@@ -48,8 +48,8 @@
           type="checkbox"
         />
       </div>
-      <!-- <div>Areas of Interest:</div> -->
-      
+      <div id="interest">Areas of Interest:</div>   
+      <div class="bottomContainer">   
         <div class="checkBoxDiv">
           <label for="veterinary">Veterinary: </label>
           <input
@@ -137,13 +137,9 @@ export default {
 <style scoped>
 
 h1 {
-  margin-top: 85px;
-  padding: 20px 0 15px 0;
+  margin-top: 78px;
 }
 
-* {
-  color: black;
-}
 /* .bottomLine {
   border-bottom: 2px solid #82F2C1;
   width: 200px;
@@ -163,10 +159,11 @@ h1 {
 
 .form {
   margin: auto;
+  margin-top: 30px;
   background-color: #c5c4f4;
   background: rgba(204, 204, 204, 0);
   background: rgba(204, 204, 204, 0.4);
-  box-shadow: 8px 8px 16px rgba(255, 255, 255, 0.2);
+  box-shadow: 8px 8px 16px rgba(122, 122, 122, 0.6);
   width: 500px;
   padding: 30px 50px;
   border-radius: 8px;
@@ -198,7 +195,7 @@ h1 {
 
 .checkBoxDiv {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;    
   padding: 4px 0;
 }
 
@@ -214,6 +211,16 @@ h1 {
   width: 95%;
 }
 
+#interest {
+  text-align: center;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #63EFB2;
+  width: 200px;
+  margin: auto;
+  margin-bottom: 15px;
+  margin-top: 15px
+}
+
 input[type="text"], input[type="email"] {
   padding: 10px 6px;
   height: 20px;
@@ -222,10 +229,6 @@ input[type="text"], input[type="email"] {
 input[type="checkbox"] {
   height: 20px;
   width: 20px;
-}
-
-input[type="checkbox"]:checked {
-  /* background-color: brown; */
 }
 
 .btn {

@@ -26,7 +26,6 @@ nav {
   justify-content: space-between;
   padding: 30px;
   background-color: #0F4F6A;
-  /* border-bottom: 0.5px solid black; */
 }
 
 nav div {
@@ -39,10 +38,6 @@ nav div {
 
 .buttonsContainer ul li {
   margin: 0 25px;
-  /* padding: 15px 40px; */
-  /* border-radius: 10px; */
-  /* box-shadow: 1px 1px 2px #110F55; */
-  /* background-color: #8C8AEA; */
 }
 
 a {
@@ -50,8 +45,6 @@ a {
 }
 
 a:hover {
-  /* color: #792c2cd2; */
-  /* font-size: 18px; */
   font-weight: 500;
   color: #82F2C1;
   transition: 0.25s;
