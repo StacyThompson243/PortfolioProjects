@@ -149,12 +149,6 @@ h1 {
 
 .page {
   background-image: url("https://static.onecms.io/wp-content/uploads/sites/34/2018/07/12170256/cat-playing-getty-845697720.jpg");
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  position: fixed;
-  top: 0px;
-  z-index: -1;
 }
 
 .form {
@@ -167,7 +161,7 @@ h1 {
   width: 500px;
   padding: 30px 50px;
   border-radius: 8px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .topContainer div, .bottomContainer div {
@@ -187,6 +181,7 @@ h1 {
 .emailDiv {
   display: flex;
   flex-direction: column;
+  margin-bottom: 4px;
 }
 
 .emailDiv label {
@@ -219,16 +214,6 @@ h1 {
   margin: auto;
   margin-bottom: 15px;
   margin-top: 15px
-}
-
-input[type="text"], input[type="email"] {
-  padding: 10px 6px;
-  height: 20px;
-}
-
-input[type="checkbox"] {
-  height: 20px;
-  width: 20px;
 }
 
 .btn {

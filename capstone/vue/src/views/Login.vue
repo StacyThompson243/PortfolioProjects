@@ -1,9 +1,9 @@
 <template>
-
-  <div id="login" class="text-center">
-  
+  <div class="page">
+  <div id="login" class="text-center">  
   <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1>Welcome Back!</h1>
+      <div id="bottomLine"></div>
       <div
         class="alert alert-danger"
         role="alert"
@@ -14,28 +14,29 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
+      <div id="container">
       <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          v-model="user.username"
+          required
+          autofocus
+        />
+        <label for="password" class="sr-only">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          v-model="user.password"
+          required
+        />
+        <button type="submit">Sign in</button>
+      </div>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
     </form>
+  </div>
   </div>
 </template>
 
@@ -83,8 +84,22 @@ export default {
 </script>
 
 <style scoped>
-.text-center{
-  text-align: center;
+.page {
+  background-image: url("https://www.southernliving.com/thmb/ZuS1MlY7N7G67Lyvl2zDIoktRDU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/gettyimages-837898820-1-4deae142d4d0403dbb6cb542bfc56934.jpg")
+}
+
+#container {
+  margin: auto;
+  width: 400px;
+  padding: 50px 50px;
+  border-radius: 5px;
+  display: flex;  
+  flex-direction: column;
+  background-color: #7ACAED;
+}
+
+#container input {
+  margin-bottom: 5px;
 }
 
 

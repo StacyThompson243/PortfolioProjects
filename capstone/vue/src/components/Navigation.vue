@@ -40,11 +40,11 @@ nav div {
   margin: 0 25px;
 }
 
-a {
+.buttonsContainer a {
   color: #ffffffd2;
 }
 
-a:hover {
+.buttonsContainer a:hover {
   font-weight: 500;
   color: #82F2C1;
   transition: 0.25s;

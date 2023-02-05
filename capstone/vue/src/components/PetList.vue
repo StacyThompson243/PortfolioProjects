@@ -5,7 +5,7 @@
     <div class="wrapper">
       <div id="sidebar">      
         <div>
-          <label for="pet type">Pet Type:</label>
+          <label for="pet type">Species:</label>
           <input name='pet type' type="text" v-model="filter.type"/>
         </div>
         <div>
@@ -106,7 +106,13 @@ export default {
 
 <style scoped>
 .wrapper {
-  display: flex
+  display: flex;
+  /* font-weight: 300; */
+}
+
+#pet-container {
+  margin-right: 40px;
+  /* margin-top: 30px; */
 }
 
 #sidebar {
@@ -127,15 +133,15 @@ export default {
   margin-bottom: 10px;
 }
 
-#sidebar div:hover {
+/* #sidebar div:hover {
   transition: 0.25s;
-  background-color: #82F2C1;
-  
-} 
+  background-color: #82F2C1;  
+}  */
 
 #sideBorder {
   height: 60vh;
   border-right: 2px solid #7ACAED;
+  margin-right: 30px;
   position: sticky;
   top: 20vh
 }
