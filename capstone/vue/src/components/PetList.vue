@@ -112,21 +112,17 @@ export default {
 <style scoped>
 .wrapper {
   display: flex;
-  /* font-weight: 300; */
 }
 
 #pet-container {
   margin-right: 40px;
-  /* margin-top: 30px; */
 }
 
 #sidebar {
-  /* background-color: #D4EEF9; */
   height: 25vh;  
   margin: 0 30px 0 30px;
   position: sticky;
   top: 20vh;
-  /* border: 1px solid black; */
   border-radius: 5px;
   padding: 2px;
 }
