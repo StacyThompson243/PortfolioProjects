@@ -22,7 +22,7 @@
       <select
         v-model="filter.gender"
         name="search gender"
-        placeholder="search gender"
+      
         >
         <option value>Show All</option>
         <option value="Male">Male</option>
@@ -117,7 +117,6 @@ export default {
         filteredPetsList = filteredPetsList.filter(
           (pet) =>
           pet.age >= parseFloat(this.filter.age.substring(0, 1)) && pet.age <=(this.filter.age.substring(2))
-          // || (this.filter.age.length===1 && pet.age < this.filter.age) 
           || pet.age > (this.filter.age.substring(0,2))
         );
       }
