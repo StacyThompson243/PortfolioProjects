@@ -13,12 +13,11 @@
               <th>Cleaning Skills</th>
               <th>Data Entry Skills</th>
               <th>Photography Skills</th>
-              
           </tr>
           </thead>
           <tbody>
               <tr v-for="(volunteer, key) in volunteerList" v-bind:key="key">
-                <td>{{volunteer.role}}</td>
+                <td>{{user.role}}</td>
                   <td>{{volunteer.volunteerFirstName}} {{volunteer.volunteerLastName}}</td>
                   <td>{{volunteer.email}}</td>
                   <td>{{volunteer.over18}}</td>

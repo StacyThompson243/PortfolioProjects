@@ -16,17 +16,40 @@
           <label for="search gender">Gender:</label>
           <select 
           v-model="filter.gender" name="search gender">
+          <option value>Show All</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           </select>
         </div>
         <div>
-          <label for="weight">Weight:</label>
-          <input name='weight' type="text" v-model="filter.weight"/>
+          <label for="weight">Weight(lbs):</label>
+          <select
+            v-model="filter.weight"
+            name="search weight"
+          >
+            <option value>Show All</option>
+            <option value="<10">under 10</option>
+            <option value="10-20">10-20</option>
+            <option value="20-30">20-30</option>
+            <option value="30-40">30-40</option>
+            <option value="40-50">40-50</option>
+            <option value="50-60">50-60</option>
+            <option value="60-70">60-70</option>
+            <option value="70">70+</option>
+          </select>
         </div>
         <div>
           <label for="age">Age:</label>
-          <input name="age" type="text" v-model="filter.age"/>
+          <select
+            name="age"
+            v-model="filter.age"
+          >
+            <option value>Show All</option>
+            <option value="0-.99">under 1</option>
+            <option value="1-5">1-5</option>
+            <option value="5-9">5-9</option>
+            <option value="10+">10+</option>
+          </select>
         </div>
 
         <router-link v-bind:to="{name: 'newPetForm'}">
@@ -89,20 +112,24 @@ export default {
       }
       if (this.filter.gender != "") {
         filteredPetsList = filteredPetsList.filter((pet) =>
-          pet.gender.toLowerCase().includes(this.filter.gender.toLowerCase())
+          pet.gender.toLowerCase() == (this.filter.gender.toLowerCase())
         );
       }
       if (this.filter.age != "") {
-        filteredPetsList = filteredPetsList.filter((pet) =>
-          pet.age.toLowerCase().includes(this.filter.age.toLowerCase())
+        filteredPetsList = filteredPetsList.filter(
+          (pet) =>
+          pet.age >= parseFloat(this.filter.age.substring(0, 1)) && pet.age <=(this.filter.age.substring(2))
+          || pet.age > (this.filter.age.substring(0,2))
         );
       }
-      if (this.filter.weight != "") {
-        filteredPetsList = filteredPetsList.filter((pet) =>
-          pet.weight.toLowerCase().includes(this.filter.weight.toLowerCase())
+    if (this.filter.weight != "") {
+        filteredPetsList = filteredPetsList.filter(
+          (pet) => 
+          pet.weight >= parseInt(this.filter.weight.substring(0,2)) && pet.weight <= (this.filter.weight.substring(3)) 
+          || (this.filter.weight.length===2 && pet.weight > (this.filter.weight.substring(0,2))) 
+          || pet.weight < (this.filter.weight.substring(1)) 
         );
-      }
-     
+    }
       return filteredPetsList;
     },
   },
