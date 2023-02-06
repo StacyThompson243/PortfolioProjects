@@ -57,21 +57,36 @@ a {
   padding: 18px 54px;
   font-size: 16px;
   border-radius: 5px;
-  margin: 27px 0 0;
+  margin: 20px 0 0;
 }
 
 .btn:hover {
   background-color: #A1F5D0;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .page {
+  /* margin-top: 20%; */
   height: 100vh;
   width: 100vw;
   background-size: cover;
   position: fixed;
   top: 0px;
   z-index: -1;
+}
+
+.form {
+  margin: auto;
+  margin-top: 30px;
+  background-color: #c5c4f4;
+  background: rgba(204, 204, 204, 0);
+  background: rgba(204, 204, 204, 0.4);
+  box-shadow: 8px 8px 16px rgba(122, 122, 122, 0.3);
+  width: 500px;
+  padding: 30px 50px;
+  border-radius: 8px;
+  font-weight: 400;
 }
 
 input[type="text"], input[type="email"], input[type="password"] {

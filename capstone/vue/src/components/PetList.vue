@@ -28,6 +28,11 @@
           <label for="age">Age:</label>
           <input name="age" type="text" v-model="filter.age"/>
         </div>
+
+        <router-link v-bind:to="{name: 'newPetForm'}">
+          <button class="btn" v-if="$store.state.token != ''">Add Pet</button>
+        </router-link>
+
       </div>
       <div id="sideBorder"></div>
 
@@ -144,6 +149,17 @@ export default {
   margin-right: 30px;
   position: sticky;
   top: 20vh
+}
+
+.btn {
+  background-color: rgb(218, 218, 218);
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: #A1F5D0;
+  transition: 0.5s;
+  cursor: pointer;
 }
 
 #pet-container {

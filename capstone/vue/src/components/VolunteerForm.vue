@@ -137,15 +137,8 @@ export default {
 <style scoped>
 
 h1 {
-  margin-top: 78px;
+  margin-top: 92px;
 }
-
-/* .bottomLine {
-  border-bottom: 2px solid #82F2C1;
-  width: 200px;
-  margin: auto;
-  margin-bottom: 15px;
-} */
 
 .page {
   background-image: url("https://static.onecms.io/wp-content/uploads/sites/34/2018/07/12170256/cat-playing-getty-845697720.jpg");
@@ -165,7 +158,7 @@ h1 {
 }
 
 .topContainer div, .bottomContainer div {
-  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .namesDiv {
@@ -214,24 +207,5 @@ h1 {
   margin: auto;
   margin-bottom: 15px;
   margin-top: 15px
-}
-
-.btn {
-  background-color: rgba(255, 255, 255);
-  border: none;
-  color: black;
-  padding: 18px 54px;
-  font-size: 16px;
-  border-radius: 5px;
-  margin: 27px 0 0;
-}
-
-.btn:hover {
-  background-color: #A1F5D0;
-  transition: 0.5s;
-}
-
-.btn:hover {
-  cursor: pointer;
 }
 </style>

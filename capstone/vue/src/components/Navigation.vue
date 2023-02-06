@@ -1,9 +1,12 @@
 <template>
   <nav class="navigation">      
     <div class="logoContainer">
-      <ul>
+      <router-link v-bind:to="{ name: 'home' }">
+      <img src="../assets/logo.png" alt="Critter Cabin logo">
+      </router-link>
+      <!-- <ul>
         <li><router-link v-bind:to="{ name: 'home' }">Home</router-link></li>
-      </ul>
+      </ul> -->
     </div>
     <div class="buttonsContainer">
       <ul>
@@ -21,10 +24,14 @@
 <script></script>
 
 <style>
+img {
+  height: 85px;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 30px;
+  padding: 3px 30px 0px 30px;
   background-color: #0F4F6A;
 }
 
@@ -32,8 +39,13 @@ nav div {
   display: inline-block;
 }
 
+.buttonsContainer {
+  display: flex;  
+  align-items: center;
+}
+
 .buttonsContainer ul {
-  display: flex;
+  display: flex;  
 }
 
 .buttonsContainer ul li {

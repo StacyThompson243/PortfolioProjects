@@ -18,7 +18,9 @@
         </router-link> -->
     </div>  
     </router-link>  
-    <button v-on:click="setUpEdit" class='update' v-if="$store.state.token != ''">Edit</button>
+    <div id="editHolder">
+      <a v-on:click="setUpEdit" id='update' v-if="$store.state.token != ''">Edit</a>
+    </div>
   </div>
 
 </template> 
@@ -90,21 +92,17 @@ h2 {
 a {
   color: black;
 }
-/* .info {
-  color: #6F2CF0;
-  border: 2px solid black;
-  border-radius: 10px;
-  width: 250px;
-  height: 400px;
-  text-align: center;
-  margin: 20px 50px;
-  background-color:#C7EADD;
-}
-.details{
-  margin-bottom: 20px;
+
+#editHolder {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.update{
-  margin-bottom: 20px;
-} */
+#update {
+  text-align: right;
+}
+
+#update:hover {  
+  cursor: pointer;
+}
 </style>

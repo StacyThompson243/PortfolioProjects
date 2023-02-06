@@ -1,20 +1,18 @@
 <template>
   <div class="page">
-  <div id="login" class="text-center">  
-  <form class="form-signin" @submit.prevent="login">
+  <form @submit.prevent="login">
+    <div id ="leftContainer">
       <h1>Welcome Back!</h1>
-      <div id="bottomLine"></div>
+      <div id="bottomLine"></div>      
       <div
-        class="alert alert-danger"
         role="alert"
         v-if="invalidCredentials"
       >Invalid username and password!</div>
       <div
-        class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <div id="container">
+      <div class="form">
       <label for="username" class="sr-only">Username</label>
         <input
           type="text"
@@ -32,11 +30,12 @@
           v-model="user.password"
           required
         />
-        <button type="submit">Sign in</button>
+        <button class="btn" type="submit">Sign in</button>
+        
+      <router-link :to="{ name: 'register' }">Sign up</router-link>
+      </div>      
       </div>
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
     </form>
-  </div>
   </div>
 </template>
 
@@ -85,22 +84,43 @@ export default {
 
 <style scoped>
 .page {
-  background-image: url("https://www.southernliving.com/thmb/ZuS1MlY7N7G67Lyvl2zDIoktRDU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/gettyimages-837898820-1-4deae142d4d0403dbb6cb542bfc56934.jpg")
+  background-image: url(../assets/login.jpg);
 }
 
-#container {
-  margin: auto;
-  width: 400px;
-  padding: 50px 50px;
-  border-radius: 5px;
+h1 {
+  /* text-align:initial; */
+  /* margin-left: 10vw; */
+  margin-top: 92px;
+}
+
+.form {
+  /* margin-left: 5vw; */
   display: flex;  
   flex-direction: column;
-  background-color: #7ACAED;
+  width: 400px;
 }
 
-#container input {
-  margin-bottom: 5px;
+#leftContainer {
+  width: 400px;
+  margin-left: 10vw;
 }
 
+input[type="text"] {
+  margin-bottom: 8px;
+}
+
+.btn {
+  margin-bottom: 8px;
+}
+
+a {
+  font-size: 14px;
+  color: black;
+}
+
+a:hover {
+  color: rgb(123,45,212);
+  transition: 0.2s;
+}
 
 </style>
