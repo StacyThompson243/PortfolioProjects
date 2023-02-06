@@ -58,7 +58,7 @@ nav div {
 
 .buttonsContainer a:hover {
   font-weight: 500;
-  color: #82F2C1;
+  color: #A1F5D0;
   transition: 0.25s;
 }
 </style>

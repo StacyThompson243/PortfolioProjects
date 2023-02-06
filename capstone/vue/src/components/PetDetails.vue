@@ -47,13 +47,9 @@ export default {
 
 .card {
   margin: 30px 0 10px 0;
-  /* padding: 5px; */
-  /* border: 1px solid black; */
   width: 300px;
   overflow:hidden;
   box-shadow: 2px 4px 4px rgb(204, 204, 204);
-  /* background-color: #0F4F6A; */
-  /* margin: 0 20%; */
 }
 
 .card:hover {
@@ -65,10 +61,7 @@ img {
   display: block;
   margin: auto;
   height: 250px;
-  /* min-width: 100%; */
   object-fit: contain;
-  /* box-shadow: 2px 4px 4px; */
-  /* width: 250px; */
 }
 
 .cardText {
@@ -79,7 +72,6 @@ img {
   background-color: rgba(255, 255, 255);
   border: none;
   color: black;
-  /* padding: 18px 54px; */
   font-size: 16px;
   border-radius: 5px;
 }
