@@ -1,15 +1,25 @@
 <template>
-  <div class='container'>
+  <div>
   <img :src='pet.petImage'/>
-      <h1>Hi! My Name is {{pet.petName}} !</h1>
-       <h2>I am a {{pet.type}}.</h2>
-      <h2>My breed is: {{pet.breed}}.</h2>
-      <h2>I weigh {{pet.weight}} lbs.</h2>
-      <h2>I am {{pet.age}} years old.</h2>
-      <h2>About Me...</h2>
-      <p>{{pet.description}}</p>
+  <div class='card'>
+    <h2>{{pet.petName}}</h2>
+    <div class="pHolder">
+      <div>
+        <p>Type: {{pet.type}}</p>
       </div>
- 
+      <div>
+        <p>Breed: {{pet.breed}}</p>
+      </div>
+      <div>
+        <p>Weight: {{pet.weight}} lbs</p>
+      </div>
+      <div>
+        <p>Age: {{pet.age}} years old</p>
+      </div>
+    </div>
+    <p>{{pet.description}}</p>
+  </div>
+ </div>
 </template>
 
 <script>
@@ -29,20 +39,32 @@ created(){
 
 <style scoped>
 
-.container{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+h2 {
+  margin-bottom: 3px;
+  color: #0F4F6A;
 }
 
-img{
-  padding-top: 40px;
-  text-align: center;
-  height: 450px;
+img {
+  display: block;
+  margin: auto;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  height: 385px;
+  box-shadow: 2px 4px 4px rgb(138, 138, 138);
 }
 
+.card {
+  margin: auto;  
+  overflow:hidden;
+  box-shadow: 2px 4px 4px rgb(204, 204, 204);
+  width: 500px
+}
 
+.pHolder:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 
+.pHolder:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 </style>

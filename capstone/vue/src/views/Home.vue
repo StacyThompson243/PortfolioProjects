@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
-    
-    <h1>Home Page Under Construction</h1>
-    <img class="catpic" src='https://res.cloudinary.com/difcq8eki/image/upload/v1675282767/Dogs/pexels-alena-koval-982300_zuyvsa.jpg'/>
-    
+  <div>
+    <div class="carousel">
+      <img src="" alt="">
+    </div>
+    <div class="petDescription">Pet description</div>
   </div>
 </template>
 
@@ -14,13 +14,10 @@ export default {
 </script>
 
 <style scoped>
-.home{
-  text-align: center;
+
+.petDescription {
+  width: 500px;
+  height: 250px;
+  background-color: brown;
 }
-
-.catpic{
- height: 80vh;
-}
-
-
 </style>

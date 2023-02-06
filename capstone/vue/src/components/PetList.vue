@@ -1,69 +1,71 @@
 <template>
-  <div class="pet-list">
+  <div class="pet-list">    
     <h1>Adoptable Pets</h1>
-      <div class="search">
-      <label for="pet type">Pet Type:</label>
-      <input
-        name="pet type"
-        type="text"
-        v-model="filter.type"
-        placeholder="search pet type"
-      />
+    <div id="bottomLine"></div>
+    <div class="wrapper">
+      <div id="sidebar">      
+        <div>
+          <label for="pet type">Species:</label>
+          <input name='pet type' type="text" v-model="filter.type"/>
+        </div>
+        <div>
+          <label for="breed">Breed:</label>
+          <input name='breed' type="text" v-model="filter.breed"/>
+        </div>
+        <div>
+          <label for="search gender">Gender:</label>
+          <select 
+          v-model="filter.gender" name="search gender">
+          <option value>Show All</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          </select>
+        </div>
+        <div>
+          <label for="weight">Weight(lbs):</label>
+          <select
+            v-model="filter.weight"
+            name="search weight"
+          >
+            <option value>Show All</option>
+            <option value="<10">under 10</option>
+            <option value="10-20">10-20</option>
+            <option value="20-30">20-30</option>
+            <option value="30-40">30-40</option>
+            <option value="40-50">40-50</option>
+            <option value="50-60">50-60</option>
+            <option value="60-70">60-70</option>
+            <option value="70">70+</option>
+          </select>
+        </div>
+        <div>
+          <label for="age">Age:</label>
+          <select
+            name="age"
+            v-model="filter.age"
+          >
+            <option value>Show All</option>
+            <option value="0-.99">under 1</option>
+            <option value="1-5">1-5</option>
+            <option value="5-9">5-9</option>
+            <option value="10+">10+</option>
+          </select>
+        </div>
 
-      <label for="breed">Breed:</label>
-      <input
-        name="breed"
-        type="text"
-        v-model="filter.breed"
-        placeholder="search breed"
-      />
+        <router-link v-bind:to="{name: 'newPetForm'}">
+          <button class="btn" v-if="$store.state.token != ''">Add Pet</button>
+        </router-link>
 
-      <label for="search gender">Gender:</label>
-      <select
-        v-model="filter.gender"
-        name="search gender"
-      
-        >
-        <option value>Show All</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
+      </div>
+      <div id="sideBorder"></div>
 
-      <label for="weight">Weight(lbs):</label>
-      <select
-        v-model="filter.weight"
-        name="search weight"
-      >
-        <option value>Show All</option>
-        <option value="<10">under 10</option>
-        <option value="10-20">10-20</option>
-        <option value="20-30">20-30</option>
-        <option value="30-40">30-40</option>
-        <option value="40-50">40-50</option>
-        <option value="50-60">50-60</option>
-        <option value="60-70">60-70</option>
-        <option value="70">70+</option>
-      </select>
-
-      <label for="age">Age:</label>
-      <select
-        name="age"
-        v-model="filter.age"
-      >
-        <option value>Show All</option>
-        <option value="0-.99">under 1</option>
-        <option value="1-5">1-5</option>
-        <option value="5-9">5-9</option>
-        <option value="10+">10+</option>
-      </select>
-    </div>
-
-    <div class="pet-container">
-      <pet-details
-        v-bind:pet="pet"
-        v-for="pet in filteredPets"
-        v-bind:key="pet.petId"
-      />
+      <div id="pet-container">
+        <pet-details
+          v-bind:pet="pet"
+          v-for="pet in filteredPets"
+          v-bind:key="pet.petId"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -135,19 +137,55 @@ export default {
 </script>
 
 <style scoped>
-.pet-list {
-  text-align: center;
+.wrapper {
+  display: flex;
 }
 
-input {
-  margin-right: 20px;
+#pet-container {
+  margin-right: 40px;
 }
 
-select {
-  margin-right: 20px;
+#sidebar {
+  height: 25vh;  
+  margin: 0 30px 0 30px;
+  position: sticky;
+  top: 20vh;
+  border-radius: 5px;
+  padding: 2px;
 }
 
-.pet-container {
+#sidebar div {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0px;
+  margin-bottom: 10px;
+}
+
+/* #sidebar div:hover {
+  transition: 0.25s;
+  background-color: #82F2C1;  
+}  */
+
+#sideBorder {
+  height: 60vh;
+  border-right: 2px solid #7ACAED;
+  margin-right: 30px;
+  position: sticky;
+  top: 20vh
+}
+
+.btn {
+  background-color: rgb(218, 218, 218);
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: #A1F5D0;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+#pet-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

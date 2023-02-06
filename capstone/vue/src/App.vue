@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <navigation />
     <router-view />
   </div>
@@ -19,11 +19,85 @@ export default{
 </script>
 
 <style>
-
-#app{
-  background-color: #EEE6FA;
-  height: 200vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Comfortaa', cursive;
 }
 
-</style>
+html {
+  background-color: #F2FAFD;
+}
 
+h1 {  
+  padding: 20px 0 15px 0;
+  text-align: center;
+}
+
+#bottomLine {
+  border-bottom: 2px solid #63EFB2;
+  width: 200px;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  background-color: rgba(255, 255, 255);
+  border: none;
+  color: black;
+  padding: 18px 54px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin: 20px 0 0;
+}
+
+.btn:hover {
+  background-color: #A1F5D0;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.page {
+  /* margin-top: 20%; */
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  position: fixed;
+  top: 0px;
+  z-index: -1;
+}
+
+.form {
+  margin: auto;
+  margin-top: 30px;
+  background-color: #c5c4f4;
+  background: rgba(204, 204, 204, 0);
+  background: rgba(204, 204, 204, 0.4);
+  box-shadow: 8px 8px 16px rgba(122, 122, 122, 0.3);
+  width: 500px;
+  padding: 30px 50px;
+  border-radius: 8px;
+  font-weight: 400;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  padding: 14px 10px;
+  height: 20px;
+  border: 1px solid rgb(182, 182, 182);
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+}
+</style>

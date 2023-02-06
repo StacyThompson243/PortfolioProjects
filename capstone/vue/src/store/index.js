@@ -39,7 +39,6 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      state.user.role = user.authorities[0].name;
       localStorage.setItem('user',JSON.stringify(user));
     },
     LOGOUT(state) {

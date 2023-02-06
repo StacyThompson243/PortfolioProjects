@@ -1,14 +1,7 @@
 <template>
 <div>
-  <div class='list'>
-      <pet-list />
-      <div class="btn">
-      <router-link v-bind:to="{name: 'newPetForm'}">
-      <button v-if="$store.state.token != ''">Add To Adoptable Pets</button>
-       </router-link>
-      </div>
-  </div>
-  </div>
+  <pet-list />
+</div>
 </template>
 
 <script>
@@ -19,11 +12,4 @@ export default {
 }
 </script>
 
-<style>
-
-.btn{
-  display: flex;
-  justify-content: center;
-}
-
-</style>
+<style></style>

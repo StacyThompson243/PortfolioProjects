@@ -1,22 +1,29 @@
 <template>
   <!-- <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}"> -->
-    <div class="info">
-      <h2 class="pet-name">Hi, I'm {{ pet.petName }}!</h2>
+  <div class="container">
+    <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">
+    <div class="card">
       <img :src='pet.petImage'/>
-      <h3 class='pet-type'>Type: {{ pet.type }}</h3>
-      <h3 class='pet-breed'>Breed: {{ pet.breed }}</h3>
-      <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">
-      <button class='details' v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">Learn More</button><br>
-   </router-link> 
+      <div class="cardText">
+        <h2 class="pet-name">{{ pet.petName }}</h2>
+        <p class='pet-type'>Type: {{ pet.type }}</p>
+        <p class='pet-breed'>Breed: {{ pet.breed }}</p>
+      </div>
+      <!-- <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}"> -->
+      <!-- <button class='learnMore' v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">Learn More</button><br> -->
+    <!-- </router-link>  -->
 
-     <!-- <router-link v-bind:to="{name: 'updatePet', params: {petId: pet.petId}}">
-      <button class='update' v-if="$store.state.token != ''">Edit This Listing</button>
-      </router-link> -->
-  <button v-on:click="setUpEdit" class='update' v-if="$store.state.token != ''">Edit This Listing</button>
+      <!-- <router-link v-bind:to="{name: 'updatePet', params: {petId: pet.petId}}">
+        <button class='update' v-if="$store.state.token != ''">Edit This Listing</button>
+        </router-link> -->
+    </div>  
+    </router-link>  
+    <div id="editHolder">
+      <a v-on:click="setUpEdit" id='update' v-if="$store.state.token != ''">Edit</a>
+    </div>
+  </div>
 
-   </div>
-
-</template>
+</template> 
 
 <script>
 export default {
@@ -34,26 +41,60 @@ export default {
 </script>
 
 <style scoped>
-img{
-  height: 100px;
-  width: auto;
+.container {
+  margin: 0 3%;
 }
 
-.info {
-  color: #6F2CF0;
-  border: 2px solid black;
-  border-radius: 10px;
-  width: 250px;
-  height: 400px;
-  text-align: center;
-  margin: 20px 50px;
-  background-color:#C7EADD;
-}
-.details{
-  margin-bottom: 20px;
+.card {
+  margin: 30px 0 10px 0;
+  width: 300px;
+  overflow:hidden;
+  box-shadow: 2px 4px 4px rgb(204, 204, 204);
 }
 
-.update{
-  margin-bottom: 20px;
+.card:hover {
+  background-color: #C5E8F7;
+  transition: 0.2s;
+}
+
+img {
+  display: block;
+  margin: auto;
+  height: 250px;
+  object-fit: contain;
+}
+
+.cardText {
+  margin: 5px;
+}
+
+.learnMore {
+  background-color: rgba(255, 255, 255);
+  border: none;
+  color: black;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+h2 {
+  margin-bottom: 3px;
+  color: #0F4F6A;
+}
+
+a {
+  color: black;
+}
+
+#editHolder {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#update {
+  text-align: right;
+}
+
+#update:hover {  
+  cursor: pointer;
 }
 </style>

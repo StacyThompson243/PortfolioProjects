@@ -1,40 +1,40 @@
 <template>
-
-  <div id="login" class="text-center">
-  
-  <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+  <div class="page">
+  <form @submit.prevent="login">
+    <div id ="leftContainer">
+      <h1>Welcome Back!</h1>
+      <div id="bottomLine"></div>      
       <div
-        class="alert alert-danger"
         role="alert"
         v-if="invalidCredentials"
       >Invalid username and password!</div>
       <div
-        class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
+      <div class="form">
       <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          v-model="user.username"
+          required
+          autofocus
+        />
+        <label for="password" class="sr-only">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          v-model="user.password"
+          required
+        />
+        <button class="btn" type="submit">Sign in</button>
+        
+      <router-link :to="{ name: 'register' }">Sign up</router-link>
+      </div>      
+      </div>
     </form>
   </div>
 </template>
@@ -83,9 +83,44 @@ export default {
 </script>
 
 <style scoped>
-.text-center{
-  text-align: center;
+.page {
+  background-image: url(../assets/login.jpg);
 }
 
+h1 {
+  /* text-align:initial; */
+  /* margin-left: 10vw; */
+  margin-top: 92px;
+}
+
+.form {
+  /* margin-left: 5vw; */
+  display: flex;  
+  flex-direction: column;
+  width: 400px;
+}
+
+#leftContainer {
+  width: 400px;
+  margin-left: 10vw;
+}
+
+input[type="text"] {
+  margin-bottom: 8px;
+}
+
+.btn {
+  margin-bottom: 8px;
+}
+
+a {
+  font-size: 14px;
+  color: black;
+}
+
+a:hover {
+  color: rgb(123,45,212);
+  transition: 0.2s;
+}
 
 </style>
