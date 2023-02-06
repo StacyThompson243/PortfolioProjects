@@ -1,25 +1,35 @@
 <template>
-  <div>
-  <img :src='pet.petImage'/>
-  <div class='card'>
-    <h2>{{pet.petName}}</h2>
-    <div class="pHolder">
-      <div>
-        <p>Type: {{pet.type}}</p>
-      </div>
-      <div>
-        <p>Breed: {{pet.breed}}</p>
-      </div>
-      <div>
-        <p>Weight: {{pet.weight}} lbs</p>
-      </div>
-      <div>
-        <p>Age: {{pet.age}} years old</p>
-      </div>
+<div class="page">
+  <h1>{{pet.petName}}</h1>
+  <div id="wrapper">
+    <img :src='pet.petImage'/>
+    <div class='card'>
+        <div>
+          <div class="horizontalAlign">
+          <div class="left">
+            <p>Type: </p>
+            <p>Breed: </p>
+            <p>Weight: </p>
+            <p>Age: </p>
+          </div>
+          <div class="right">
+            <p>{{pet.type}}</p>
+            <p>{{pet.breed}}</p>
+            <p>{{pet.weight}} lbs</p>
+            <p>{{pet.age}} years old</p>
+          </div>
+          </div>
+          <p id="description">{{pet.description}}</p>
+        </div>
+          
+
+      <div class="buttonContainer">
+        <button class="btn">Apply to Adopt</button>
+        <router-link v-bind:to="{ name: 'pets' }"><button class="btn">Browse Pets</button></router-link>
+      </div>     
     </div>
-    <p>{{pet.description}}</p>
   </div>
- </div>
+</div>
 </template>
 
 <script>
@@ -38,33 +48,66 @@ created(){
 </script>
 
 <style scoped>
-
-h2 {
-  margin-bottom: 3px;
-  color: #0F4F6A;
+.page {
+  background: rgb(223,251,240);
+  background: linear-gradient(90deg, rgb(220, 251, 240) 0%, rgba(227,244,251,1) 100%);
 }
 
-img {
-  display: block;
-  margin: auto;
-  margin-top: 60px;
-  margin-bottom: 30px;
-  height: 385px;
-  box-shadow: 2px 4px 4px rgb(138, 138, 138);
+#wrapper {  
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;  
+}
+
+h1 {
+  margin-top: 92px;
 }
 
 .card {
-  margin: auto;  
-  overflow:hidden;
+  background-color: rgb(253, 253, 253);
+  /* background-color: rgb(255, 255, 255, 0.5); */
+  padding: 10px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  
   box-shadow: 2px 4px 4px rgb(204, 204, 204);
-  width: 500px
 }
 
-.pHolder:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.5);
+.horizontalAlign {
+  display:flex;
 }
 
-.pHolder:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.2);
+.left {
+  font-weight: 800;
+}
+
+.right {
+  margin-left: 20px;
+}
+
+img {
+  height: 420px;
+  box-shadow: 2px 4px 4px rgb(204, 204, 204);
+}
+
+p {
+  margin-top: 4px;
+}
+
+#description {
+  margin-top: 10%;
+}
+
+.btn {
+  background-color: #20A7E1;
+  color: rgb(245, 245, 245);
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: #1A92C5;
+  transition: 0.3s;
+  cursor: pointer;
 }
 </style>

@@ -175,13 +175,14 @@ export default {
 }
 
 .btn {
-  background-color: rgb(218, 218, 218);
+  background-color: #20A7E1;
+  color: rgb(245, 245, 245);
   width: 100%;
 }
 
 .btn:hover {
-  background-color: #A1F5D0;
-  transition: 0.5s;
+  background-color: #1A92C5;
+  transition: 0.3s;
   cursor: pointer;
 }
 

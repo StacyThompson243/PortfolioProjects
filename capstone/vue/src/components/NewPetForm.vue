@@ -1,6 +1,7 @@
 <template>
   <div class="newform">
     <h1>New Pet Form</h1>
+    <div class="bottomLine"></div>
     <form class="new-pet-form" v-on:submit.prevent="savePet">
       <label for="petName">Name:</label>
       <input

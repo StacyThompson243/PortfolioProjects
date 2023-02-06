@@ -2,7 +2,7 @@
   <nav class="navigation">      
     <div class="logoContainer">
       <router-link v-bind:to="{ name: 'home' }">
-      <img src="../assets/logo.png" alt="Critter Cabin logo">
+      <img src="../assets/logo2.png" alt="Critter Cabin logo">
       </router-link>
       <!-- <ul>
         <li><router-link v-bind:to="{ name: 'home' }">Home</router-link></li>
@@ -53,7 +53,7 @@ nav div {
 }
 
 .buttonsContainer a {
-  color: #ffffffd2;
+  color: rgb(245, 245, 245);
 }
 
 .buttonsContainer a:hover {
