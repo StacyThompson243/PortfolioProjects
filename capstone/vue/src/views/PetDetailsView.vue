@@ -50,7 +50,6 @@ img {
   margin-top: 60px;
   margin-bottom: 30px;
   height: 385px;
-  /* object-fit: contain; */
   box-shadow: 2px 4px 4px rgb(138, 138, 138);
 }
 
