@@ -2,41 +2,36 @@
   <div class="form">
     <h1>Update Pet Listing</h1>
     <form class="update-form" v-on:submit.prevent="updatePetDetails">
-        <label for="name">Name:</label>
-        <input type="text" v-model="pet.petName" />
-        <label for="img">Image Url:</label>
-        <input type="text" v-model="pet.petImage" />
-        <label for="type">Type:</label>
-        <input type="text" v-model="pet.type" />
-        <label for="age">Age:</label>
-        <input type="text" v-model="pet.age" />
-        <label for="gender">Gender:</label>
-        <input type="text" v-model="pet.gender" />
-        <label for="breed">Breed:</label>
-        <input type="text" v-model="pet.breed" />
-        <label for="weight">Weight(lbs):</label>
-        <input type="text" v-model="pet.weight" />
-        <label for="description">Description:</label>
-        <input style="height: 100px" type="text" v-model="pet.description" />
-        <label for="adopted">Adopted?</label>
+      <label for="name">Name:</label>
+      <input type="text" v-model="pet.petName" />
+      <label for="img">Image Url:</label>
+      <input type="text" v-model="pet.petImage" />
 
-        <input id="true" type="radio" value="true" v-model="pet.adopted"/>
-        <label for="true">True</label>
-        <input id="false" type="radio" value="false" v-model="pet.adopted"/>
-        <label for="false">False</label>
-    
-        
-        
-        <!-- <input v-model="pet.adopted" type="checkbox" name="adopted" /> -->
- 
+      <button @click.prevent="uploadImage">Upload Image</button>
 
-        <!-- <label for="adopted">Adopted?</label>
-        <input type="text" v-model="pet.adopted" /> -->
-   
-    
-        <button class="btn" type="submit">Save Updates</button>
+      <label for="type">Type:</label>
+      <input type="text" v-model="pet.type" />
+      <label for="age">Age:</label>
+      <input type="text" v-model="pet.age" />
+      <label for="gender">Gender:</label>
+      <input type="text" v-model="pet.gender" />
+      <label for="breed">Breed:</label>
+      <input type="text" v-model="pet.breed" />
+      <label for="weight">Weight(lbs):</label>
+      <input type="text" v-model="pet.weight" />
+      <label for="description">Description:</label>
+      <input style="height: 100px" type="text" v-model="pet.description" />
+      <label for="adopted">Adopted?</label>
+      <input id="true" type="radio" value="true" v-model="pet.adopted" />
+      <label for="true">True</label>
+      <input id="false" type="radio" value="false" v-model="pet.adopted" />
+      <label for="false">False</label>
+
+
+
+      <button class="btn" type="submit">Save Updates</button>
     </form>
-    <br>
+    <br />
     <div class="cancel">
       <button v-on:click="cancel">Cancel</button>
     </div>
@@ -66,18 +61,6 @@ export default {
   },
   methods: {
     updatePetDetails() {
-      //   const pet = {
-      //     petId: this.petId,
-      //     petName: this.petName,
-      //     petImage: this.petImage,
-      //     type: this.type,
-      //     age: this.age,
-      //     gender: this.gender,
-      //     breed: this.breed,
-      //     weight: this.weight,
-      //     decription: this.decription,
-      //     adopted: this.adopted,
-      //   };
       PetService.updatePet(this.pet.petId, this.pet).then((response) => {
         if (response.status === 202) {
           alert("Updates Successful!");
@@ -88,6 +71,26 @@ export default {
     cancel() {
       this.$router.push("/pets");
     },
+    uploadImage() {
+      this.myWidget.open();
+    },
+  },
+  mounted() {
+    this.myWidget = window.cloudinary.createUploadWidget(
+      {
+        // Insert your cloud name and presets here,
+        // see the documentation
+        cloudName: "difcq8eki",
+        uploadPreset: "fjc27lbt",
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log("Done! Here is the image info: ", result.info);
+          console.log("Image URL: " + result.info.url);
+          this.pet.petImage = result.info.url;
+        }
+      }
+    );
   },
   created() {
     // PetService.getPetById(this.petId).then((response) => {
@@ -102,11 +105,10 @@ export default {
 </script>
 
 <style scoped>
-
-.form{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .update-form {
@@ -115,7 +117,7 @@ export default {
   align-items: center;
   padding: 20px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 1.65em;
 }
 

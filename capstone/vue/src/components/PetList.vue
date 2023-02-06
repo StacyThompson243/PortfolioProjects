@@ -1,7 +1,7 @@
 <template>
   <div class="pet-list">
     <h1>Adoptable Pets</h1>
-    <div class="search">
+      <div class="search">
       <label for="pet type">Pet Type:</label>
       <input
         name="pet type"
