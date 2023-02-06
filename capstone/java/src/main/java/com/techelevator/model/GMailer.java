@@ -30,20 +30,20 @@ import static javax.mail.Message.RecipientType.TO;
 
 public class GMailer {
 
-    private static final String CC_EMAIL = "croconner522@gmail.com";
+    private static final String SENDER_EMAIL = "critter.cabin.animal.shelter@gmail.com";
     private final Gmail service;
 
     public GMailer() throws Exception {
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
         service = new Gmail.Builder(httpTransport, jsonFactory, getCredentials(httpTransport, jsonFactory))
-                .setApplicationName("Animal Shelter")
+                .setApplicationName("Critter Cabin")
                 .build();
     }
 
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)
             throws IOException {
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GMailer.class.getResourceAsStream("/client_secret_183850925740-ohvs54mphsagh3gvmlsotj5pu42p30ch.apps.googleusercontent.com.json")));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GMailer.class.getResourceAsStream("/client_secret_83705413500-kdntjbha9ff1556kqdjl5pkad1lu8hmn.apps.googleusercontent.com.json")));
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 httpTransport, jsonFactory, clientSecrets, Set.of(GMAIL_SEND))
@@ -55,12 +55,12 @@ public class GMailer {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-    public void sendMail(String volunteersEmail, String subject, String message) throws Exception {
+    public void sendMail(String emailAddress, String subject, String message) throws Exception {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
-        email.setFrom(new InternetAddress(CC_EMAIL));
-        email.addRecipient(TO, new InternetAddress(volunteersEmail));
+        email.setFrom(new InternetAddress(SENDER_EMAIL));
+        email.addRecipient(TO, new InternetAddress(emailAddress));
         email.setSubject(subject);
         email.setText(message);
 
@@ -86,7 +86,8 @@ public class GMailer {
     }
 
 //    public static void main(String[] args) throws Exception {
-//        new GMailer().sendMail("croconner522@gmail.com", "A new message", "Deer volunteer you have been approved! congrats!");
+//        new GMailer().sendMail("critter.cabin.animal.shelter@gmail.com","Volunteer Status", "THis is your volunteer status");
+//
 //    }
 
 }

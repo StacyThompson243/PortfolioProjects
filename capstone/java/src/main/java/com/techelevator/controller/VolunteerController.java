@@ -48,20 +48,21 @@ public class VolunteerController {
     @PutMapping(path = "/{id}")
     public void approveDenyApplication(@PathVariable int id, @RequestBody Volunteer application) throws Exception {
         Volunteer volunteer = volunteerDao.getVolunteerById(id);
-        String password = "" + (int) (Math.random() * 100);
-        String username = volunteer.getVolunteerFirstName() + "." + volunteer.getVolunteerLastName();
         String email = volunteer.getEmail();
         GMailer sendEmail = new GMailer();
             if (application.getStatus().equals("Approved")) {
+                String password = getRandomPassword();
+                String username = volunteer.getVolunteerFirstName() + "." + volunteer.getVolunteerLastName();
                 volunteerDao.updateStatus(id, "Approved");
                 userDao.create(username, password, "ROLE_USER");
                 sendEmail.sendMail(email, "Welcome to the team!",
-                        "Dear " + volunteer.getVolunteerFirstName() + " you have been approved to start working on our team at the Critter Cottage!" +
-                                "\n\n\n Here are you're login credentials:\nUsername: " + username + "\nPassword: " + password);
+                        "Dear " + volunteer.getVolunteerFirstName() + " you have been approved to start working on our team at the Critter Cabin!" +
+                                "\n\n\nHere are your login credentials:\nUsername: " + username + "\nPassword: " + password);
             } else {
                 volunteerDao.updateStatus(id, "Denied");
-                sendEmail.sendMail(email, "Critter Cottage information",
-                        "Sorry " + volunteer.getVolunteerFirstName() + " Critter Cottage doesn't want you");
+                sendEmail.sendMail(email, "Critter Cabin information",
+                        "Thank you for applying to volunteer at Critter Cabin. Unfortunately at this time we are not in need of additional volunteers. " +
+                                "Feel free to apply again in the future.");
             }
     }
 
@@ -71,6 +72,18 @@ public class VolunteerController {
         Volunteer newApplication = volunteerDao.applyToVolunteer(volunteer);
         return newApplication;
     }
+
+    static String getRandomPassword() {
+        int lengthOfPassword = 14;
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789" + "abcdefghijklmnopqrstuvxyz";
+        StringBuilder randomPassword = new StringBuilder(lengthOfPassword);
+        for (int i = 0; i < lengthOfPassword; i++) {
+            int index = (int)(AlphaNumericString.length() * Math.random());
+            randomPassword.append(AlphaNumericString.charAt(index));
+        }
+        return randomPassword.toString();
+    }
+
 
 
 
