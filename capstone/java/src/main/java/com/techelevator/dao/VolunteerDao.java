@@ -15,4 +15,6 @@ public interface VolunteerDao {
     void updateStatus(int id, String approvalStatus);
 
     Volunteer applyToVolunteer(Volunteer volunteer);
+
+    List <Volunteer> getVolunteerByStatusWithRole(String status);
 }

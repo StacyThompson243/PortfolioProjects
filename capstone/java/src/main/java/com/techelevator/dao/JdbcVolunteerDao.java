@@ -54,6 +54,8 @@ public class JdbcVolunteerDao implements VolunteerDao{
     }
 
 
+
+
     @Override
     public void updateStatus(int id, String approvalStatus) {
         String sql = "UPDATE volunteers SET status = ? WHERE application_id = ?";
@@ -71,6 +73,22 @@ public class JdbcVolunteerDao implements VolunteerDao{
         return getVolunteerById(applicationId);
     }
 
+    @Override
+    public List<Volunteer> getVolunteerByStatusWithRole(String status) {
+        List<Volunteer> volunteersList = new ArrayList<>();
+        String sql = "SELECT volunteers.application_id, first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status, role \n" +
+                "FROM volunteers \n" + "JOIN users ON users.application_id = volunteers.application_id\n" +
+                "WHERE status = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, status);
+
+        while(results.next()){
+            Volunteer temp = mapRowToVolunteer(results);
+            temp.setRole(results.getString("role"));
+            volunteersList.add(temp);
+        }
+        return volunteersList;
+    }
+
     private Volunteer mapRowToVolunteer(SqlRowSet rowSet){
         Volunteer volunteer = new Volunteer();
         volunteer.setApplicationId(rowSet.getInt("application_id"));
@@ -86,3 +104,8 @@ public class JdbcVolunteerDao implements VolunteerDao{
         return volunteer;
     }
 }
+
+
+//    //SELECT application_id, first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status FROM volunteers WHERE status = ?
+//"SELECT volunteers.application_id, first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status, role \n" + "FROM volunteers \n" + "JOIN users ON users.application_id = volunteers.application_id\n" +
+//       "WHERE status = ?;";

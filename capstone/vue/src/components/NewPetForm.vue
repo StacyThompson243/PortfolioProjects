@@ -1,78 +1,63 @@
 <template>
-  <div class="newform">
-    <h1>New Pet Form</h1>
-    <form class="new-pet-form" v-on:submit.prevent="savePet">
-      <label for="petName">Name:</label>
-      <input
-        class="name-input"
-        type="text"
-        name="petName"
-        placeholder="Pet Name"
-        v-model="pet.petName"
-      />
-      <label for="petImage">Image URL:</label>
-      <input
-        class="image-input"
-        type="text"
-        name="petImage"
-        placeholder="Pet Image"
-        v-model="pet.petImage"
-      />
-      <button @click.prevent="uploadImage">Upload Image</button>
-
-      <label for="petType">Pet Type:</label>
-      <input
-        class="type-input"
-        type="text"
-        name="petType"
-        placeholder="Pet Type"
-        v-model="pet.type"
-      />
-      <label for="petAge">Age:</label>
-      <input
-        class="age-input"
-        type="text"
-        name="petAge"
-        placeholder="Age"
-        v-model="pet.age"
-      />
-      <label for="petGender">Gender:</label>
-      <input
-        class="gender-input"
-        type="text"
-        name="petGender"
-        placeholder="Gender"
-        v-model="pet.gender"
-      />
-      <label for="petBreed">Breed:</label>
-      <input
-        class="breed-input"
-        type="text"
-        name="petBreed"
-        placeholder="Breed"
-        v-model="pet.breed"
-      />
-      <label for="petWeight">Weight(lbs):</label>
-      <input
-        class="weight-input"
-        type="text"
-        name="petWeight"
-        placeholder="Weight"
-        v-model="pet.weight"
-      />
-      <label for="description">Description:</label>
-      <input
-        class="description"
-        type="text"
-        name="description"
-        placeholder="Description"
-        v-model="pet.description"
-      />
-      <button class="btn">Save Pet</button>
-    </form>
-
-    <div class="cancel">
-      <button v-on:click="cancel">Cancel</button>
+  <div class="page">
+    <div id="rightContainer">
+      <div id="titleDiv">
+        <h1>New Pet Form</h1>
+      </div>
+      <div id="bottomLine"></div>
+      <form v-on:submit.prevent="savePet">
+        <div class="form">
+          <div class="row">
+            <div>
+              <label for="petName">Name:</label>
+              <input type="text" name="petName" v-model="pet.petName" />
+            </div>
+            <div>
+              <label for="petType">Pet Type:</label>
+              <input type="text" name="petType" v-model="pet.type" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="petBreed">Breed:</label>
+              <input type="text" name="petBreed" v-model="pet.breed" />
+            </div>
+            <div>
+              <label for="petGender">Gender:</label>
+              <input type="text" name="petGender" v-model="pet.gender" />
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="petWeight">Weight(lbs):</label>
+              <input type="text" name="petWeight" v-model="pet.weight" />
+            </div>
+            <div>
+              <label for="petAge">Age:</label>
+              <input type="text" name="petAge" v-model="pet.age" />
+            </div>
+          </div>
+          <div id="imgUploadDiv">
+            <div>
+              <label for="petImage">Image URL:</label>
+              <input type="text" name="petImage" v-model="pet.petImage" />
+            </div>
+            <button id="upload" @click.prevent="uploadImage">
+              Upload Image
+            </button>
+          </div>
+          <div id="description">
+            <label for="description">Description:</label>
+            <textarea
+              name="description"
+              rows="5"
+              v-model="pet.description"
+            ></textarea>
+          </div>
+          <button class="btn">Save Pet</button>
+          <button class="btn cancel" v-on:click="cancel">Cancel</button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -133,25 +118,75 @@ export default {
 </script>
 
 <style scoped>
-.newform {
-  text-align: center;
+#rightContainer {
+  width: 500px;
+  margin-right: 10vw;
+  direction: ltr;
 }
 
-.new-pet-form {
+.page {
+  background-image: url(../assets/addPet.jpg);
+  direction: rtl;
+}
+
+h1 {
+  padding: 10px;
+  margin: 102px 0 10px 0;
+}
+
+#titleDiv {
+  margin: auto;
+  backdrop-filter: blur(7px);
+  width: 300px;
+  border-radius: 7px;
+}
+
+#bottomLine {
+  border-bottom: 2px solid #7acaed;
+}
+
+.form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 1.65em;
+  backdrop-filter: blur(1.5px);
 }
 
-.btn {
-  margin-top: 20px;
+.row,
+#imgUploadDiv {
+  margin-bottom: 4px;
 }
-.cancel {
-  margin-top: 20px;
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.row div {
+  display: flex;
+  flex-direction: column;
+}
+
+#description {
+  display: flex;
+  flex-direction: column;
+}
+
+#imgUploadDiv {
+  display: flex;
+}
+
+#upload {
+  margin-left: 35px;
+  width: 100%;
+}
+
+textarea[name="description"] {
+  resize: none;
+}
+
+.cancel:hover {
+  background-color: #fdc2b8;
+  cursor: pointer;
 }
 </style>
-

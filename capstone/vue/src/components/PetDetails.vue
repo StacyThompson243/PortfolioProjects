@@ -1,42 +1,46 @@
 <template>
   <!-- <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}"> -->
   <div class="container">
-    <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">
-    <div class="card">
-      <img :src='pet.petImage'/>
-      <div class="cardText">
-        <h2 class="pet-name">{{ pet.petName }}</h2>
-        <p class='pet-type'>Type: {{ pet.type }}</p>
-        <p class='pet-breed'>Breed: {{ pet.breed }}</p>
-      </div>
-      <!-- <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}"> -->
-      <!-- <button class='learnMore' v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">Learn More</button><br> -->
-    <!-- </router-link>  -->
+    <router-link
+      v-bind:to="{ name: 'petDetailsView', params: { petId: pet.petId } }"
+    >
+      <div class="card">
+        <img :src="pet.petImage" />
+        <div class="cardText">
+          <h2>{{ pet.petName }}</h2>
+          <p>Species: {{ pet.type }}</p>
+          <p>Breed: {{ pet.breed }}</p>
+        </div>
+        <!-- <router-link v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}"> -->
+        <!-- <button class='learnMore' v-bind:to="{name: 'petDetailsView', params: { petId: pet.petId }}">Learn More</button><br> -->
+        <!-- </router-link>  -->
 
-      <!-- <router-link v-bind:to="{name: 'updatePet', params: {petId: pet.petId}}">
+        <!-- <router-link v-bind:to="{name: 'updatePet', params: {petId: pet.petId}}">
         <button class='update' v-if="$store.state.token != ''">Edit This Listing</button>
         </router-link> -->
-    </div>  
-    </router-link>  
+      </div>
+    </router-link>
     <div id="editHolder">
-      <a v-on:click="setUpEdit" id='update' v-if="$store.state.token != ''">Edit</a>
+      <a id="update" v-on:click="setUpEdit" v-if="$store.state.token != ''"
+        >Edit</a
+      >
     </div>
   </div>
-
-</template> 
+</template>
 
 <script>
 export default {
   name: "pet-details",
-  props: 
-    ['pet'],
-  methods:{
-    setUpEdit(){
+  props: ["pet"],
+  methods: {
+    setUpEdit() {
       this.$store.commit("SET_ACTIVE_PET", this.pet);
-      this.$router.push({name: 'updatePet', params: {petId: this.pet.petId}})
-    }
-},
-
+      this.$router.push({
+        name: "updatePet",
+        params: { petId: this.pet.petId },
+      });
+    },
+  },
 };
 </script>
 
@@ -48,12 +52,12 @@ export default {
 .card {
   margin: 30px 0 10px 0;
   width: 300px;
-  overflow:hidden;
+  overflow: hidden;
   box-shadow: 2px 4px 4px rgb(204, 204, 204);
 }
 
 .card:hover {
-  background-color: #C5E8F7;
+  background-color: #c5e8f7;
   transition: 0.2s;
 }
 
@@ -78,7 +82,7 @@ img {
 
 h2 {
   margin-bottom: 3px;
-  color: #0F4F6A;
+  color: #0f4f6a;
 }
 
 a {
@@ -94,7 +98,7 @@ a {
   text-align: right;
 }
 
-#update:hover {  
+#update:hover {
   cursor: pointer;
 }
 </style>

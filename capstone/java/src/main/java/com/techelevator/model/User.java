@@ -19,6 +19,7 @@ public class User {
    private boolean firstTime = true;
    private String role;
    private Set<Authority> authorities = new HashSet<>();
+   private int applicationId;
 
    public User() { }
 
@@ -84,6 +85,14 @@ public class User {
 
    public void setAuthorities(Set<Authority> authorities) {
       this.authorities = authorities;
+   }
+
+   public int getApplicationId() {
+      return applicationId;
+   }
+
+   public void setApplicationId(int applicationId) {
+      this.applicationId = applicationId;
    }
 
    public void setAuthorities(String authorities) {
