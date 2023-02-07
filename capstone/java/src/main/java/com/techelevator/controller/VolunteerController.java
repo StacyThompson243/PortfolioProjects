@@ -29,11 +29,11 @@ public class VolunteerController {
 //        return volunteerDao.getAllVolunteers();
 //    }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     //Admin has permission to approve applications
     @GetMapping(path = "/directory")
     public List<Volunteer> getAllApprovedVolunteers(){
-        return volunteerDao.getVolunteersByStatus("Approved");
+        return volunteerDao.getVolunteerByStatusWithRole("Approved");
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -54,10 +54,11 @@ public class VolunteerController {
                 String password = getRandomPassword();
                 String username = volunteer.getVolunteerFirstName() + "." + volunteer.getVolunteerLastName();
                 volunteerDao.updateStatus(id, "Approved");
-                userDao.create(username, password, "ROLE_USER");
+                userDao.createWithAppId(username, password, "ROLE_USER", application.getApplicationId());
+//                userDao.updateApplicationId(id);
                 sendEmail.sendMail(email, "Welcome to the team!",
                         "Dear " + volunteer.getVolunteerFirstName() + " you have been approved to start working on our team at the Critter Cabin!" +
-                                "\n\n\nHere are your login credentials:\nUsername: " + username + "\nPassword: " + password);
+                                "\n\n\nHere are your login credentials:\nUsername: " + username + "\nPassword: " + password + "\n You will be prompted to change your password upon the first time signing in.");
             } else {
                 volunteerDao.updateStatus(id, "Denied");
                 sendEmail.sendMail(email, "Critter Cabin information",

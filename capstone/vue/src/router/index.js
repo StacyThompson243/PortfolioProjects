@@ -11,7 +11,8 @@ import PetDetailsView from '../views/PetDetailsView.vue'
 import AddNewPet from '../views/AddNewPet.vue'
 import UpdatePetView from '../views/UpdatePetView.vue'
 import VolunteerApps from '../views/VolunteerApps.vue'
-import VolunteerDirectory from '../views/VolunteerDirectory.vue'
+import VolunteerDirectoryView from '../views/VolunteerDirectoryView.vue'
+import LoginFirstTime from '../views/LoginFirstTime.vue'
 
 Vue.use(Router)
 /**
@@ -103,10 +104,15 @@ const router = new Router({
     {
       path: '/volunteer/directory',
       name: "volunteerDirectory",
-      component: VolunteerDirectory,
+      component: VolunteerDirectoryView,
       meta: {
       requiresAuth: true
       }
+    },
+    {
+      path: '/login/change_password',
+      name: "loginFirstTime",
+      component: LoginFirstTime,
     }
 ]
 })

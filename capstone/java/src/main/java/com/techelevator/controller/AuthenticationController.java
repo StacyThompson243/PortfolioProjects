@@ -69,7 +69,13 @@ public class AuthenticationController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
 
+//        if(user.isFirstTime() == true){
+//            return reponseEntity;
+//            redirect method?
+//        }
+
         return new ResponseEntity<>(new LoginResponseDto(jwt, user), httpHeaders, HttpStatus.OK);
+
     }
 
     @ResponseStatus(HttpStatus.CREATED)
