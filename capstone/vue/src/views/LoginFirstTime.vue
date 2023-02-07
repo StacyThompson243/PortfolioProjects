@@ -10,27 +10,6 @@
         {{ registrationErrorMsg }}
       </div>
 
-      <!-- change username to detect username, not assign new -->
-      <!-- <label for="username" class="sr-only">Username: </label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      /> -->
-
-      <!-- <label for="oldPassword" class="sr-only">Previous Password</label>
-      <input
-        type="oldPassword"
-        id="oldPassword"
-        class="form-control"
-        placeholder="Old Password"
-        v-model="user.password" -> backend needs a place to put old and new password jdbcuser, make sure old password matches before changing it.
-        required
-      /> -->
 <div>    </div>
 
       <label for="password" class="sr-only">New Password: </label>
@@ -75,7 +54,7 @@ export default {
         confirmPassword: '',
       },
       registrationErrors: false,
-      registrationErrorMsg: 'There were problems registering this user.',
+      registrationErrorMsg: 'There were problems updating your password.',
     };
   },
   methods: {
@@ -87,10 +66,10 @@ export default {
         authService
           .updatePassword(this.user)
           .then((response) => {
-            if (response.status == 201) {
+            if (response.status == 200) {
+                alert("Password was successfully changed.")
               this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
+                path: '/',
               });
             }
           })
@@ -105,7 +84,7 @@ export default {
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems registering this user.';
+      this.registrationErrorMsg = 'There were problems updating your password.';
     },
   },
 };

@@ -11,7 +11,7 @@ export default {
   },
 
   updatePassword(user) {
-    return axios.get('/login/change_password', user)
+    return axios.put('/login/change_password', user)
   }
 
 }
