@@ -29,6 +29,7 @@ html {
 
 h1 {
   padding: 20px 0 15px 0;
+  margin-bottom: 5px;
   text-align: center;
 }
 

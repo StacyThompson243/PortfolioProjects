@@ -1,44 +1,46 @@
 <template>
   <div class="page">
-    <h1>New Volunteer Form</h1>
+    <div id="titleDiv">
+      <h1>Apply to Volunteer</h1>
+    </div>
     <div id="bottomLine"></div>
     <!-- <a><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc5rUXlj9__lDBWQhbUfWbKfDY7n_c7gDRajhMNgXD4wGQ2pQ/viewform?embedded=true" width="640" height="1050" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></a> -->
     <form class="form" v-on:submit.prevent="saveVolunteer()">
       <div class="topContainer">
-      <div class="namesDiv">
-        <div>
-          <label for="first-name">First Name:</label>
+        <div class="namesDiv">
+          <div>
+            <label for="first-name">First Name:</label>
+            <input
+              v-model="volunteer.volunteerFirstName"
+              id="first-name"
+              name="first-name"
+              type="text"
+              required
+            />
+          </div>
+          <div>
+            <label for="last-name">Last Name:</label>
+            <input
+              v-model="volunteer.volunteerLastName"
+              id="last-name"
+              name="last-name"
+              type="text"
+              required
+            />
+          </div>
+        </div>
+        <div class="emailDiv">
+          <label for="email">Email:</label>
           <input
-            v-model="volunteer.volunteerFirstName"
-            id="first-name"
-            name="first-name"
-            type="text"
+            v-model="volunteer.email"
+            id="email"
+            name="email"
+            type="email"
             required
           />
         </div>
-        <div>
-          <label for="last-name">Last Name:</label>
-          <input
-            v-model="volunteer.volunteerLastName"
-            id="last-name"
-            name="last-name"
-            type="text"
-            required
-          />
-        </div>
       </div>
-      <div class="emailDiv">
-        <label for="email">Email:</label>
-        <input
-          v-model="volunteer.email"
-          id="email"
-          name="email"
-          type="email"
-          required
-        />
-      </div>
-      </div>
-      
+
       <div class="checkBoxDiv">
         <label for="confirmation">Are you over 18?</label>
         <input
@@ -48,8 +50,8 @@
           type="checkbox"
         />
       </div>
-      <div id="interest">Areas of Interest:</div>   
-      <div class="bottomContainer">   
+      <div id="interest">Areas of Interest:</div>
+      <div class="bottomContainer">
         <div class="checkBoxDiv">
           <label for="veterinary">Veterinary: </label>
           <input
@@ -86,7 +88,7 @@
             type="checkbox"
           />
         </div>
-        </div>
+      </div>
       <input class="btn" type="submit" />
     </form>
   </div>
@@ -135,13 +137,20 @@ export default {
 };
 </script>
 <style scoped>
-
 h1 {
-  margin-top: 92px;
+  padding: 10px;
+  margin: 102px 0 10px 0;
+}
+
+#titleDiv {
+  margin: auto;
+  backdrop-filter: blur(7px);
+  width: 350px;
+  border-radius: 7px;
 }
 
 .page {
-  background-image: url("https://static.onecms.io/wp-content/uploads/sites/34/2018/07/12170256/cat-playing-getty-845697720.jpg");
+  background-image: url(../assets/volunteer.jpg);
 }
 
 .form {
@@ -157,7 +166,8 @@ h1 {
   font-weight: 400;
 }
 
-.topContainer div, .bottomContainer div {
+.topContainer div,
+.bottomContainer div {
   margin-bottom: 4px;
 }
 
@@ -183,7 +193,7 @@ h1 {
 
 .checkBoxDiv {
   display: flex;
-  justify-content: space-between;    
+  justify-content: space-between;
   padding: 4px 0;
 }
 
@@ -201,11 +211,15 @@ h1 {
 
 #interest {
   text-align: center;
-  padding-bottom: 5px;
-  border-bottom: 2px solid #63EFB2;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #63efb2;
   width: 200px;
   margin: auto;
   margin-bottom: 15px;
-  margin-top: 15px
+  margin-top: 15px;
+}
+
+.btn {
+  width: 100%;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="page">
     <div id="rightContainer">
-      <h1>New Pet Form</h1>
+      <div id="titleDiv">
+        <h1>New Pet Form</h1>
+      </div>
       <div id="bottomLine"></div>
       <form v-on:submit.prevent="savePet">
         <div class="form">
@@ -46,8 +48,11 @@
           </div>
           <div id="description">
             <label for="description">Description:</label>
-            <textarea name="description" rows="5"></textarea>
-            <!-- <input type="text" name="description" v-model="pet.description" /> -->
+            <textarea
+              name="description"
+              rows="5"
+              v-model="pet.description"
+            ></textarea>
           </div>
           <button class="btn">Save Pet</button>
           <button class="btn cancel" v-on:click="cancel">Cancel</button>
@@ -127,10 +132,15 @@ export default {
 }
 
 h1 {
-  /* text-align:initial; */
-  /* margin-left: 10vw; */
-  /* text-align: center; */
-  margin-top: 92px;
+  padding: 10px;
+  margin: 102px 0 10px 0;
+}
+
+#titleDiv {
+  margin: auto;
+  backdrop-filter: blur(7px);
+  width: 300px;
+  border-radius: 7px;
 }
 
 .form {
