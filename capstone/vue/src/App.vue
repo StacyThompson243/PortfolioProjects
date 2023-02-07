@@ -107,4 +107,10 @@ input[type="checkbox"] {
   height: 20px;
   width: 20px;
 }
+
+select {
+  padding: 0px 10px;
+  height: 34px;
+  border-radius: 4px;
+}
 </style>

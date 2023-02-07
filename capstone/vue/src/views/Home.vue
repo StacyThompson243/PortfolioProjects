@@ -1,20 +1,25 @@
 <template>
   <div>
     <div class="carousel">
-      <img src="" alt="">
+      <pet-carousel />
+      <!-- <img src="" alt=""> -->
     </div>
     <div class="petDescription">Pet description</div>
   </div>
 </template>
 
 <script>
+import PetCarousel from "../components/PetCarousel.vue";
+
 export default {
-  name: "home"
+  name: "home",
+  components: {
+    PetCarousel,
+  },
 };
 </script>
 
 <style scoped>
-
 .petDescription {
   width: 500px;
   height: 250px;
