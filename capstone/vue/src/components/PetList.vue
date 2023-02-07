@@ -138,6 +138,7 @@ export default {
 
 #pet-container {
   margin-right: 40px;
+  width: 100%;
 }
 
 #sidebar {

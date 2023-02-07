@@ -174,6 +174,7 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
+  backdrop-filter: blur(1.5px);
 }
 
 .row,

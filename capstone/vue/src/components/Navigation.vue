@@ -1,8 +1,8 @@
 <template>
-  <nav class="navigation">      
+  <nav class="navigation">
     <div class="logoContainer">
       <router-link v-bind:to="{ name: 'home' }">
-      <img src="../assets/logo2.png" alt="Critter Cabin logo">
+        <img src="../assets/logo2.png" alt="Critter Cabin logo" />
       </router-link>
       <!-- <ul>
         <li><router-link v-bind:to="{ name: 'home' }">Home</router-link></li>
@@ -10,14 +10,24 @@
     </div>
     <div class="buttonsContainer">
       <ul>
-        <li><router-link v-bind:to="{ name: 'pets' }">Browse Pets</router-link></li>
-        <li><router-link v-bind:to="{ name: 'volunteer' }">Volunteer</router-link></li>
-        <li v-if="$store.state.user.role === 'ROLE_ADMIN'"><router-link v-bind:to="{ name: 'volunteerApplications' }">Volunteer Apps</router-link></li>
+        <li>
+          <router-link v-bind:to="{ name: 'pets' }">Browse Pets</router-link>
+        </li>
+        <li>
+          <router-link v-bind:to="{ name: 'volunteer' }">Volunteer</router-link>
+        </li>
+        <li v-if="$store.state.user.role === 'ROLE_ADMIN'">
+          <router-link v-bind:to="{ name: 'volunteerApplications' }"
+            >Volunteer Apps</router-link
+          >
+        </li>
         <!-- possibly v-on hover, toggle visibility v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN' " -->
-        <li v-if="$store.state.token == ''"><router-link to="/login">Log In</router-link></li>
+        <li v-if="$store.state.token == ''">
+          <router-link to="/login">Log In</router-link>
+        </li>
         <li v-else><router-link to="/logout">Logout</router-link></li>
       </ul>
-    </div>      
+    </div>
   </nav>
 </template>
 
@@ -32,7 +42,7 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 3px 30px 0px 30px;
-  background-color: #0F4F6A;
+  background-color: #0f4f6a;
 }
 
 nav div {
@@ -40,12 +50,12 @@ nav div {
 }
 
 .buttonsContainer {
-  display: flex;  
+  display: flex;
   align-items: center;
 }
 
 .buttonsContainer ul {
-  display: flex;  
+  display: flex;
 }
 
 .buttonsContainer ul li {
@@ -58,7 +68,7 @@ nav div {
 
 .buttonsContainer a:hover {
   font-weight: 500;
-  color: #A1F5D0;
+  color: #a1f5d0;
   transition: 0.25s;
 }
 </style>

@@ -144,7 +144,7 @@ h1 {
 
 #titleDiv {
   margin: auto;
-  backdrop-filter: blur(7px);
+  backdrop-filter: blur(5px);
   width: 350px;
   border-radius: 7px;
 }
@@ -154,16 +154,7 @@ h1 {
 }
 
 .form {
-  margin: auto;
-  margin-top: 30px;
-  background-color: #c5c4f4;
-  background: rgba(204, 204, 204, 0);
-  background: rgba(204, 204, 204, 0.4);
-  box-shadow: 8px 8px 16px rgba(122, 122, 122, 0.6);
-  width: 500px;
-  padding: 30px 50px;
-  border-radius: 8px;
-  font-weight: 400;
+  backdrop-filter: blur(1px);
 }
 
 .topContainer div,

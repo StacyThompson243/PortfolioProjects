@@ -120,7 +120,6 @@ export default {
 <style scoped>
 #rightContainer {
   width: 500px;
-  /* margin-left: 10vw; */
   margin-right: 10vw;
   direction: ltr;
 }
@@ -128,7 +127,6 @@ export default {
 .page {
   background-image: url(../assets/addPet.jpg);
   direction: rtl;
-  /* color: white; */
 }
 
 h1 {
@@ -143,11 +141,14 @@ h1 {
   border-radius: 7px;
 }
 
+#bottomLine {
+  border-bottom: 2px solid #7acaed;
+}
+
 .form {
-  /* margin-left: 5vw; */
   display: flex;
   flex-direction: column;
-  /* width: 400px; */
+  backdrop-filter: blur(1.5px);
 }
 
 .row,
@@ -176,16 +177,9 @@ h1 {
 }
 
 #upload {
-  /* margin-right: 60px; */
   margin-left: 35px;
-  /* padding: 10px; */
   width: 100%;
 }
-
-/* form {
-  display: flex;  
-  flex-direction: column;
-} */
 
 textarea[name="description"] {
   resize: none;

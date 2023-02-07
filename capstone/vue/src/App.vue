@@ -85,6 +85,7 @@ a {
   padding: 30px 50px;
   border-radius: 8px;
   font-weight: 400;
+  /* backdrop-filter: blur(2px); */
 }
 
 input[type="text"],
