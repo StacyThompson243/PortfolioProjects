@@ -31,8 +31,6 @@
           required
         />
         <button class="btn" type="submit">Sign in</button>
-        
-      <router-link :to="{ name: 'register' }">Sign up</router-link>
       </div>      
       </div>
     </form>
@@ -42,8 +40,6 @@
 <script>
 
 import authService from "../services/AuthService";
-
-
 
 export default {
   name: "login",
@@ -64,10 +60,24 @@ export default {
       authService
         .login(this.user)
         .then(response => {
+
           if (response.status == 200) {
+            const firstTime = response.data.user.firstTime
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
+
+            //check if user logged in before
+            
+            //if true push to "/login/change_password"
+            if(firstTime == true){
+              this.$router.push("/login/change_password")
+
+            } else {
+//else push to:
             this.$router.push("/");
+            }
+
+            
           }
         })
         .catch(error => {

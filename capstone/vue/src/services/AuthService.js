@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-
-
 export default {
 
   login(user) {
@@ -10,6 +8,10 @@ export default {
 
   register(user) {
     return axios.post('/register', user)
+  },
+
+  updatePassword(user) {
+    return axios.get('/login/change_password', user)
   }
 
 }

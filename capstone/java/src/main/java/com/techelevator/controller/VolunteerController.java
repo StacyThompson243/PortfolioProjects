@@ -57,7 +57,7 @@ public class VolunteerController {
                 userDao.create(username, password, "ROLE_USER");
                 sendEmail.sendMail(email, "Welcome to the team!",
                         "Dear " + volunteer.getVolunteerFirstName() + " you have been approved to start working on our team at the Critter Cabin!" +
-                                "\n\n\nHere are your login credentials:\nUsername: " + username + "\nPassword: " + password);
+                                "\n\n\nHere are your login credentials:\nUsername: " + username + "\nPassword: " + password + "\n You will be prompted to change your password upon the first time signing in.");
             } else {
                 volunteerDao.updateStatus(id, "Denied");
                 sendEmail.sendMail(email, "Critter Cabin information",
