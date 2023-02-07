@@ -13,6 +13,7 @@ import UpdatePetView from '../views/UpdatePetView.vue'
 import VolunteerApps from '../views/VolunteerApps.vue'
 import VolunteerDirectoryView from '../views/VolunteerDirectoryView.vue'
 import LoginFirstTime from '../views/LoginFirstTime.vue'
+import AdoptionFormView from '../views/AdoptionFormView.vue'
 
 Vue.use(Router)
 /**
@@ -113,6 +114,11 @@ const router = new Router({
       path: '/login/change_password',
       name: "loginFirstTime",
       component: LoginFirstTime,
+    },
+    {
+      path: '/pets/:petId/adopt',
+      name: "adoptionForm",
+      component: AdoptionFormView,
     }
 ]
 })
