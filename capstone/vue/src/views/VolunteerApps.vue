@@ -64,7 +64,6 @@
           </tbody>
        
          <tbody>
-             <!-- v-show="volunteer.over18 == (filters.over18 == 'Yes' ? true : false) || filters.over18 == 'Show All' " -->
               <tr v-for="(volunteer, key) in filterApplications" v-bind:key="key">
                   <td>{{volunteer.applicationId}}</td>
                   <td>{{volunteer.volunteerFirstName}} {{volunteer.volunteerLastName}}</td>

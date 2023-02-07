@@ -67,17 +67,11 @@ export default {
             this.$store.commit("SET_USER", response.data.user);
 
             //check if user logged in before
-            
-            //if true push to "/login/change_password"
             if(firstTime == true){
               this.$router.push("/login/change_password")
-
             } else {
-//else push to:
             this.$router.push("/");
             }
-
-            
           }
         })
         .catch(error => {
