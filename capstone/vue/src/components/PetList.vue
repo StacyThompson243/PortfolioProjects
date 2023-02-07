@@ -1,32 +1,28 @@
 <template>
-  <div class="pet-list">    
+  <div class="pet-list">
     <h1>Adoptable Pets</h1>
     <div id="bottomLine"></div>
     <div class="wrapper">
-      <div id="sidebar">      
+      <div id="sidebar">
         <div>
           <label for="pet type">Species:</label>
-          <input name='pet type' type="text" v-model="filter.type"/>
+          <input name="pet type" type="text" v-model="filter.type" />
         </div>
         <div>
           <label for="breed">Breed:</label>
-          <input name='breed' type="text" v-model="filter.breed"/>
+          <input name="breed" type="text" v-model="filter.breed" />
         </div>
         <div>
           <label for="search gender">Gender:</label>
-          <select 
-          v-model="filter.gender" name="search gender">
-          <option value>Show All</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
+          <select v-model="filter.gender" name="search gender">
+            <option value>Show All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
           </select>
         </div>
         <div>
           <label for="weight">Weight(lbs):</label>
-          <select
-            v-model="filter.weight"
-            name="search weight"
-          >
+          <select v-model="filter.weight" name="search weight">
             <option value>Show All</option>
             <option value="<10">under 10</option>
             <option value="10-20">10-20</option>
@@ -40,10 +36,7 @@
         </div>
         <div>
           <label for="age">Age:</label>
-          <select
-            name="age"
-            v-model="filter.age"
-          >
+          <select name="age" v-model="filter.age">
             <option value>Show All</option>
             <option value="0-.99">under 1</option>
             <option value="1-5">1-5</option>
@@ -52,10 +45,9 @@
           </select>
         </div>
 
-        <router-link v-bind:to="{name: 'newPetForm'}">
-          <button class="btn" v-if="$store.state.token != ''">Add Pet</button>
+        <router-link v-bind:to="{ name: 'newPetForm' }">
+          <button class="btn" v-if="$store.state.token != ''">Add a Pet</button>
         </router-link>
-
       </div>
       <div id="sideBorder"></div>
 
@@ -111,25 +103,28 @@ export default {
         );
       }
       if (this.filter.gender != "") {
-        filteredPetsList = filteredPetsList.filter((pet) =>
-          pet.gender.toLowerCase() == (this.filter.gender.toLowerCase())
+        filteredPetsList = filteredPetsList.filter(
+          (pet) => pet.gender.toLowerCase() == this.filter.gender.toLowerCase()
         );
       }
       if (this.filter.age != "") {
         filteredPetsList = filteredPetsList.filter(
           (pet) =>
-          pet.age >= parseFloat(this.filter.age.substring(0, 1)) && pet.age <=(this.filter.age.substring(2))
-          || pet.age > (this.filter.age.substring(0,2))
+            (pet.age >= parseFloat(this.filter.age.substring(0, 1)) &&
+              pet.age <= this.filter.age.substring(2)) ||
+            pet.age > this.filter.age.substring(0, 2)
         );
       }
-    if (this.filter.weight != "") {
+      if (this.filter.weight != "") {
         filteredPetsList = filteredPetsList.filter(
-          (pet) => 
-          pet.weight >= parseInt(this.filter.weight.substring(0,2)) && pet.weight <= (this.filter.weight.substring(3)) 
-          || (this.filter.weight.length===2 && pet.weight > (this.filter.weight.substring(0,2))) 
-          || pet.weight < (this.filter.weight.substring(1)) 
+          (pet) =>
+            (pet.weight >= parseInt(this.filter.weight.substring(0, 2)) &&
+              pet.weight <= this.filter.weight.substring(3)) ||
+            (this.filter.weight.length === 2 &&
+              pet.weight > this.filter.weight.substring(0, 2)) ||
+            pet.weight < this.filter.weight.substring(1)
         );
-    }
+      }
       return filteredPetsList;
     },
   },
@@ -146,7 +141,7 @@ export default {
 }
 
 #sidebar {
-  height: 25vh;  
+  height: 25vh;
   margin: 0 30px 0 30px;
   position: sticky;
   top: 20vh;
@@ -161,27 +156,23 @@ export default {
   margin-bottom: 10px;
 }
 
-/* #sidebar div:hover {
-  transition: 0.25s;
-  background-color: #82F2C1;  
-}  */
-
 #sideBorder {
   height: 60vh;
-  border-right: 2px solid #7ACAED;
+  border-right: 2px solid #7acaed;
   margin-right: 30px;
   position: sticky;
-  top: 20vh
+  top: 20vh;
 }
 
 .btn {
-  background-color: #20A7E1;
+  background-color: #20a7e1;
   color: rgb(245, 245, 245);
   width: 100%;
+  padding: 18px 0px;
 }
 
 .btn:hover {
-  background-color: #1A92C5;
+  background-color: #1a92c5;
   transition: 0.3s;
   cursor: pointer;
 }

@@ -6,16 +6,13 @@
 </template>
 
 <script>
-import Navigation from './components/Navigation.vue'
+import Navigation from "./components/Navigation.vue";
 
-
-export default{
+export default {
   components: {
-    Navigation
-  
-  }
-}
-
+    Navigation,
+  },
+};
 </script>
 
 <style>
@@ -23,20 +20,20 @@ export default{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Comfortaa', cursive;
+  font-family: "Comfortaa", cursive;
 }
 
 html {
-  background-color: #F2FAFD;
+  background-color: #f2fafd;
 }
 
-h1 {  
+h1 {
   padding: 20px 0 15px 0;
   text-align: center;
 }
 
 #bottomLine {
-  border-bottom: 2px solid #63EFB2;
+  border-bottom: 2px solid #63efb2;
   width: 200px;
   margin: auto;
   margin-bottom: 15px;
@@ -61,8 +58,8 @@ a {
 }
 
 .btn:hover {
-  background-color: #A1F5D0;
-  transition: 0.5s;
+  background-color: #a1f5d0;
+  transition: 0.3s;
   cursor: pointer;
 }
 
@@ -89,9 +86,17 @@ a {
   font-weight: 400;
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   padding: 14px 10px;
   height: 20px;
+  border: 1px solid rgb(182, 182, 182);
+  border-radius: 4px;
+}
+
+textarea {
+  padding: 8px 10px;
   border: 1px solid rgb(182, 182, 182);
   border-radius: 4px;
 }
