@@ -13,5 +13,8 @@ export default{
     },
     viewDirectory(){
         return axios.get('/volunteer/directory')
+    },
+    promoteToAdmin(id, volunteer){
+        return axios.patch(`/directory/${id}`, volunteer)
     }
 }
