@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+
 public class Volunteer {
 
     private int applicationId;
@@ -12,6 +13,8 @@ public class Volunteer {
     private boolean dataEntry;
     private boolean photography;
     private String status = "Pending";
+    private String role;
+
 
     public int getApplicationId() {
         return applicationId;
@@ -91,5 +94,13 @@ public class Volunteer {
 
     public void setPhotography(boolean photography) {
         this.photography = photography;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

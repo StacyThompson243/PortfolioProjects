@@ -21,16 +21,24 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     activePet: {},
-    pets: []
+    activeVolunteer: {},
+    pets: [],
+    volunteers: []
   },
     getters: {
       pet(state) {
         return state.pets.find(p => p.petId == state.activePet);
+      },
+      volunteer(state){
+        return state.volunteers.find(p => p.applicationId == state.activeVolunteer);
       }
   },
   mutations: {
     SET_PETS(state, payload){
       state.pets=payload;
+    },
+    SET_VOLUNTEERS(state, payload){
+      state.volunteers=payload;
     },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -51,6 +59,9 @@ export default new Vuex.Store({
     SET_ACTIVE_PET(state, petId){
       state.activePet = petId;
     },
+    SET_ACTIVE_VOLUNTEER(state, applicationId){
+      state.activeVolunteer = applicationId;
+    }
     
   }
 })

@@ -49,6 +49,17 @@ public class JdbcUserDao implements UserDao {
 	}
 
     @Override
+    public User getUserByApplicationId(int userId) {
+        String sql = "SELECT * FROM users WHERE application_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        if (results.next()) {
+            return mapRowToUser(results);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         String sql = "select * from users";
@@ -87,6 +98,14 @@ public class JdbcUserDao implements UserDao {
         jdbcTemplate.update(sql, password_hash, user.getId());
     };
 
+//    @Override
+//    public void updateApplicationId(int id){
+//       String sql = "UPDATE users INNER JOIN volunteers ON volunteers.application_id = users.application_id" +
+//                     "SET application_id = ?;";
+//        jdbcTemplate.update(sql, id);
+//
+//    }
+
     @Override
     public boolean create(String username, String password, String role) {
         String insertUserSql = "insert into users (username,password_hash,first_time,role) values (?,?,true,?)";
@@ -96,6 +115,16 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
+    @Override
+    public boolean createWithAppId(String username, String password, String role, int applicationId) {
+        String insertUserSql = "insert into users (username,password_hash,first_time,role, application_id) values (?,?,true,?,?)";
+        String password_hash = new BCryptPasswordEncoder().encode(password);
+        String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
+
+        return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole, applicationId) == 1;
+    }
+
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));
@@ -104,6 +133,9 @@ public class JdbcUserDao implements UserDao {
         user.setFirstTime(rs.getBoolean("first_time"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
+        user.setApplicationId(rs.getInt("application_id"));
         return user;
     }
 }
+
+

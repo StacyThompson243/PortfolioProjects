@@ -14,6 +14,7 @@
         <li><router-link v-bind:to="{ name: 'volunteer' }">Volunteer</router-link></li>
         <li v-if="$store.state.user.role === 'ROLE_ADMIN'"><router-link v-bind:to="{ name: 'volunteerApplications' }">Volunteer Apps</router-link></li>
         <!-- possibly v-on hover, toggle visibility v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN' " -->
+        <li v-if="$store.state.token !=''"><router-link v-bind:to="{name: 'volunteerDirectory'}">Directory</router-link></li>
         <li v-if="$store.state.token == ''"><router-link to="/login">Log In</router-link></li>
         <li v-else><router-link to="/logout">Logout</router-link></li>
       </ul>

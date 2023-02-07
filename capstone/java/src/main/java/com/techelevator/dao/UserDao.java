@@ -20,4 +20,8 @@ public interface UserDao {
     void changePassword(PasswordChangeDTO user);
 
     boolean create(String username, String password, String role);
+
+    boolean createWithAppId(String username, String password, String role, int applicationId);
+
+    User getUserByApplicationId(int applicationId);
 }
