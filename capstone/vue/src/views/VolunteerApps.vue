@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div class="page">
     <h1>Volunteer Applications</h1>
     <div id="bottomLine"></div>
     <form action="">
@@ -74,7 +74,7 @@
           </tr>
         </tbody>
 
-        <tbody>
+        <tbody id="infoTable">
           <!-- v-show="volunteer.over18 == (filters.over18 == 'Yes' ? true : false) || filters.over18 == 'Show All' " -->
           <tr v-for="(volunteer, key) in filterApplications" v-bind:key="key">
             <td>{{ volunteer.applicationId }}</td>
@@ -97,7 +97,7 @@
               </select>
             </td>
             <td>
-              <button v-on:click.prevent="updateStatus(volunteer)">
+              <button class="btn" v-on:click.prevent="updateStatus(volunteer)">
                 Submit
               </button>
             </td>
@@ -225,26 +225,37 @@ export default {
 </script>
 
 <style scoped>
-/* .application-table,
-th,
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  background-color: blue;
-} */
+.page {
+  background: rgb(223, 251, 240);
+  background: linear-gradient(
+    90deg,
+    rgb(220, 251, 240) 0%,
+    rgba(227, 244, 251, 1) 100%
+  );
+}
 
-/* h1 {
+h1 {
   margin-top: 92px;
-} */
+}
 
 table {
-  table-layout: fixed;
-  border: 1px solid;
+  /* table-layout: fixed; */
   width: 85%;
   margin: auto;
   border-collapse: collapse;
   background-color: white;
-  width: 85%;
+}
+
+td,
+th {
+  padding: 8px 0;
+}
+
+table,
+tr,
+td,
+th {
+  border: none;
 }
 
 /* 5 */
@@ -262,18 +273,18 @@ thead th:nth-child(3) {
   width: 19%;
 }
 
-/* 45 */
+/* 46 */
 thead th:nth-child(4) {
-  width: 6%;
+  width: 7%;
 }
 
-/* 55 */
+/* 56 */
 thead th:nth-child(5) {
   width: 10%;
   background-color: blue;
 }
 
-/* 65 */
+/* 66 */
 thead th:nth-child(6) {
   width: 10%;
   background-color: blueviolet;
@@ -281,32 +292,60 @@ thead th:nth-child(6) {
 
 /* 75 */
 thead th:nth-child(7) {
-  width: 10%;
+  width: 9%;
 }
 
-/* 85 */
+/* 86 */
 thead th:nth-child(8) {
   width: 11%;
 }
 
-/* 95 */
+/* 93 */
 thead th:nth-child(9) {
-  width: 10%;
+  width: 7%;
 }
 
 /* 100 */
 thead th:nth-child(10) {
-  width: 4%;
+  width: 7%;
 }
 
-tr:nth-child(1) td input[type="text"],
-tr:nth-child(1) td select {
+tr td input[type="text"],
+tr td select {
   width: 98%;
   margin: 1%;
 }
 
-td,
-th {
-  padding: 8px 0;
+#infoTable td:not(:last-child),
+#infoTable td:not(:nth-last-child(2)) {
+  /* padding: 0 10px; */
+  background-color: blue;
 }
+
+.btn {
+  width: 98%;
+  /* height: 99%; */
+  padding: 8px;
+  margin: 1%;
+}
+
+/* tbody tr:nth-child(even) td {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.bottomContainer div:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+tr td {
+  background-color: black;
+} */
+
+/* tr:nth-child(odd) {
+  background-color: #d6eeee;
+}
+
+tr:nth-child(even) {
+  background-color: #d6eeee;
+} */
 </style>
