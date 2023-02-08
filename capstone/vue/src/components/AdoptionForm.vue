@@ -25,7 +25,7 @@
           <label for="phoneNumber">Phone Number (1234567890): </label>
           <input
             v-model="adopter.phoneNumber"
-            id="phoneNumber" name="phoneNumber" type= "text" max=10 min=10
+            id="phoneNumber" name="phoneNumber" type= "tel" max=10 min=10
             required/></div>
 
          <div class="cityDiv">
@@ -71,6 +71,7 @@
 
 <script>
 import AdoptionService from "../services/AdoptionService";
+import PetService from "../services/PetService";
 export default {
 data() {
     return {
@@ -85,16 +86,29 @@ data() {
         numberOfPets: 0,
         approvalStatus: "Pending",
       },
+      pet: {},
     };
   },
+      created() {
+        PetService.getPetById(this.$route.params.petId).then((response) =>{
+            if(response.status == 200){
+                this.pet = response.data;
+            }
+        })
+    },
   methods: {
       saveAdoptionRequest(){
           console.log(this.$route.params.petId);
       AdoptionService.addAdoptionRequest(this.$route.params.petId, this.adopter).then((response) => {
         if (response.status === 201) {
           alert("Thank you for applying to adopt this critter!");
+          this.pet.adopterId = response.data.adopterId
+          PetService.updatePet(this.pet.petId, this.pet).then((response) => { 
+              if (response.status === 202){
         //  back to browse pets
           this.$router.push("/pets");
+          }
+          })
         }
       });
       this.resetForm();
@@ -110,7 +124,7 @@ data() {
         anyPets: false,
         numberOfPets: 0,
       };
-    },
+    }
   }
 }
 </script>
@@ -128,9 +142,9 @@ h1 {
   border-radius: 7px;
 }
 
-.page {
+/* .page {
   background-image: url(../assets/volunteer.jpg);
-}
+} */
 
 .form {
   backdrop-filter: blur(1px);

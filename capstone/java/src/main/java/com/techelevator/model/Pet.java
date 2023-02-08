@@ -11,6 +11,15 @@ public class Pet {
     private String description;
     private boolean adopted;
     private String petImage;
+    private int adopterId;
+
+    public int getAdopterId() {
+        return adopterId;
+    }
+
+    public void setAdopterId(int adopterId) {
+        this.adopterId = adopterId;
+    }
 
     public int getPetId() {
         return petId;
