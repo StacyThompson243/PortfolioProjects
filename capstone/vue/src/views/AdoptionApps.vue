@@ -8,7 +8,7 @@
 <thead>
     <tr>
         <th>App ID</th>
-        <th>Pet ID</th>
+        <!-- <th>Pet ID</th> -->
         <th>Adopter Full Name</th>
         <th>Email</th>
         <th>Phone Number</th>
@@ -25,20 +25,20 @@
 <tbody>
     <tr>
         <td><input type="text" v-model="filters.applicationID"></td>
-        <td><input type="text" v-model="filters.petID"></td>
+        <!-- <td><input type="text" v-model="filters.petID"></td> -->
         <td><input type="text" v-model="filters.adopterFullName"></td>
         <td><input type="text" v-model="filters.email"></td>
         <td><input type="text" v-model="filters.phoneNumber"></td>
         <td><input type="text" v-model="filters.city"></td>
         <td><input type="text" v-model="filters.state"></td>
         <td><input type="text" v-model="filters.zipcode"></td>
-        <!-- <td>
+        <td>
         <select v-model="filters.anyPets">
         <option value="Show All" selected="true">Show All</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
         </select></td>
-        <td><input type="number" v-model="filters.numberOfPets"></td>
+        <td><input type="text" v-model="filters.numberOfPets"></td>
         <td>
               <select v-model="adopter.status" name="dropdown-select">
                 <option value="Pending">Pending</option>
@@ -50,14 +50,21 @@
               <button v-on:click.prevent="updateStatus(adopter)">
                 Submit
               </button>
-               </td> -->
+               </td>
     </tr>
 </tbody>
 
 <tbody>
     <tr v-for="(adopter, key) in adoptionList" v-bind:key="key">
     <td>{{adopter.adopterId}}</td>
-    <td>{{adopter.adopterName}}</td>
+    <td>{{adopter.email}}</td>
+    <td>{{adopter.phoneNumber}}</td>
+    <td>{{adopter.city}}</td>
+    <td>{{adopter.state}}</td>
+    <td>{{adopter.zipcode}}</td>
+    <td>{{adopter.anyPets}}</td>
+    <td>{{adopter.numberOfPets}}</td>
+    <td>{{adopter.approvalStatus}}</td>
     </tr>
 </tbody>
 
@@ -82,7 +89,8 @@ export default {
                 state: "",
                 zipcode: "",
                 anyPets: "",
-                numberOfPets: 0,
+                numberOfPets: "",
+                status: "",
             }
         }
     },
