@@ -8,9 +8,23 @@ public class Adopter {
     private String phoneNumber;
     private String city;
     private String state;
-    private int zipcode;
+    private String zipcode;
     private boolean hasCurrentPets;
     private int numberOfCurrentPets;
+    private String approvalStatus;
+
+    public Adopter(int adopterId, String adopterName, String email, String phoneNumber, String city, String state, String zipcode, boolean hasCurrentPets, int numberOfCurrentPets, String approvalStatus) {
+        this.adopterId = adopterId;
+        this.adopterName = adopterName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.hasCurrentPets = hasCurrentPets;
+        this.numberOfCurrentPets = numberOfCurrentPets;
+        this.approvalStatus = approvalStatus;
+    }
 
     public int getAdopterId() {
         return adopterId;
@@ -60,11 +74,11 @@ public class Adopter {
         this.state = state;
     }
 
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
@@ -82,6 +96,14 @@ public class Adopter {
 
     public void setNumberOfCurrentPets(int numberOfCurrentPets) {
         this.numberOfCurrentPets = numberOfCurrentPets;
+    }
+
+    public String getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setApprovalStatus(String status) {
+        this.approvalStatus = status;
     }
 }
 

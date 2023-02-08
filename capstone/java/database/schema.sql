@@ -34,9 +34,10 @@ email varchar(100) NOT NULL,
 phone_number varchar(10),
 city varchar(50),
 state varchar(50),
-zipcode int,
+zipcode varchar(10),
 any_pets boolean NOT NULL,
 number_pets int,
+status varchar(15) NOT NULL,
 CONSTRAINT PK_adopter PRIMARY KEY (adopter_id)
 );
 

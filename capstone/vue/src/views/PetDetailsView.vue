@@ -25,7 +25,8 @@
           <p id="description">{{ pet.description }}</p>
         </div>
         <div class="buttonContainer">
-          <button class="btn">Apply to Adopt</button>
+          <router-link v-bind:to="{name: 'adoptionForm'}"> 
+          <button class="btn">Apply to Adopt</button></router-link>
           <router-link v-bind:to="{ name: 'pets' }"
             ><button class="btn">Browse Pets</button></router-link
           >
