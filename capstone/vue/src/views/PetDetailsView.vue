@@ -3,7 +3,12 @@
     <h1>{{ pet.petName }}</h1>
     <div id="bottomLine"></div>
     <div id="wrapper">
-      <img :src="pet.petImage" />
+      <!-- <img :src="pet.petImage" /> -->
+
+      <div v-for="(image, key) in petImages" v-bind:key='key' class="images">
+        <img :src="image.petImage" />"
+      </div>
+      
       <div class="card">
         <div>
           <div class="horizontalAlign">
@@ -41,8 +46,14 @@
 </template>
 
 <script>
+import PetImageService from "../services/PetImageService.js"
 export default {
   props: ["petId"],
+  data(){
+    return{
+    petImages: []
+    }
+  },
   computed: {
     pet() {
       return this.$store.getters.pet;
@@ -51,7 +62,13 @@ export default {
   created() {
     const activePetId = this.$route.params.petId;
     this.$store.commit("SET_ACTIVE_PET", activePetId);
-  },
+      
+      PetImageService.getAllPetImages(activePetId).then((response) => {
+      this.petImages = response.data;
+      this.$store.commit("SET_PET_IMAGES", this.petImages)
+  })
+  }
+
 };
 </script>
 
@@ -103,6 +120,10 @@ img {
   border-radius: 8px 0 0 8px;
   height: 475px;
   box-shadow: 2px 4px 4px rgb(204, 204, 204);
+}
+
+.images{
+  height: 100px;
 }
 
 p {
