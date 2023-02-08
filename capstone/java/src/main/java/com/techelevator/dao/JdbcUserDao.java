@@ -124,6 +124,14 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole, applicationId) == 1;
     }
 
+    @Override
+    public void updateRole(int applicationId, String newRole) {
+        String sql = "UPDATE users SET role = ? WHERE application_id = ?";
+        jdbcTemplate.update(sql, newRole, applicationId);
+    }
+
+
+
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();

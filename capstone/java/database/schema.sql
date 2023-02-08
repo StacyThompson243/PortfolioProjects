@@ -57,4 +57,13 @@ CONSTRAINT PK_pets PRIMARY KEY (pet_id),
 CONSTRAINT FK_pets FOREIGN KEY (adopter_id) REFERENCES adopter (adopter_id)
 );
 
+CREATE TABLE pet_images (
+	image_id SERIAL,
+	pet_image varchar(500) NOT NULL,
+	is_primary boolean NOT NULL,
+	pet_id int,
+	CONSTRAINT PK_image PRIMARY KEY (image_id),
+	CONSTRAINT FK_pet_id FOREIGN KEY (pet_id) REFERENCES pets (pet_id)
+);
+
 COMMIT TRANSACTION;

@@ -22,12 +22,18 @@ export default new Vuex.Store({
     user: currentUser || {},
     activePet: {},
     activeVolunteer: {},
+    primaryImage: {}, // added this
     pets: [],
-    volunteers: []
+    petImages: [], // added this
+    volunteers: [],
   },
     getters: {
       pet(state) {
         return state.pets.find(p => p.petId == state.activePet);
+      },
+      // added this
+      petImages(state){
+        return state.petImages.find(p => p.imageId == state.activeImage)
       },
       volunteer(state){
         return state.volunteers.find(p => p.applicationId == state.activeVolunteer);
@@ -36,6 +42,10 @@ export default new Vuex.Store({
   mutations: {
     SET_PETS(state, payload){
       state.pets=payload;
+    },
+    // added this
+    SET_PET_IMAGES(state, payload){
+      state.petImages = payload;
     },
     SET_VOLUNTEERS(state, payload){
       state.volunteers=payload;
@@ -61,7 +71,11 @@ export default new Vuex.Store({
     },
     SET_ACTIVE_VOLUNTEER(state, applicationId){
       state.activeVolunteer = applicationId;
-    }
+    },
+    // added this
+    SET_PRIMARY_IMAGE(state, imageId){
+      state.primaryImage = imageId;
+    },
     
   }
 })

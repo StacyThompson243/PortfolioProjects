@@ -4,12 +4,14 @@ import axios from 'axios';
 
 export default{
 
-    getAdoptablePets(){
-        return axios.get('/pets')
+    //copied from petService for reference
+    
+    getAllPetImages(id){
+        return axios.get(`/petImage/${id}`)
     },
 
-    getPetById(id){
-        return axios.get(`/pets/${id}`)
+    addPetImage(id, petImage){
+        return axios.get(`/${id}/edit`, petImage)
     },
 
     addPet(pet){
@@ -18,6 +20,5 @@ export default{
 
     updatePet(id, pet){
         return axios.put(`/pets/${id}/edit`, pet)
-    },
-
- }
+    }
+}

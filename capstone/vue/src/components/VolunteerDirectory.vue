@@ -26,13 +26,14 @@
      <tbody>
         <tr>
            <td>
-            <input type="text" v-model="filters.applicationId" id="idFilter" />
+            <input type="text" v-model="filters.applicationId" id="idFilter" placeholder="search by id" />
           </td> 
           <td>
             <input
               type="text"
               v-model="filters.volunteerLastName"
               id="lastName"
+              placeholder="seach last name"
             />
           </td> 
           <td>
@@ -40,10 +41,11 @@
               type="text"
               v-model="filters.volunteerFirstName"
               id="fistName"
+              placeholder="search first name"
             />
           </td>
           <td>
-            <input type="text" v-model="filters.email" id="emailFilter" />
+            <input type="text" v-model="filters.email" id="emailFilter" placeholder="search e-mail" />
           </td>
           <td>
             <select v-model="filters.over18" id="over18Filter">
@@ -106,6 +108,7 @@
           <!-- <td>{{volunteer.role}}</td> -->
           <td v-if="volunteer.role == 'ROLE_USER'">Volunteer</td>
           <td v-if="volunteer.role == 'ROLE_ADMIN'">Admin</td>
+          <router-link v-bind:to="{name: 'PromoteVolunteer', params: { applicationId: volunteer.applicationId }}"><td v-if="volunteer.role == 'ROLE_USER' && $store.state.user.role === 'ROLE_ADMIN'">promote to Admin</td></router-link>
         </tr>
       </tbody>
     </table>
@@ -118,7 +121,7 @@ import VolunteerService from "../services/VolunteerService.js";
 
 export default {
   name: "volunteer-directory",
-    props: ['volunteer'],
+    // props: ['volunteer'],
   data() {
     return {
       volunteers: [],
