@@ -36,7 +36,7 @@
             /></div>
 
         <div class="stateDiv">
-          <label for="state">State: </label>
+          <label for="state">State (abbreviation): </label>
           <input
             v-model="adopter.state"
             id="state" name="state" type= "text"

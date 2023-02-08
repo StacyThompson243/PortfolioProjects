@@ -32,8 +32,8 @@ public class JdbcAdopterDao implements AdopterDao{
     public List<Adopter> getAdoptionRequestsByStatus(String status) {
         List<Adopter> adopterList = new ArrayList<>();
         String sql = "select adopter.adopter_id, adopter_name, email, phone_number, city, state, zipcode, any_pets, number_pets, status from adopter " +
-                "join pets on pets.adopter_id = adopter.adopter_id" +
-                "where status = ?";
+                "join pets on pets.adopter_id = adopter.adopter_id " +
+                "where status = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, status);
 
         while(results.next()){

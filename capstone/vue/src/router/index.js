@@ -14,7 +14,7 @@ import VolunteerApps from '../views/VolunteerApps.vue'
 import VolunteerDirectoryView from '../views/VolunteerDirectoryView.vue'
 import LoginFirstTime from '../views/LoginFirstTime.vue'
 import AdoptionFormView from '../views/AdoptionFormView.vue'
-import AdoptionApps from '../views/AdoptionFormView.vue'
+import AdoptionApps from '../views/AdoptionApps.vue'
 
 Vue.use(Router)
 /**
