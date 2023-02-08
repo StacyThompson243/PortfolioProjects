@@ -1,20 +1,17 @@
 <template>
   <div>
- <volunteer-directory/>
+    <volunteer-directory />
   </div>
 </template>
 
 <script>
-import VolunteerDirectory from '../components/VolunteerDirectory.vue'
+import VolunteerDirectory from "../components/VolunteerDirectory.vue";
 
 export default {
-  components: { 
-      VolunteerDirectory
-       },
-
-}
+  components: {
+    VolunteerDirectory,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
