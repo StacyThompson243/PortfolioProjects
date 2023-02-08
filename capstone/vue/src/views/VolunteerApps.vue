@@ -3,7 +3,7 @@
     <h1>Volunteer Applications</h1>
     <div id="bottomLine"></div>
     <form action="">
-      <table class="application-table">
+      <table>
         <thead>
           <tr>
             <th>App ID</th>
@@ -232,18 +232,24 @@ export default {
     rgb(220, 251, 240) 0%,
     rgba(227, 244, 251, 1) 100%
   );
+  /* background-image: url("https://images.pexels.com/photos/5326905/pexels-photo-5326905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
 }
 
 h1 {
   margin-top: 92px;
 }
 
+#bottomLine {
+  border-bottom: 2px solid #7acaed;
+}
+
 table {
-  /* table-layout: fixed; */
   width: 85%;
   margin: auto;
+  margin-top: 30px;
   border-collapse: collapse;
   background-color: white;
+  box-shadow: 2px 4px 4px rgb(204, 204, 204);
 }
 
 td,
@@ -281,13 +287,11 @@ thead th:nth-child(4) {
 /* 56 */
 thead th:nth-child(5) {
   width: 10%;
-  background-color: blue;
 }
 
 /* 66 */
 thead th:nth-child(6) {
   width: 10%;
-  background-color: blueviolet;
 }
 
 /* 75 */
@@ -316,36 +320,33 @@ tr td select {
   margin: 1%;
 }
 
-#infoTable td:not(:last-child),
-#infoTable td:not(:nth-last-child(2)) {
-  /* padding: 0 10px; */
-  background-color: blue;
+#infoTable td {
+  padding-left: 5px;
+}
+
+#infoTable td:nth-last-child(2),
+#infoTable td:last-child {
+  padding-left: 0px;
 }
 
 .btn {
-  width: 98%;
-  /* height: 99%; */
+  width: 94%;
   padding: 8px;
-  margin: 1%;
+  margin: 0 3%;
+  background-color: #20a7e1;
+  color: rgb(245, 245, 245);
 }
 
-/* tbody tr:nth-child(even) td {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.bottomContainer div:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-tr td {
-  background-color: black;
-} */
-
-/* tr:nth-child(odd) {
-  background-color: #d6eeee;
+.btn:hover {
+  background-color: #1a92c5;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 tr:nth-child(even) {
-  background-color: #d6eeee;
-} */
+  background: #c5e8f7;
+}
+tr:nth-child(odd) {
+  background: #fff;
+}
 </style>
