@@ -4,6 +4,8 @@ import axios from 'axios';
 
 export default{
 
+    //copied from petService for reference
+    
     getAllPetImages(id, pet){
         return axios.get(`/pets/${id}`, pet)
     },

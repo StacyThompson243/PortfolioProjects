@@ -15,6 +15,22 @@ public class Volunteer {
     private String status = "Pending";
     private String role;
 
+    public Volunteer(int applicationId, String volunteerFirstName, String volunteerLastName, String email, boolean over18, boolean veterinary, boolean cleaning, boolean dataEntry, boolean photography, String status, String role) {
+        this.applicationId = applicationId;
+        this.volunteerFirstName = volunteerFirstName;
+        this.volunteerLastName = volunteerLastName;
+        this.email = email;
+        this.over18 = over18;
+        this.veterinary = veterinary;
+        this.cleaning = cleaning;
+        this.dataEntry = dataEntry;
+        this.photography = photography;
+        this.status = status;
+        this.role = role;
+    }
+
+    public Volunteer() {
+    }
 
     public int getApplicationId() {
         return applicationId;
