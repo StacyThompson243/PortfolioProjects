@@ -74,7 +74,7 @@
           </tr>
         </tbody>
 
-        <tbody>
+        <tbody id="infoTable">
           <!-- v-show="volunteer.over18 == (filters.over18 == 'Yes' ? true : false) || filters.over18 == 'Show All' " -->
           <tr v-for="(volunteer, key) in filterApplications" v-bind:key="key">
             <td>{{ volunteer.applicationId }}</td>
@@ -316,6 +316,12 @@ tr td select {
   margin: 1%;
 }
 
+#infoTable td:not(:last-child),
+#infoTable td:not(:nth-last-child(2)) {
+  /* padding: 0 10px; */
+  background-color: blue;
+}
+
 .btn {
   width: 98%;
   /* height: 99%; */
@@ -323,7 +329,7 @@ tr td select {
   margin: 1%;
 }
 
-.bottomContainer div:nth-child(even) {
+/* tbody tr:nth-child(even) td {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -331,8 +337,15 @@ tr td select {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* .btn {
-  padding: 0;
-  margin: 0;
+tr td {
+  background-color: black;
+} */
+
+/* tr:nth-child(odd) {
+  background-color: #d6eeee;
+}
+
+tr:nth-child(even) {
+  background-color: #d6eeee;
 } */
 </style>
