@@ -23,5 +23,7 @@ public interface UserDao {
 
     boolean createWithAppId(String username, String password, String role, int applicationId);
 
+    void updateRole(int applicationId, String newRole);
+
     User getUserByApplicationId(int applicationId);
 }

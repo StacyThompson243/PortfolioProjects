@@ -5,21 +5,28 @@ import com.techelevator.dao.VolunteerDao;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-public class UserController {
+
 
     @RequestMapping(path = "/")
     @RestController
     @CrossOrigin
-    public class VolunteerController {
+    public class UserController {
 
         @Autowired
         private VolunteerDao volunteerDao;
 
         @Autowired
         private UserDao userDao;
+
+        @PreAuthorize("hasRole('ROLE_ADMIN')")
+        @PatchMapping (path = "/directory/{applicationId}")
+        public void promoteToAdmin(@PathVariable int applicationId){
+            userDao.updateRole(applicationId, "ROLE_ADMIN");
+        }
 
 
 //
@@ -34,4 +41,4 @@ public class UserController {
 //    }
 
     }
-}
+

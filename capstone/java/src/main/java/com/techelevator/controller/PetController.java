@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
 @CrossOrigin
 @RequestMapping(path = "/pets")
 @RestController
@@ -41,5 +42,6 @@ public class PetController {
     @PutMapping(path = "/{id}/edit")
     public void editPet(@PathVariable int id, @RequestBody Pet pet){
         petDAO.editPet(id, pet);
+
     }
 }

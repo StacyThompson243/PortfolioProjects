@@ -102,6 +102,12 @@ export default {
         decription: "",
         adopted: "",
       },
+      petImage: {
+        imageId: "",
+        petImages: [],
+        isPrimary: false,
+        petId: "",
+      },
     };
   },
   methods: {
