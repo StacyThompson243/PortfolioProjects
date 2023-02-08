@@ -6,8 +6,8 @@ export default{
 
     //copied from petService for reference
     
-    getAllPetImages(id, pet){
-        return axios.get(`/pets/${id}`, pet)
+    getAllPetImages(id){
+        return axios.get(`/petImage/${id}`)
     },
 
     addPetImage(id, petImage){

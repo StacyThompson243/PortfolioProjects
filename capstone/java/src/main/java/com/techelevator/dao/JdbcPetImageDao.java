@@ -20,7 +20,8 @@ public class JdbcPetImageDao implements PetImageDao{
     @Override
     public List<PetImage> getAllPetImagesById(int petId) {
         List<PetImage> petImagesList = new ArrayList<>();
-        String sql = "SELECT image_id, pet_id, pet_image, is_primary FROM pet_images" + "WHERE pet_id = ?";
+        String sql = "SELECT image_id, pet_id, pet_image, is_primary FROM pet_images " +
+                "WHERE pet_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, petId);
         while (results.next()){
             petImagesList.add(mapRowToPetImage(results));

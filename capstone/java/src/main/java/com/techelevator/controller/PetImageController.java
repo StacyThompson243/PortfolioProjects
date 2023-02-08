@@ -21,9 +21,8 @@ public class PetImageController {
     private PetImageDao petImageDao;
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/all")
-    public List<PetImage> getAllPetImages(@Valid @RequestBody Pet pet) {
-        int id = pet.getPetId();
+    @GetMapping("/{id}")
+    public List<PetImage> getAllPetImages(@Valid @PathVariable int id) {
         return petImageDao.getAllPetImagesById(id);
     }
 

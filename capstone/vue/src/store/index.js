@@ -25,7 +25,7 @@ export default new Vuex.Store({
     primaryImage: {}, // added this
     pets: [],
     petImages: [], // added this
-    volunteers: []
+    volunteers: [],
   },
     getters: {
       pet(state) {
