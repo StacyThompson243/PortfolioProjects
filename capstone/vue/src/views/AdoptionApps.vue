@@ -40,12 +40,12 @@
         </select></td>
         <td><input type="text" v-model="filters.numberOfPets"></td>
         <td>
-              <select v-model="adopter.status" name="dropdown-select">
+              <!-- <select v-model="adopter.status" name="dropdown-select">
                 <option value="Pending">Pending</option>
                 <option value="Approved">Approve</option>
                 <option value="Denied">Deny</option>
               </select>
-            </td>
+            </td> -->
             <td>
               <button v-on:click.prevent="updateStatus(adopter)">
                 Submit
