@@ -25,7 +25,7 @@ public class AdopterController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/pets/{id}/adopt")
-    public Adopter applyToAdopt(@Valid @RequestBody Adopter adopter){
+    public Adopter applyToAdopt(@Valid @RequestBody Adopter adopter, @PathVariable int id){
         Adopter newAdoptionApplication = adopterDao.applyToAdopt(adopter);
         return newAdoptionApplication;
     }

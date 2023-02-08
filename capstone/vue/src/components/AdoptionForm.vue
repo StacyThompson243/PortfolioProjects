@@ -4,13 +4,13 @@
     <h1>Adoption Form</h1>
 
 </div>
-<form action="form" v-on:submit.prevent="saveAdoptionRequest()">
+<form action="form" v-on:submit.prevent="saveAdoptionRequest">
 <div class="container">
 
-<div class="fullNameDiv">
+<div class="adopterNameDiv">
         <label for="full-name">Full Name: </label>
         <input 
-        v-model="adopter.fullName" 
+        v-model="adopter.adopterName" 
         id="full-name" name="full-name" type="text" 
         required/></div>
 
@@ -22,10 +22,10 @@
             required/></div>
 
  <div class="phoneNumberDiv">
-          <label for="phoneNumber">Phone Number: </label>
+          <label for="phoneNumber">Phone Number (1234567890): </label>
           <input
             v-model="adopter.phoneNumber"
-            id="phoneNumber" name="phoneNumber" type= "text"
+            id="phoneNumber" name="phoneNumber" type= "text" max=10 min=10
             required/></div>
 
          <div class="cityDiv">
@@ -64,7 +64,7 @@
             /></div>
 
 </div>
-<input class="btn" type="submit"/>
+<button class="btn" type="submit">Submit</button>
 </form>
   </div>
 </template>
@@ -75,7 +75,7 @@ export default {
 data() {
     return {
       adopter: {
-        fullName: "",
+        adopterName: "",
         email: "",
         phoneNumber: "",
         city: "",
@@ -83,17 +83,18 @@ data() {
         zipcode: null,
         anyPets: false,
         numberOfPets: 0,
+        approvalStatus: "Pending",
       },
     };
   },
   methods: {
       saveAdoptionRequest(){
-          console.log(this.adopter);
-      AdoptionService.addAdoptionRequest(this.adopter).then((response) => {
+          console.log(this.$route.params.petId);
+      AdoptionService.addAdoptionRequest(this.$route.params.petId, this.adopter).then((response) => {
         if (response.status === 201) {
           alert("Thank you for applying to adopt this critter!");
-        //  back to page of id of pet they were looking at? or maybe just back to browse?
-          this.$router.push("/pet/{id}");
+        //  back to browse pets
+          this.$router.push("/pets");
         }
       });
       this.resetForm();

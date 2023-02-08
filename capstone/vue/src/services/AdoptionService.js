@@ -2,8 +2,8 @@ import axios from 'axios';
 
 
 export default{
-    addAdoptionRequest(petId){
-        return axios.post(`/pets/${petId}/adopt`)
+    addAdoptionRequest(petId, adopter){
+        return axios.post(`/pets/${petId}/adopt`, adopter)
     },
     viewAdoptionApplications(){
         return axios.get('/adoption_applications')
