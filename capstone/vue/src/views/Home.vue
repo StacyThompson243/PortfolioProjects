@@ -4,7 +4,7 @@
       <pet-carousel />
       <!-- <img src="" alt=""> -->
     </div>
-    <div class="petDescription">Pet description</div>
+    <div class="petDescription"></div>
   </div>
 </template>
 

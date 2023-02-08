@@ -28,9 +28,37 @@ export default {
 };
 </script>
 <style scoped>
-.carousel,
+/* .carousel,
 img {
   width: 500px;
   height: 360px;
+} */
+
+
+body,
+html {
+  background: #9b9;
 }
+
+.carousel,
+img {
+  max-width: 100%;
+  max-height: auto;
+  position: relative;
+  vertical-align: middle;
+  left: 50%;
+  transform: translate(-50%);
+  height: 500px;
+  width: 500px;
+  object-fit:cover;
+}
+
+/* div {
+  width: 20%;
+  height: auto;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+} */
 </style>
