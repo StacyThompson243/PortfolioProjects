@@ -13,6 +13,8 @@ import UpdatePetView from '../views/UpdatePetView.vue'
 import VolunteerApps from '../views/VolunteerApps.vue'
 import VolunteerDirectoryView from '../views/VolunteerDirectoryView.vue'
 import LoginFirstTime from '../views/LoginFirstTime.vue'
+import AdoptionFormView from '../views/AdoptionFormView.vue'
+import AdoptionApps from '../views/AdoptionApps.vue'
 import PromoteVolunteer from '../views/PromoteVolunteer.vue'
 
 Vue.use(Router)
@@ -114,6 +116,19 @@ const router = new Router({
       path: '/login/change_password',
       name: "loginFirstTime",
       component: LoginFirstTime,
+    },
+    {
+      path: '/pets/:petId/adopt',
+      name: "adoptionForm",
+      component: AdoptionFormView,
+    },
+    {
+      path: '/adoption_applications',
+      name: "adoptionApplications",
+      component: AdoptionApps,
+      meta: {
+      requiresAuth: true
+      }
     },
     {
       path: '/directory/:applicationId',

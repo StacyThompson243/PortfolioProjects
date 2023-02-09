@@ -94,8 +94,8 @@ a {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  padding: 14px 10px;
-  height: 20px;
+  padding: 16px 10px;
+  height: 22px;
   border: 1px solid rgb(182, 182, 182);
   border-radius: 4px;
 }
@@ -115,5 +115,11 @@ select {
   padding: 0px 10px;
   height: 34px;
   border-radius: 4px;
+}
+
+option {
+  padding: 0px 10px;
+  height: 34px;
+  /* border-radius: 4px; */
 }
 </style>

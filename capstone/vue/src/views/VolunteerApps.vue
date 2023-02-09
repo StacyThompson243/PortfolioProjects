@@ -22,11 +22,7 @@
         <tbody>
           <tr>
             <td>
-              <input
-                id="textInput"
-                type="text"
-                v-model="filters.applicationId"
-              />
+              <input type="text" v-model="filters.applicationId" />
             </td>
             <td>
               <input type="text" v-model="filters.volunteerFullName" />
@@ -254,7 +250,7 @@ table {
 
 td,
 th {
-  padding: 8px 0;
+  height: 45px;
 }
 
 table,
