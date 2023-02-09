@@ -13,6 +13,11 @@ import PetCarousel from "../components/PetCarousel.vue";
 
 export default {
   name: "home",
+  data(){
+    return {
+      isLoading: true,
+    }
+  },
   components: {
     PetCarousel,
   },
@@ -25,4 +30,18 @@ export default {
   height: 250px;
   background-color: brown;
 }
+
+.page-loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: blue; */
+    z-index: 999
+}
+
 </style>

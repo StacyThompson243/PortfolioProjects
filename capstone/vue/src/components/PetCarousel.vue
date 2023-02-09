@@ -2,7 +2,10 @@
   <div class="carousel">
     <div :key="petSrc.id">
       <img :src="petSrc.petImage" alt="" />
+      <div id="petnames">
       {{ petSrc.petName }}
+      {{petSrc.petDescription}}
+      </div>
     </div>
   </div>
 </template>
@@ -33,13 +36,10 @@ img {
   width: 500px;
   height: 360px;
 } */
-
-
 body,
 html {
   background: #9b9;
 }
-
 .carousel,
 img {
   max-width: 100%;
@@ -48,17 +48,15 @@ img {
   vertical-align: middle;
   left: 50%;
   transform: translate(-50%);
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: auto;
   object-fit:cover;
 }
-
-/* div {
-  width: 20%;
-  height: auto;
-  min-height: 100%;
-  overflow: hidden;
-  position: relative;
-  display: inline-block;
-} */
+img {
+    border: 5px solid blue;
+}
+div#petnames{
+text-align: center;
+vertical-align: middle;
+}
 </style>
