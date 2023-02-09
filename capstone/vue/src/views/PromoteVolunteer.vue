@@ -38,9 +38,9 @@ export default {
           if (response.status === 200) {
             alert("Volunteer Role has been updated");
             this.$router.push("/volunteer/directory");
-            this.volunteerList = this.volunteerList.filter((eachVolunteer) => {
-              return eachVolunteer.status === "Pending";
-            });
+            //  this.volunteerList = this.volunteerList.filter((eachVolunteer) => {
+            //    return eachVolunteer.status === "Pending";
+            // });
           }
         });
       }

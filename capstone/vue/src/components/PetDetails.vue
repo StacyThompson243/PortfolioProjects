@@ -24,6 +24,10 @@
       <a id="update" v-on:click="setUpEdit" v-if="$store.state.token != ''"
         >Edit</a
       >
+      <div>
+       <a id="addImages" v-on:click="addImage" v-if="$store.state.token != ''">Add Images</a> 
+      <!-- <router-link v-bind:to="{name: 'AddPhotosView', params: {petId: pet.petId}}">Add Photos</router-link> -->
+    </div>
     </div>
   </div>
 </template>
@@ -40,6 +44,13 @@ export default {
         params: { petId: this.pet.petId },
       });
     },
+    addImage(){
+      this.$store.commit("SET_ACTIVE_PET", this.pet);
+        this.$router.push({
+        name: "AddPhotosView",
+        params: { petId: this.pet.petId },
+      });
+    }
   },
 };
 </script>
@@ -92,13 +103,19 @@ a {
 #editHolder {
   display: flex;
   justify-content: flex-end;
+  
 }
 
 #update {
   text-align: right;
+  margin-right: 10px;
 }
 
 #update:hover {
   cursor: pointer;
+}
+
+#addImages:hover{
+    cursor: pointer;
 }
 </style>

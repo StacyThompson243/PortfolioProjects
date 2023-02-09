@@ -91,4 +91,20 @@ public class Pet {
     public void setPetImage(String petImage) {
         this.petImage = petImage;
     }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "petId=" + petId +
+                ", petName='" + petName + '\'' +
+                ", type='" + type + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", weight=" + weight +
+                ", breed='" + breed + '\'' +
+                ", description='" + description + '\'' +
+                ", adopted=" + adopted +
+                ", petImage='" + petImage + '\'' +
+                '}';
+    }
 }

@@ -42,11 +42,12 @@ public class JdbcPetImageDao implements PetImageDao{
 
     @Override
     public PetImage addNewPetImage(PetImage petImage) {
-        PetImage newPetImage = new PetImage();
-        String sql = "INSERT INTO  pet_id, pet_image, is_primary VALUES(?,?,?) RETURNING image_id";
-        Integer imageId = jdbcTemplate.queryForObject(sql, Integer.class, newPetImage.getPetId(),newPetImage.getPetImage(), newPetImage.isPrimary());
+        String sql = "INSERT INTO pet_images (pet_id, pet_image, is_primary) VALUES(?,?,?) RETURNING image_id";
+        Integer imageId = jdbcTemplate.queryForObject(sql, Integer.class, petImage.getPetId(),petImage.getPetImage(), petImage.isPrimary());
         return getPetImageById(imageId);
     }
+
+
 
     @Override
     public void setPrimaryImage(int id) {
@@ -83,6 +84,13 @@ public class JdbcPetImageDao implements PetImageDao{
             petImage = mapRowToPetImage(results);
         }
         return petImage;
+    }
+
+    @Override
+    public PetImage addAdditional(int petId, String petImage) {
+        String sql = "INSERT INTO pet_images (pet_id, pet_image, is_primary) VALUES(?,?,?) RETURNING image_id";
+        Integer imageId = jdbcTemplate.queryForObject(sql, Integer.class, petId, petImage, false);
+        return getPetImageById(imageId);
     }
 
     private PetImage mapRowToPetImage(SqlRowSet rowSet){

@@ -3,7 +3,7 @@ package com.techelevator.model;
 public class PetImage {
     private int petImageId;
     private String petImage;
-    private boolean isPrimary;
+    private boolean isPrimary=false;
     private int petId;
 
 
@@ -37,5 +37,15 @@ public class PetImage {
 
     public void setPetId(int petId) {
         this.petId = petId;
+    }
+
+    @Override
+    public String toString() {
+        return "PetImage{" +
+                "petImageId=" + petImageId +
+                ", petImage='" + petImage + '\'' +
+                ", isPrimary=" + isPrimary +
+                ", petId=" + petId +
+                '}';
     }
 }

@@ -19,6 +19,8 @@ public interface PetImageDao {
 
     PetImage getPrimaryImage(int petId);
 
+    PetImage addAdditional(int petId, String petImage);
+
 
 
 }

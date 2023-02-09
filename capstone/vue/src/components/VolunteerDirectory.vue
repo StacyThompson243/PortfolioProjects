@@ -12,29 +12,32 @@
         <input type="text" v-model="search" placeholder="search last name" />
         <input type="text" v-model="search" placeholder="search first name" />
       </div> -->
-        <thead>
-          <tr>
-            <th>App ID</th>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Over 18?</th>
-            <th>Veterinary Skills</th>
-            <th>Cleaning Skills</th>
-            <th>Data Entry Skills</th>
-            <th>Photography Skills</th>
-            <th>Role</th>
-          </tr>
-        </thead>
+      <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>Email</th>
+          <th>Over 18?</th>
+          <th>Veterinary Skills</th>
+          <th>Cleaning Skills</th>
+          <th>Data Entry Skills</th>
+          <th>Photography Skills</th>
+          <th>Role</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <tr>
-            <td>
-              <input type="text" v-model="filters.applicationId" />
-            </td>
-            <td>
-              <input type="text" v-model="filters.volunteerFullName" />
-            </td>
-            <!-- <td>
+      <tbody>
+        <tr>
+          <td>
+            <input
+              type="text"
+              v-model="filters.applicationId"
+              id="idFilter"
+              placeholder="search by id"
+            />
+          </td>
+          <td>
             <input
               type="text"
               v-model="filters.volunteerLastName"
@@ -47,109 +50,92 @@
               v-model="filters.volunteerFirstName"
               placeholder="search first name"
             />
-          </td> -->
-            <td>
-              <input type="text" v-model="filters.email" />
-            </td>
-            <td>
-              <select v-model="filters.over18">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.veterinary">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.cleaning">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.dataEntry">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.photography">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.role">
-                <option value>Show All</option>
-                <option value="ROLE_USER">Volunteer</option>
-                <option value="ROLE_ADMIN">Admin</option>
-              </select>
-            </td>
+          </td>
+          <td>
+            <input
+              type="text"
+              v-model="filters.email"
+              id="emailFilter"
+              placeholder="search e-mail"
+            />
+          </td>
+          <td>
+            <select v-model="filters.over18" id="over18Filter">
+              <option value="Show All" selected="true">Show All</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </td>
+          <td>
+            <select v-model="filters.veterinary" id="veterinaryFilter">
+              <option value="Show All" selected="true">Show All</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </td>
+          <td>
+            <select v-model="filters.cleaning" id="cleaningFilter">
+              <option value="Show All" selected="true">Show All</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </td>
+          <td>
+            <select v-model="filters.dataEntry" id="dataEntryFilter">
+              <option value="Show All" selected="true">Show All</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </td>
+          <td>
+            <select v-model="filters.photography" id="photographyFilter">
+              <option value="Show All" selected="true">Show All</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </td>
+          <td>
+            <select v-model="filters.role" id="photographyFilter">
+              <option value>Show All</option>
+              <option value="ROLE_USER">Volunteer</option>
+              <option value="ROLE_ADMIN">Admin</option>
+            </select>
+          </td>
 
-            <td></td>
-          </tr>
-        </tbody>
+          <td></td>
+        </tr>
+      </tbody>
 
-        <tbody id="infoTable">
-          <tr v-for="(volunteer, key) in filterVolunteers" v-bind:key="key">
-            <td>{{ volunteer.applicationId }}</td>
-            <td>
-              {{ volunteer.volunteerFirstName }}
-              {{ volunteer.volunteerLastName }}
-            </td>
-            <!-- <td>{{ volunteer.volunteerFirstName }}</td> -->
-            <td>{{ volunteer.email }}</td>
-            <td>{{ volunteer.over18 ? "Yes" : "No" }}</td>
-            <td>{{ volunteer.veterinary ? "Yes" : "No" }}</td>
-            <td>{{ volunteer.cleaning ? "Yes" : "No" }}</td>
-            <td>{{ volunteer.dataEntry ? "Yes" : "No" }}</td>
-            <td>{{ volunteer.photography ? "Yes" : "No" }}</td>
-            <!-- <td>{{volunteer.role}}</td> -->
-            <td v-if="volunteer.role == 'ROLE_USER'">Volunteer</td>
-            <td v-if="volunteer.role == 'ROLE_ADMIN'">Admin</td>
+      <tbody>
+        <tr v-for="(volunteer, key) in filterVolunteers" v-bind:key="key">
+          <td>{{ volunteer.applicationId }}</td>
+          <td>{{ volunteer.volunteerLastName }}</td>
+          <td>{{ volunteer.volunteerFirstName }}</td>
+          <td>{{ volunteer.email }}</td>
+          <td>{{ volunteer.over18 ? "Yes" : "No" }}</td>
+          <td>{{ volunteer.veterinary ? "Yes" : "No" }}</td>
+          <td>{{ volunteer.cleaning ? "Yes" : "No" }}</td>
+          <td>{{ volunteer.dataEntry ? "Yes" : "No" }}</td>
+          <td>{{ volunteer.photography ? "Yes" : "No" }}</td>
+          <!-- <td>{{volunteer.role}}</td> -->
+          <td v-if="volunteer.role == 'ROLE_USER'">Volunteer</td>
+          <td v-if="volunteer.role == 'ROLE_ADMIN'">Admin</td>
 
-            <!-- <router-link
-            v-bind:to="{
-              name: 'PromoteVolunteer',
-              params: { applicationId: volunteer.applicationId },
-            }"
+          <!-- <router-link v-bind:to="{name: 'PromoteVolunteer', params: { applicationId: volunteer.applicationId }}"> -->
+          <td
+            v-if="
+              volunteer.role == 'ROLE_USER' &&
+              $store.state.user.role === 'ROLE_ADMIN'
+            "
           >
-            <td
-              v-if="
-                volunteer.role == 'ROLE_USER' &&
-                $store.state.user.role === 'ROLE_ADMIN'
-              "
-            >
+            <button v-on:click="updateRole(volunteer)">
               promote to Admin
-            </td></router-link
-          > -->
-
-            <td
-              v-if="
-                volunteer.role == 'ROLE_USER' &&
-                $store.state.user.role === 'ROLE_ADMIN'
-              "
-            >
-              <router-link
-                v-bind:to="{
-                  name: 'PromoteVolunteer',
-                  params: { applicationId: volunteer.applicationId },
-                }"
-              >
-                <button class="btn">Promote</button>
-              </router-link>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </button>
+          </td>
+          <!-- </router-link> -->
+        </tr>
+      </tbody>
+    </table>
     </form>
   </div>
 </template>
@@ -272,6 +258,47 @@ export default {
         });
       }
       return arr;
+    },
+    methods: {
+      reloadPage() {
+      window.location.reload();
+    },
+      updateRole(volunteer) {
+        if (confirm("Click OK to confirm role change") == true) {
+          VolunteerService.promoteToAdmin(
+            volunteer.applicationId,
+            volunteer
+          ).then((response) => {
+            if (response.status === 200) {
+              alert("Volunteer Role has been updated");
+             
+              // this.$router.push("/volunteer/directory");
+              //  this.volunteerList = this.volunteerList.filter((eachVolunteer) => {
+              //    return eachVolunteer.status === "Pending";
+              // });
+            }
+          });
+        }
+      },
+    },
+    
+  },
+  methods: {
+    updateRole(volunteer) {
+      if (confirm("Click OK to confirm role change") == true) {
+        VolunteerService.promoteToAdmin(
+          volunteer.applicationId,
+          volunteer
+        ).then((response) => {
+          if (response.status === 200) {
+            alert("Volunteer Role has been updated");
+             this.$router.push("/volunteer/directory");
+            //  this.volunteerList = this.volunteerList.filter((eachVolunteer) => {
+            //    return eachVolunteer.status === "Pending";
+            // });
+          }
+        });
+      }
     },
   },
 };
