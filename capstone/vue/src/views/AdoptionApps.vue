@@ -193,7 +193,6 @@ export default {
     rgb(220, 251, 240) 0%,
     rgba(227, 244, 251, 1) 100%
   );
-  /* background-image: url("https://images.pexels.com/photos/5326905/pexels-photo-5326905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
 }
 
 h1 {
@@ -248,7 +247,6 @@ thead th:nth-child(4) {
 /* 55 */
 thead th:nth-child(5) {
   width: 8%;
-  background: blueviolet;
 }
 
 /* 65 */
@@ -259,7 +257,6 @@ thead th:nth-child(6) {
 /* 74 */
 thead th:nth-child(7) {
   width: 9%;
-  background-color: blue;
 }
 
 /* 79 */

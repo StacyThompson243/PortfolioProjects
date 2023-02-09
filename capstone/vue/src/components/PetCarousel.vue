@@ -1,13 +1,17 @@
 <template>
   <div class="carousel">
-    <h1>Critter Cabin</h1>
+    <div id="titleDiv">
+      <h1>Critter Cabin</h1>
+    </div>
     <div id="bottomLine"></div>
     <div :key="petSrc.id">
       <div class="card">
         <img :src="petSrc.petImage" alt="" />
         <div id="petInfo">
-          <h2 id="name">{{ petSrc.petName }}</h2>
-          <p id="description">{{ petSrc.description }}</p>
+          <div>
+            <h2 id="name">{{ petSrc.petName }}</h2>
+            <p id="description">{{ petSrc.description }}</p>
+          </div>
 
           <button class="btn">{{ petSrc.petName }}'s page</button>
         </div>
@@ -32,20 +36,29 @@ export default {
 
       self.petSrc = self.pets[Math.floor(Math.random() * self.pets.length)];
 
-      // setInterval(function () {
-      //   self.petSrc = self.pets[Math.floor(Math.random() * self.pets.length)];
-      // }, 3000);
+      setInterval(function () {
+        self.petSrc = self.pets[Math.floor(Math.random() * self.pets.length)];
+      }, 5000);
     });
   },
 };
 </script>
 <style scoped>
 h1 {
-  margin-top: 92px;
+  margin: 102px 0 10px 0;
+  color: rgb(245, 245, 245);
+  padding: 10px;
 }
 
 #bottomLine {
   margin-bottom: 30px;
+}
+
+#titleDiv {
+  margin: auto;
+  backdrop-filter: blur(7px);
+  width: 250px;
+  border-radius: 7px;
 }
 
 .card {
@@ -55,7 +68,7 @@ h1 {
 }
 
 img {
-  box-shadow: 2px 4px 4px rgb(204 204 204);
+  /* box-shadow: 2px 4px 4px rgb(204 204 204); */
   height: 475px;
   border-radius: 8px 0 0 8px;
 }
@@ -68,17 +81,21 @@ img {
 } */
 
 #petInfo {
-  vertical-align: middle;
+  /* vertical-align: middle; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: rgb(253, 253, 253);
   border-radius: 0 8px 8px 0;
   width: 350px;
   padding: 10px;
-  box-shadow: 2px 4px 4px rgb(204 204 204);
+  /* box-shadow: 2px 4px 4px rgb(204 204 204); */
 }
 
 h2 {
+  font-size: 28px;
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   color: #0f4f6a;
 }
 
