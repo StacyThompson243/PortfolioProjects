@@ -1,10 +1,21 @@
 <template>
   <div class="carousel">
+    <div id="titleDiv">
+      <h1>Critter Cabin</h1>
+    </div>
+    <div id="bottomLine"></div>
     <div :key="petSrc.id">
-      <img :src="petSrc.petImage" alt="" />
-      <div id="petnames">
-      {{ petSrc.petName }}
-      {{petSrc.petDescription}}
+      <div class="card">
+        <img :src="petSrc.petImage" alt="" />
+        <div id="petInfo">
+          <div>
+            <h2 id="name">{{ petSrc.petName }}</h2>
+            <p id="description">{{ petSrc.description }}</p>
+          </div>
+          <!-- <router-link > -->
+          <button class="btn">{{ petSrc.petName }}'s page</button>
+          <!-- </router-link> -->
+        </div>
       </div>
     </div>
   </div>
@@ -23,6 +34,9 @@ export default {
     let self = this;
     PetService.getAdoptablePets().then((response) => {
       this.pets = response.data;
+
+      self.petSrc = self.pets[Math.floor(Math.random() * self.pets.length)];
+
       setInterval(function () {
         self.petSrc = self.pets[Math.floor(Math.random() * self.pets.length)];
       }, 5000);
@@ -31,32 +45,70 @@ export default {
 };
 </script>
 <style scoped>
-/* .carousel,
-img {
-  width: 500px;
-  height: 360px;
-} */
-body,
-html {
-  background: #9b9;
+h1 {
+  margin: 102px 0 10px 0;
+  color: rgb(245, 245, 245);
+  padding: 10px;
 }
-.carousel,
+
+#bottomLine {
+  margin-bottom: 30px;
+}
+
+#titleDiv {
+  margin: auto;
+  backdrop-filter: blur(7px);
+  width: 250px;
+  border-radius: 7px;
+}
+
+.card {
+  display: flex;
+  height: 475px;
+  justify-content: center;
+}
+
 img {
-  max-width: 100%;
-  max-height: auto;
-  position: relative;
+  /* box-shadow: 2px 4px 4px rgb(204 204 204); */
+  height: 475px;
+  border-radius: 8px 0 0 8px;
+}
+
+/* div #petInfo {
+  text-align: center;
   vertical-align: middle;
-  left: 50%;
-  transform: translate(-50%);
-  height: 400px;
-  width: auto;
-  object-fit:cover;
+  margin-top: 20px;
+  background-color: blueviolet;
+} */
+
+#petInfo {
+  /* vertical-align: middle; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgb(253, 253, 253);
+  border-radius: 0 8px 8px 0;
+  width: 350px;
+  padding: 10px;
+  /* box-shadow: 2px 4px 4px rgb(204 204 204); */
 }
-img {
-    border: 5px solid blue;
+
+h2 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0f4f6a;
 }
-div#petnames{
-text-align: center;
-vertical-align: middle;
+
+.btn {
+  background-color: #20a7e1;
+  color: rgb(245, 245, 245);
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: #1a92c5;
+  transition: 0.3s;
+  cursor: pointer;
 }
 </style>

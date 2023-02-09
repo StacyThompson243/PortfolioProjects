@@ -1,78 +1,84 @@
 <template>
   <div class="page">
-<div id="titleDiv">
-    <h1>Adoption Form</h1>
+    <div id="titleDiv">
+      <h1>Adoption Form</h1>
+    </div>
+    <div id="bottomLine"></div>
+    <form action="form" v-on:submit.prevent="saveAdoptionRequest">
+      <div class="form">
+        <div class="row">
+          <div>
+            <label for="full-name">Full Name: </label>
+            <input
+              v-model="adopter.adopterName"
+              name="full-name"
+              type="text"
+              required
+            />
+          </div>
+          <div>
+            <label for="email">Email: </label>
+            <input v-model="adopter.email" name="email" type="email" required />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="phoneNumber">Phone Number: </label>
+            <input
+              v-model="adopter.phoneNumber"
+              name="phoneNumber"
+              type="text"
+              maxlength="10"
+              minlength="10"
+              required
+            />
+          </div>
+          <div>
+            <label for="city">City: </label>
+            <input v-model="adopter.city" name="city" type="text" />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="state">State: </label>
+            <input
+              v-model="adopter.state"
+              name="state"
+              type="text"
+              maxlength="2"
+              minlength="2"
+            />
+          </div>
+          <div>
+            <label for="zipcode">Zipcode: </label>
+            <input v-model="adopter.zipcode" name="zipcode" type="text" />
+          </div>
+        </div>
 
-</div>
-<form action="form" v-on:submit.prevent="saveAdoptionRequest">
-<div class="container">
+        <div id="petsQuestion">
+          <label for="anyPets">Do you currently have any pets? </label>
+          <input v-model="adopter.anyPets" name="anyPets" type="checkbox" />
+        </div>
 
-<div class="adopterNameDiv">
-        <label for="full-name">Full Name: </label>
-        <input 
-        v-model="adopter.adopterName" 
-        id="full-name" name="full-name" type="text" 
-        required/></div>
-
- <div class="emailDiv">
-          <label for="email">Email: </label>
-          <input
-            v-model="adopter.email"
-            id="email" name="email" type="email"
-            required/></div>
-
- <div class="phoneNumberDiv">
-          <label for="phoneNumber">Phone Number (1234567890): </label>
-          <input
-            v-model="adopter.phoneNumber"
-            id="phoneNumber" name="phoneNumber" type= "text" max=10 min=10
-            required/></div>
-
-         <div class="cityDiv">
-          <label for="city">City: </label>
-          <input
-            v-model="adopter.city"
-            id="city" name="city" type= "text"
-            /></div>
-
-        <div class="stateDiv">
-          <label for="state">State (abbreviation): </label>
-          <input
-            v-model="adopter.state"
-            id="state" name="state" type= "text"
-            /></div>
-
-        <div class="zipcodeDiv">
-          <label for="zipcode">Zipcode: </label>
-          <input
-            v-model="adopter.zipcode"
-            id="zipcode" name="zipcode" type= "text"
-            /></div>
-
-        <div class="anyPetsDiv">
-          <label for="anyPets">Do you currently have any pets? (check if yes) </label>
-          <input
-            v-model="adopter.anyPets"
-            id="anyPets" name="anyPets" type= "checkbox"
-            /></div>
-
-        <div class="numberOfPetsDiv">
+        <div id="petsQuestion">
           <label for="numberOfPets"> If so, how many? </label>
           <input
             v-model="adopter.numberOfPets"
-            id="numberOfPets" name="numberOfPets" type= "number"
-            /></div>
+            name="numberOfPets"
+            type="number"
+          />
+        </div>
 
-</div>
-<button class="btn" type="submit">Submit</button>
-</form>
+        <button class="btn" type="submit">Submit</button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
 import AdoptionService from "../services/AdoptionService";
 export default {
-data() {
+  data() {
     return {
       adopter: {
         adopterName: "",
@@ -88,17 +94,20 @@ data() {
     };
   },
   methods: {
-      saveAdoptionRequest(){
-          console.log(this.$route.params.petId);
-      AdoptionService.addAdoptionRequest(this.$route.params.petId, this.adopter).then((response) => {
+    saveAdoptionRequest() {
+      console.log(this.$route.params.petId);
+      AdoptionService.addAdoptionRequest(
+        this.$route.params.petId,
+        this.adopter
+      ).then((response) => {
         if (response.status === 201) {
           alert("Thank you for applying to adopt this critter!");
-        //  back to browse pets
+          //  back to browse pets
           this.$router.push("/pets");
         }
       });
       this.resetForm();
-      },
+    },
     resetForm() {
       this.adopter = {
         fullName: "",
@@ -111,8 +120,8 @@ data() {
         numberOfPets: 0,
       };
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -123,62 +132,56 @@ h1 {
 
 #titleDiv {
   margin: auto;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(7px);
   width: 350px;
   border-radius: 7px;
 }
 
 .page {
-  background-image: url(../assets/volunteer.jpg);
+  background-image: url(../assets/applyToAdopt.jpg);
 }
 
 .form {
   backdrop-filter: blur(1px);
+  /* width: 500px; */
 }
 
-.container, div {
+form div {
   margin-bottom: 4px;
 }
 
-/* .fullNameDiv {
+.row {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
-.fullNameDiv div {
+.row div {
   display: flex;
   flex-direction: column;
 }
 
-.emailDiv {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 4px;
-}
-
-.emailDiv label {
-  margin-top: 4px;
-} */
-
-.checkBoxDiv {
+#petsQuestion {
   display: flex;
   justify-content: space-between;
-  padding: 4px 0;
+  align-items: center;
 }
 
-/* .bottomContainer div:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.5);
+input[type="number"] {
+  padding: 14px 10px;
+  height: 22px;
+  width: 50px;
+  border: 1px solid rgb(182, 182, 182);
+  border-radius: 4px;
 }
 
-.bottomContainer div:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.2);
-} */
-
-.checkBoxDiv label {
-  width: 95%;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .btn {
-  width: 10%;
+  width: 100%;
 }
 </style>

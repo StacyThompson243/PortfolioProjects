@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <div class="blurredImg"></div>
     <h1>Volunteer Applications</h1>
     <div id="bottomLine"></div>
     <form action="">
@@ -221,14 +222,9 @@ export default {
 </script>
 
 <style scoped>
-.page {
-  background: rgb(223, 251, 240);
-  background: linear-gradient(
-    90deg,
-    rgb(220, 251, 240) 0%,
-    rgba(227, 244, 251, 1) 100%
-  );
-  /* background-image: url("https://images.pexels.com/photos/5326905/pexels-photo-5326905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+.blurredImg {
+  background-image: url(../assets/volunteerApplications.jpg);
+  filter: blur(3px);
 }
 
 h1 {
@@ -245,7 +241,6 @@ table {
   margin-top: 30px;
   border-collapse: collapse;
   background-color: white;
-  box-shadow: 2px 4px 4px rgb(204, 204, 204);
 }
 
 td,

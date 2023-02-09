@@ -1,8 +1,10 @@
 <template>
   <div class="page">
-    <h1>Directory</h1>
+    <div class="blurredImg"></div>
+    <div id="titleDiv">
+      <h1>Directory</h1>
+    </div>
     <div id="bottomLine"></div>
-
     <form action="">
       <table>
         <!-- <div class="filters">
@@ -22,7 +24,6 @@
             <th>Role</th>
           </tr>
         </thead>
-
         <tbody>
           <tr>
             <td>
@@ -90,11 +91,9 @@
                 <option value="ROLE_ADMIN">Admin</option>
               </select>
             </td>
-
             <td></td>
           </tr>
         </tbody>
-
         <tbody id="infoTable">
           <tr v-for="(volunteer, key) in filterVolunteers" v-bind:key="key">
             <td>{{ volunteer.applicationId }}</td>
@@ -112,7 +111,6 @@
             <!-- <td>{{volunteer.role}}</td> -->
             <td v-if="volunteer.role == 'ROLE_USER'">Volunteer</td>
             <td v-if="volunteer.role == 'ROLE_ADMIN'">Admin</td>
-
             <!-- <router-link
             v-bind:to="{
               name: 'PromoteVolunteer',
@@ -128,21 +126,15 @@
               promote to Admin
             </td></router-link
           > -->
-
             <td
               v-if="
                 volunteer.role == 'ROLE_USER' &&
                 $store.state.user.role === 'ROLE_ADMIN'
               "
             >
-              <router-link
-                v-bind:to="{
-                  name: 'PromoteVolunteer',
-                  params: { applicationId: volunteer.applicationId },
-                }"
-              >
-                <button class="btn">Promote</button>
-              </router-link>
+              <button class="btn" v-on:click="updateRole(volunteer)">
+                Promote
+              </button>
             </td>
           </tr>
         </tbody>
@@ -150,10 +142,8 @@
     </form>
   </div>
 </template>
-
 <script>
 import VolunteerService from "../services/VolunteerService.js";
-
 export default {
   name: "volunteer-directory",
   // props: ['volunteer'],
@@ -203,7 +193,6 @@ export default {
           );
         });
       }
-
       // if (this.filters.volunteerLastName != "") {
       //   arr = arr.filter((eachVolunteer) => {
       //     return eachVolunteer.volunteerLastName
@@ -228,36 +217,30 @@ export default {
       if (this.filters.over18 != "Show All") {
         arr = arr.filter((eachVolunteer) => {
           let booleanValue = this.filters.over18 == "Yes" ? true : false;
-
           return eachVolunteer.over18 === booleanValue;
         });
       }
-
       if (this.filters.veterinary != "Show All") {
         arr = arr.filter((eachVolunteer) => {
           let booleanValue = this.filters.veterinary == "Yes" ? true : false;
-
           return eachVolunteer.veterinary === booleanValue;
         });
       }
       if (this.filters.cleaning != "Show All") {
         arr = arr.filter((eachVolunteer) => {
           let booleanValue = this.filters.cleaning == "Yes" ? true : false;
-
           return eachVolunteer.cleaning === booleanValue;
         });
       }
       if (this.filters.dataEntry != "Show All") {
         arr = arr.filter((eachVolunteer) => {
           let booleanValue = this.filters.dataEntry == "Yes" ? true : false;
-
           return eachVolunteer.dataEntry === booleanValue;
         });
       }
       if (this.filters.photography != "Show All") {
         arr = arr.filter((eachVolunteer) => {
           let booleanValue = this.filters.photography == "Yes" ? true : false;
-
           return eachVolunteer.photography === booleanValue;
         });
       }
@@ -271,9 +254,26 @@ export default {
       return arr;
     },
   },
+  methods: {
+    updateRole(volunteer) {
+      if (confirm("Click OK to confirm role change") == true) {
+        VolunteerService.promoteToAdmin(
+          volunteer.applicationId,
+          volunteer
+        ).then((response) => {
+          if (response.status === 200) {
+            alert("Volunteer Role has been updated");
+            this.$router.push("/volunteer/directory");
+            //  this.volunteerList = this.volunteerList.filter((eachVolunteer) => {
+            //    return eachVolunteer.status === "Pending";
+            // });
+          }
+        });
+      }
+    },
+  },
 };
 </script>
-
 <style scoped>
 .page {
   background: rgb(223, 251, 240);
@@ -284,102 +284,96 @@ export default {
   );
   /* background-image: url("https://images.pexels.com/photos/5326905/pexels-photo-5326905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
 }
-
+.blurredImg {
+  background-image: url(../assets/volunteerDirectory.jpg);
+  filter: blur(3px);
+}
 h1 {
   margin-top: 92px;
+  color: rgb(245, 245, 245);
+}
+
+#titleDiv {
+  margin: auto;
+  backdrop-filter: blur(7px);
+  width: 410px;
+  border-radius: 7px;
 }
 
 #bottomLine {
   border-bottom: 2px solid #7acaed;
 }
-
 table {
   width: 85%;
   margin: auto;
   margin-top: 30px;
   border-collapse: collapse;
   background-color: white;
-  box-shadow: 2px 4px 4px rgb(204, 204, 204);
+  /* box-shadow: 2px 4px 4px rgb(204, 204, 204); */
 }
-
 td,
 th {
   height: 45px;
   /* padding: 16px 0; */
 }
-
 table,
 tr,
 td,
 th {
   border: none;
 }
-
 /* 5 */
 thead th:nth-child(1) {
   width: 5%;
 }
-
 /* 20 */
 thead th:nth-child(2) {
   width: 15%;
 }
-
 /* 39 */
 thead th:nth-child(3) {
   width: 19%;
 }
-
 /* 46 */
 thead th:nth-child(4) {
   width: 7%;
 }
-
 /* 56 */
 thead th:nth-child(5) {
   width: 10%;
 }
-
 /* 66 */
 thead th:nth-child(6) {
   width: 10%;
 }
-
 /* 75 */
 thead th:nth-child(7) {
   width: 9%;
 }
-
 /* 86 */
 thead th:nth-child(8) {
   width: 11%;
 }
-
 /* 93 */
 thead th:nth-child(9) {
   width: 7%;
 }
-
 /* 100 */
 thead th:nth-child(10) {
   width: 7%;
 }
-
 tr td input[type="text"],
 tr td select {
   width: 98%;
   margin: 1%;
 }
-
 #infoTable td {
   padding-left: 5px;
 }
-
 #infoTable td:nth-last-child(2),
 #infoTable td:last-child {
   padding-left: 0px;
 }
-
 .btn {
   width: 94%;
   padding: 8px;
@@ -387,13 +381,11 @@ tr td select {
   background-color: #20a7e1;
   color: rgb(245, 245, 245);
 }
-
 .btn:hover {
   background-color: #1a92c5;
   transition: 0.3s;
   cursor: pointer;
 }
-
 tr:nth-child(even) {
   background: #c5e8f7;
 }

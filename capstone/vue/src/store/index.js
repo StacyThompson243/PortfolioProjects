@@ -22,7 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     activePet: {},
     activeVolunteer: {},
-    primaryImage: {}, // added this
+    activeImage: {}, // added this
     pets: [],
     petImages: [], // added this
     volunteers: [],
@@ -73,8 +73,8 @@ export default new Vuex.Store({
       state.activeVolunteer = applicationId;
     },
     // added this
-    SET_PRIMARY_IMAGE(state, imageId){
-      state.primaryImage = imageId;
+    SET_ACTIVE_IMAGE(state, imageId){
+      state.activeImage = imageId;
     },
     
   }
