@@ -1,75 +1,74 @@
 <template>
-  <div class="page" >
-    <form id="updatePassword" class="form-register" @submit.prevent="updatePassword">
-        <h1>Welcome, {{user.username}}!</h1>
-        <div id="bottomLine"></div> 
+  <div class="page">
+    <form
+      id="updatePassword"
+      class="form-register"
+      @submit.prevent="updatePassword"
+    >
+      <h1>Welcome, {{ user.username }}!</h1>
+      <div id="bottomLine"></div>
 
-        <div class="form">
-        <h3>Please update your password:</h3>
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
+      <div id="invalid" role="alert" v-if="registrationErrors">
+        <p>{{ registrationErrorMsg }}</p>
       </div>
 
-<div>    </div>
+      <div class="form">
+        <h4>Please update your password:</h4>
 
-      <label for="password" class="sr-only">New Password: </label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
+        <label for="password" class="sr-only">New Password: </label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          v-model="user.password"
+          required
+        />
 
-      <div></div>
-      <label for="password2" class="sr-only">Confirm Password: </label><input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
+        <label for="password2" class="sr-only">Confirm Password: </label
+        ><input
+          type="password"
+          id="confirmPassword"
+          class="form-control"
+          v-model="user.confirmPassword"
+          required
+        />
 
-      <div></div>
-      <button class="btn" type="submit">
-        Update Account
-      </button>
+        <div></div>
+        <button class="btn" type="submit">Update Account</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
-import authService from '../services/AuthService';
+import authService from "../services/AuthService";
 
 export default {
-  name: 'login-first-time',
+  name: "login-first-time",
   data() {
     return {
       user: {
         username: this.$store.state.user.username,
-        password: '',
-        confirmPassword: '',
+        password: "",
+        confirmPassword: "",
       },
       registrationErrors: false,
-      registrationErrorMsg: 'There were problems updating your password.',
+      registrationErrorMsg: "There were problems updating your password.",
     };
   },
   methods: {
     updatePassword() {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
-        this.registrationErrorMsg = 'Password & Confirm Password do not match.';
+        this.registrationErrorMsg = "Password & Confirm Password do not match.";
       } else {
         authService
           .updatePassword(this.user)
           .then((response) => {
             if (response.status == 200) {
-                alert("Password was successfully changed.")
+              alert("Password was successfully changed.");
               this.$router.push({
-                path: '/',
+                path: "/",
               });
             }
           })
@@ -77,14 +76,14 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              this.registrationErrorMsg = "Bad Request: Validation Errors";
             }
           });
       }
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = 'There were problems updating your password.';
+      this.registrationErrorMsg = "There were problems updating your password.";
     },
   },
 };
@@ -96,14 +95,24 @@ export default {
 }
 
 h1 {
-  /* text-align:initial; */
-  /* margin-left: 10vw; */
   margin-top: 92px;
 }
 
+#invalid {
+  margin: auto;
+  width: 100%;
+  background-color: rgb(241, 132, 114, 0.9);
+  border-radius: 5px;
+}
+
+#invalid p {
+  text-align: center;
+  font-weight: 800;
+  padding: 8px 10px;
+}
+
 .form {
-  /* margin-left: 5vw; */
-  display: flex;  
+  display: flex;
   flex-direction: column;
   width: 400px;
 }
@@ -111,6 +120,10 @@ h1 {
 #updatePassword {
   width: 400px;
   margin-left: 10vw;
+}
+
+h4 {
+  margin-bottom: 10px;
 }
 
 input[type="password"] {
@@ -127,8 +140,7 @@ a {
 }
 
 a:hover {
-  color: rgb(123,45,212);
+  color: rgb(123, 45, 212);
   transition: 0.2s;
 }
-
 </style>

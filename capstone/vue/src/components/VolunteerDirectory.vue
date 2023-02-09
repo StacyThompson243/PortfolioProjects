@@ -1,6 +1,9 @@
 <template>
   <div class="page">
-    <h1>Directory</h1>
+    <div class="blurredImg"></div>
+    <div id="titleDiv">
+      <h1>Directory</h1>
+    </div>
     <div id="bottomLine"></div>
 
     <form action="">
@@ -275,18 +278,22 @@ export default {
 </script>
 
 <style scoped>
-.page {
-  background: rgb(223, 251, 240);
-  background: linear-gradient(
-    90deg,
-    rgb(220, 251, 240) 0%,
-    rgba(227, 244, 251, 1) 100%
-  );
-  /* background-image: url("https://images.pexels.com/photos/5326905/pexels-photo-5326905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+.blurredImg {
+  background-image: url(../assets/volunteerDirectory.jpg);
+  filter: blur(3px);
+}
+
+#titleDiv {
+  margin: auto;
+  backdrop-filter: blur(7px);
+  width: 200px;
+  border-radius: 7px;
 }
 
 h1 {
-  margin-top: 92px;
+  margin: 102px 0 10px 0;
+  padding: 10px;
+  color: rgb(250, 250, 250);
 }
 
 #bottomLine {
@@ -299,7 +306,6 @@ table {
   margin-top: 30px;
   border-collapse: collapse;
   background-color: white;
-  box-shadow: 2px 4px 4px rgb(204, 204, 204);
 }
 
 td,

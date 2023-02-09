@@ -12,8 +12,9 @@
             <h2 id="name">{{ petSrc.petName }}</h2>
             <p id="description">{{ petSrc.description }}</p>
           </div>
-
+          <!-- <router-link > -->
           <button class="btn">{{ petSrc.petName }}'s page</button>
+          <!-- </router-link> -->
         </div>
       </div>
     </div>
