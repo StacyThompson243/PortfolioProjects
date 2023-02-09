@@ -3,12 +3,12 @@
     <h1>{{ pet.petName }}</h1>
     <div id="bottomLine"></div>
     <div id="wrapper">
-      <!-- <img :src="pet.petImage" /> -->
+      <img :src="pet.petImage" />
 
-      <div v-for="(image, key) in petImages" v-bind:key='key' class="images">
+      <div v-for="(image, key) in petImages" v-bind:key="key" class="images">
         <img :src="image.petImage" />"
       </div>
-      
+
       <div class="card">
         <div>
           <div class="horizontalAlign">
@@ -30,8 +30,9 @@
           <p id="description">{{ pet.description }}</p>
         </div>
         <div class="buttonContainer">
-          <router-link v-bind:to="{name: 'adoptionForm'}"> 
-          <button class="btn">Apply to Adopt</button></router-link>
+          <router-link v-bind:to="{ name: 'adoptionForm' }">
+            <button class="btn">Apply to Adopt</button></router-link
+          >
           <router-link v-bind:to="{ name: 'pets' }"
             ><button class="btn">Browse Pets</button></router-link
           >
@@ -47,13 +48,13 @@
 </template>
 
 <script>
-import PetImageService from "../services/PetImageService.js"
+import PetImageService from "../services/PetImageService.js";
 export default {
   props: ["petId"],
-  data(){
-    return{
-    petImages: []
-    }
+  data() {
+    return {
+      petImages: [],
+    };
   },
   computed: {
     pet() {
@@ -63,13 +64,12 @@ export default {
   created() {
     const activePetId = this.$route.params.petId;
     this.$store.commit("SET_ACTIVE_PET", activePetId);
-      
-      PetImageService.getAllPetImages(activePetId).then((response) => {
-      this.petImages = response.data;
-      this.$store.commit("SET_PET_IMAGES", this.petImages)
-  })
-  }
 
+    PetImageService.getAllPetImages(activePetId).then((response) => {
+      this.petImages = response.data;
+      this.$store.commit("SET_PET_IMAGES", this.petImages);
+    });
+  },
 };
 </script>
 
@@ -123,7 +123,7 @@ img {
   box-shadow: 2px 4px 4px rgb(204, 204, 204);
 }
 
-.images{
+.images {
   height: 100px;
 }
 

@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <div class="carousel">
-      <pet-carousel />
-      <!-- <img src="" alt=""> -->
-    </div>
-    <div class="petDescription">Pet description</div>
+  <div class="page">
+    <pet-carousel />
   </div>
 </template>
 
@@ -20,9 +16,12 @@ export default {
 </script>
 
 <style scoped>
-.petDescription {
-  width: 500px;
-  height: 250px;
-  background-color: brown;
+.page {
+  background: rgb(223, 251, 240);
+  background: linear-gradient(
+    90deg,
+    rgb(220, 251, 240) 0%,
+    rgba(227, 244, 251, 1) 100%
+  );
 }
 </style>

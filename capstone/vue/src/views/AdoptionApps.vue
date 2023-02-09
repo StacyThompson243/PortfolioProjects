@@ -1,74 +1,75 @@
 <template>
-  <div class="background">
-
-<h1>Adoption Applications</h1>
+  <div class="page">
+    <h1>Adoption Applications</h1>
     <div id="bottomLine"></div>
     <form action="">
-<table class="adoption-table">
-<thead>
-    <tr>
-        <th>App ID</th>
-        <!-- <th>Pet ID</th> -->
-        <th>Adopter Full Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zipcode</th>
-        <th>Any Pets?</th>
-        <th># of Pets</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-</thead>
+      <table>
+        <thead>
+          <tr>
+            <th>App ID</th>
+            <!-- <th>Pet ID</th> -->
+            <th>Adopter Full Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Any Pets?</th>
+            <th># of Pets</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-<tbody>
-    <tr>
-        <td><input type="text" v-model="filters.applicationID"></td>
-        <!-- <td><input type="text" v-model="filters.petID"></td> -->
-        <td><input type="text" v-model="filters.adopterFullName"></td>
-        <td><input type="text" v-model="filters.email"></td>
-        <td><input type="text" v-model="filters.phoneNumber"></td>
-        <td><input type="text" v-model="filters.city"></td>
-        <td><input type="text" v-model="filters.state"></td>
-        <td><input type="text" v-model="filters.zipcode"></td>
-        <td>
-        <select v-model="filters.anyPets">
-        <option value="Show All" selected="true">Show All</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-        </select></td>
-        <td><input type="text" v-model="filters.numberOfPets"></td>
-        <td>
+        <tbody>
+          <tr>
+            <td><input type="text" v-model="filters.applicationID" /></td>
+            <!-- <td><input type="text" v-model="filters.petID"></td> -->
+            <td><input type="text" v-model="filters.adopterFullName" /></td>
+            <td><input type="text" v-model="filters.email" /></td>
+            <td><input type="text" v-model="filters.phoneNumber" /></td>
+            <td><input type="text" v-model="filters.city" /></td>
+            <td><input type="text" v-model="filters.state" /></td>
+            <td><input type="text" v-model="filters.zipcode" /></td>
+            <td>
+              <select v-model="filters.anyPets">
+                <option value="Show All" selected="true">Show All</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </td>
+            <td><input type="text" v-model="filters.numberOfPets" /></td>
+            <td>
               <!-- <select v-model="adopter.status" name="dropdown-select">
                 <option value="Pending">Pending</option>
                 <option value="Approved">Approve</option>
                 <option value="Denied">Deny</option>
               </select>
             </td> -->
+            </td>
+
             <td>
-              <button v-on:click.prevent="updateStatus(adopter)">
+              <button class="btn" v-on:click.prevent="updateStatus(adopter)">
                 Submit
               </button>
-               </td>
-    </tr>
-</tbody>
+            </td>
+          </tr>
+        </tbody>
 
-<tbody>
-    <tr v-for="(adopter, key) in adoptionList" v-bind:key="key">
-    <td>{{adopter.adopterId}}</td>
-    <td>{{adopter.email}}</td>
-    <td>{{adopter.phoneNumber}}</td>
-    <td>{{adopter.city}}</td>
-    <td>{{adopter.state}}</td>
-    <td>{{adopter.zipcode}}</td>
-    <td>{{adopter.anyPets}}</td>
-    <td>{{adopter.numberOfPets}}</td>
-    <td>{{adopter.approvalStatus}}</td>
-    </tr>
-</tbody>
-
-</table>
+        <tbody id="infoTable">
+          <tr v-for="(adopter, key) in adoptionList" v-bind:key="key">
+            <td>{{ adopter.adopterId }}</td>
+            <td>{{ adopter.email }}</td>
+            <td>{{ adopter.phoneNumber }}</td>
+            <td>{{ adopter.city }}</td>
+            <td>{{ adopter.state }}</td>
+            <td>{{ adopter.zipcode }}</td>
+            <td>{{ adopter.anyPets }}</td>
+            <td>{{ adopter.numberOfPets }}</td>
+            <td>{{ adopter.approvalStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
     </form>
   </div>
 </template>
@@ -76,46 +77,45 @@
 <script>
 import AdoptionService from "../services/AdoptionService";
 export default {
-    name: "adoptionApplications",
-    data(){
-        return {
-            adoptionList: [],
-            filters: {
-                applicationID: "",
-                adopterFullName: "",
-                email: "",
-                phoneNumber: "",
-                city: "",
-                state: "",
-                zipcode: "",
-                anyPets: "",
-                numberOfPets: "",
-                status: "",
-            }
-        }
-    },
-    computed: {
-        filterApplications(){
-            let arr = this.adoptionList;
-            if (this.filters.applicationID != "") {
-                arr = arr.filter((eachAdoption) => {
-                    return (eachAdoption.applicationId == parseInt(this.filters.applicationID)
+  name: "adoptionApplications",
+  data() {
+    return {
+      adoptionList: [],
+      filters: {
+        applicationID: "",
+        adopterFullName: "",
+        email: "",
+        phoneNumber: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        anyPets: "",
+        numberOfPets: "",
+        status: "",
+      },
+    };
+  },
+  computed: {
+    filterApplications() {
+      let arr = this.adoptionList;
+      if (this.filters.applicationID != "") {
+        arr = arr.filter((eachAdoption) => {
+          return (
+            eachAdoption.applicationId == parseInt(this.filters.applicationID)
           );
         });
       }
-    //   if (this.pet.petId != "") {
-    //             arr = arr.filter((eachAdoption) => {
-    //                 return (eachAdoption.petId == parseInt(this.pet.petId)
-    //       );
-    //     });
-    //   }
-        if (this.filters.adopterFullName != "") {
+      //   if (this.pet.petId != "") {
+      //             arr = arr.filter((eachAdoption) => {
+      //                 return (eachAdoption.petId == parseInt(this.pet.petId)
+      //       );
+      //     });
+      //   }
+      if (this.filters.adopterFullName != "") {
         arr = arr.filter((eachAdoption) => {
-          return (
-            eachAdoption.adopterFullName
-              .toLowerCase()
-              .includes(this.filters.adopterFullName.toLowerCase())
-          );
+          return eachAdoption.adopterFullName
+            .toLowerCase()
+            .includes(this.filters.adopterFullName.toLowerCase());
         });
       }
       if (this.filters.email != "") {
@@ -125,7 +125,7 @@ export default {
             .includes(this.filters.email.toLowerCase());
         });
       }
-        if (this.filters.phoneNumber != "") {
+      if (this.filters.phoneNumber != "") {
         arr = arr.filter((eachAdoption) => {
           return eachAdoption.phoneNumber
             .toLowerCase()
@@ -155,38 +155,166 @@ export default {
       }
       if (this.filters.anyPets != "") {
         arr = arr.filter((eachAdoption) => {
-            let booleanValue = this.filters.anyPets == "Yes" ? true : false;
+          let booleanValue = this.filters.anyPets == "Yes" ? true : false;
 
           return eachAdoption.anyPets === booleanValue;
         });
       }
       if (this.filters.numberOfPets != "") {
         arr = arr.filter((eachAdoption) => {
-          return eachAdoption.numberOfPets
-            .includes(this.filters.numberOfPets);
+          return eachAdoption.numberOfPets.includes(this.filters.numberOfPets);
         });
       }
 
-            return arr;
-        }
+      return arr;
     },
-    created(){
-        AdoptionService.viewAdoptionApplications().then((response) => {
-    if (response.status === 200) {
-        console.log("works")
+  },
+  created() {
+    AdoptionService.viewAdoptionApplications().then((response) => {
+      if (response.status === 200) {
+        console.log("works");
         this.adoptionList = response.data;
-    }
-})
-    },
-    // methods: (
-    //     updateStatus(){
+      }
+    });
+  },
+  // methods: (
+  //     updateStatus(){
 
-    //     }
-    // ),
-
-}
+  //     }
+  // ),
+};
 </script>
 
-<style>
+<style scoped>
+.page {
+  background: rgb(223, 251, 240);
+  background: linear-gradient(
+    90deg,
+    rgb(220, 251, 240) 0%,
+    rgba(227, 244, 251, 1) 100%
+  );
+  /* background-image: url("https://images.pexels.com/photos/5326905/pexels-photo-5326905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+}
 
+h1 {
+  margin-top: 92px;
+}
+
+#bottomLine {
+  border-bottom: 2px solid #7acaed;
+}
+
+table {
+  width: 85%;
+  margin: auto;
+  margin-top: 30px;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 2px 4px 4px rgb(204, 204, 204);
+}
+
+td,
+th {
+  height: 45px;
+}
+
+table,
+tr,
+td,
+th {
+  border: none;
+}
+
+/* 5 */
+thead th:nth-child(1) {
+  width: 5%;
+}
+
+/* 20 */
+thead th:nth-child(2) {
+  width: 15%;
+}
+
+/* 39 */
+thead th:nth-child(3) {
+  width: 19%;
+}
+
+/* 50 */
+thead th:nth-child(4) {
+  width: 11%;
+}
+
+/* 55 */
+thead th:nth-child(5) {
+  width: 8%;
+  background: blueviolet;
+}
+
+/* 65 */
+thead th:nth-child(6) {
+  width: 7%;
+}
+
+/* 74 */
+thead th:nth-child(7) {
+  width: 9%;
+  background-color: blue;
+}
+
+/* 79 */
+thead th:nth-child(8) {
+  width: 5%;
+}
+
+/* 87 */
+thead th:nth-child(9) {
+  width: 8%;
+}
+
+/* 93 */
+thead th:nth-child(10) {
+  width: 6%;
+}
+
+/* 100 */
+thead th:nth-child(11) {
+  width: 7%;
+}
+
+tr td input[type="text"],
+tr td select {
+  width: 98%;
+  margin: 1%;
+}
+
+#infoTable td {
+  padding-left: 5px;
+}
+
+#infoTable td:nth-last-child(2),
+#infoTable td:last-child {
+  padding-left: 0px;
+}
+
+.btn {
+  width: 94%;
+  padding: 8px;
+  margin: 0 3%;
+  background-color: #20a7e1;
+  color: rgb(245, 245, 245);
+}
+
+.btn:hover {
+  background-color: #1a92c5;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background: #c5e8f7;
+}
+tr:nth-child(odd) {
+  background: #fff;
+}
 </style>
