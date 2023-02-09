@@ -56,11 +56,11 @@ export default {
 </script>
 
 <style scoped>
-.page {
-  /* background-color: white; */
-  /* background-image: url(../assets/promoteToAdmin.jpg); */
-  /* filter: blur(2px); */
-}
+/* .page {
+  background-color: white; */
+/* background-image: url(../assets/promoteToAdmin.jpg); */
+/* filter: blur(2px);
+} */
 
 #bottomLine {
   border-bottom: 2px solid #7acaed;
@@ -79,10 +79,10 @@ h1 {
   border-radius: 7px;
 }
 
-.blurredImg {
+/* .blurredImg {
   background-image: url(../assets/promoteToAdmin.jpg);
   filter: blur(2px);
-}
+} */
 
 #buttonContainer {
   display: flex;

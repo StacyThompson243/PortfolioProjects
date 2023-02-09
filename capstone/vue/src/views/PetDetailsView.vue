@@ -10,8 +10,18 @@
            >
             <img :src="image.petImage" />"
           </div> -->
-      <div>
+      <div class="imgContainer">
+        <!-- <i @click="goBack" class="fa-s fa-arrow-left"></i> -->
+        <!-- <font-awesome-icon icon="fa-sharp fa-solid fa-arrow-left" /> -->
         <img :src="currentImage.petImage" />
+        <div class="button-container">
+          <!-- <button id="leftButton" @click="goBack">Left</button> -->
+          <!-- <button id="rightButton" @click="changeCurrentImage">Right</button> -->
+          <div id="arrowBackground">
+            <i @click="goBack" class="fa-solid fa-arrow-left"></i>
+          </div>
+          <i @click="changeCurrentImage" class="fa-solid fa-arrow-right"></i>
+        </div>
         <!-- <button @click="changeCurrentImage">Next</button> -->
       </div>
 
@@ -45,8 +55,11 @@
         </div>
       </div>
     </div>
-    <button @click="goBack">Left</button>
-    <button @click="changeCurrentImage">"Right</button>
+    <!-- <button @click="goBack">Left</button> -->
+
+    <i @click="goBack" class="fa-light fa-arrow-left"></i>
+
+    <!-- <button @click="changeCurrentImage">"Right</button> -->
   </div>
 </template>
 
@@ -114,6 +127,32 @@ export default {
 
 h1 {
   margin-top: 92px;
+}
+
+.imgContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.button-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+
+i {
+  z-index: 2;
+  font-size: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: rgb(245, 245, 245, 0.5);
+}
+
+i:hover {
+  cursor: pointer;
 }
 
 .card {
