@@ -47,7 +47,6 @@
               v-model="filters.volunteerFirstName"
               placeholder="search first name"
             />
-<<<<<<< HEAD
           </td>
           <td>
             <input
@@ -134,113 +133,7 @@
         </tr>
       </tbody>
     </table>
-    <!-- </form> -->
-=======
-          </td> -->
-            <td>
-              <input type="text" v-model="filters.email" />
-            </td>
-            <td>
-              <select v-model="filters.over18">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.veterinary">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.cleaning">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.dataEntry">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.photography">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td>
-              <select v-model="filters.role">
-                <option value>Show All</option>
-                <option value="ROLE_USER">Volunteer</option>
-                <option value="ROLE_ADMIN">Admin</option>
-              </select>
-            </td>
-
-            <td></td>
-          </tr>
-        </tbody>
-
-        <tbody id="infoTable">
-          <tr v-for="(volunteer, key) in filterVolunteers" v-bind:key="key">
-            <td>{{ volunteer.applicationId }}</td>
-            <td>
-              {{ volunteer.volunteerFirstName }}
-              {{ volunteer.volunteerLastName }}
-            </td>
-            <!-- <td>{{ volunteer.volunteerFirstName }}</td> -->
-            <td>{{ volunteer.email }}</td>
-            <td>{{ volunteer.over18 ? "Yes" : "No" }}</td>
-            <td>{{ volunteer.veterinary ? "Yes" : "No" }}</td>
-            <td>{{ volunteer.cleaning ? "Yes" : "No" }}</td>
-            <td>{{ volunteer.dataEntry ? "Yes" : "No" }}</td>
-            <td>{{ volunteer.photography ? "Yes" : "No" }}</td>
-            <!-- <td>{{volunteer.role}}</td> -->
-            <td v-if="volunteer.role == 'ROLE_USER'">Volunteer</td>
-            <td v-if="volunteer.role == 'ROLE_ADMIN'">Admin</td>
-
-            <!-- <router-link
-            v-bind:to="{
-              name: 'PromoteVolunteer',
-              params: { applicationId: volunteer.applicationId },
-            }"
-          >
-            <td
-              v-if="
-                volunteer.role == 'ROLE_USER' &&
-                $store.state.user.role === 'ROLE_ADMIN'
-              "
-            >
-              promote to Admin
-            </td></router-link
-          > -->
-
-            <td
-              v-if="
-                volunteer.role == 'ROLE_USER' &&
-                $store.state.user.role === 'ROLE_ADMIN'
-              "
-            >
-              <router-link
-                v-bind:to="{
-                  name: 'PromoteVolunteer',
-                  params: { applicationId: volunteer.applicationId },
-                }"
-              >
-                <button class="btn">Promote</button>
-              </router-link>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </form>
->>>>>>> main
   </div>
 </template>
 
@@ -255,14 +148,9 @@ export default {
       volunteers: [],
       filters: {
         applicationId: "",
-<<<<<<< HEAD
-        volunteerFirstName: "",
-        volunteerLastName: "",
-=======
         // volunteerFirstName: "",
         // volunteerLastName: "",
         volunteerFullName: "",
->>>>>>> main
         email: "",
         over18: "Show All",
         veterinary: "Show All",
@@ -289,22 +177,6 @@ export default {
           );
         });
       }
-<<<<<<< HEAD
-      if (this.filters.volunteerLastName != "") {
-        arr = arr.filter((eachVolunteer) => {
-          return eachVolunteer.volunteerLastName
-            .toLowerCase()
-            .includes(this.filters.volunteerLastName.toLowerCase());
-        });
-      }
-      if (this.filters.volunteerFirstName != "") {
-        arr = arr.filter((eachVolunteer) => {
-          return eachVolunteer.volunteerFirstName
-            .toLowerCase()
-            .includes(this.filters.volunteerFirstName.toLowerCase());
-        });
-      }
-=======
       if (this.filters.volunteerFullName != "") {
         arr = arr.filter((eachVolunteer) => {
           return (
@@ -332,7 +204,6 @@ export default {
       //       .includes(this.filters.volunteerFirstName.toLowerCase());
       //   });
       // }
->>>>>>> main
       if (this.filters.email != "") {
         arr = arr.filter((eachVolunteer) => {
           return eachVolunteer.email
@@ -345,7 +216,6 @@ export default {
           let booleanValue = this.filters.over18 == "Yes" ? true : false;
 
           return eachVolunteer.over18 === booleanValue;
-<<<<<<< HEAD
         });
       }
 
@@ -356,18 +226,6 @@ export default {
           return eachVolunteer.veterinary === booleanValue;
         });
       }
-=======
-        });
-      }
-
-      if (this.filters.veterinary != "Show All") {
-        arr = arr.filter((eachVolunteer) => {
-          let booleanValue = this.filters.veterinary == "Yes" ? true : false;
-
-          return eachVolunteer.veterinary === booleanValue;
-        });
-      }
->>>>>>> main
       if (this.filters.cleaning != "Show All") {
         arr = arr.filter((eachVolunteer) => {
           let booleanValue = this.filters.cleaning == "Yes" ? true : false;
@@ -398,7 +256,6 @@ export default {
       }
       return arr;
     },
-<<<<<<< HEAD
     methods: {
       reloadPage() {
       window.location.reload();
@@ -440,8 +297,6 @@ export default {
         });
       }
     },
-=======
->>>>>>> main
   },
 };
 </script>
