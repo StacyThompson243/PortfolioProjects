@@ -18,12 +18,15 @@ public class JdbcAdopterDao implements AdopterDao{
 
 
     @Override
-    public Adopter applyToAdopt(Adopter adopter) {
+    public Adopter applyToAdopt(Adopter adopter, int id) {
         String sql = "insert into adopter (adopter_name, email, phone_number, city, state, zipcode, any_pets, number_pets, status) values (?,?,?,?,?,?,?,?,?) returning adopter_id";
 
         Integer adopterId;
 
         adopterId = jdbcTemplate.queryForObject(sql, Integer.class, adopter.getAdopterName(), adopter.getEmail(), adopter.getPhoneNumber(), adopter.getCity(), adopter.getState(), adopter.getZipcode(), adopter.isHasCurrentPets(), adopter.getNumberOfCurrentPets(), adopter.getApprovalStatus());
+
+        sql = "update pets set adopter_id = ? where pet_id =?";
+        jdbcTemplate.update(sql, adopterId, id);
 
         return getAdopterById(adopterId);
     }

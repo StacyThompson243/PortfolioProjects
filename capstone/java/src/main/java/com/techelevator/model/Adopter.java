@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Adopter {
 
     private int adopterId;
@@ -9,7 +11,9 @@ public class Adopter {
     private String city;
     private String state;
     private String zipcode;
+    @JsonProperty("anyPets")
     private boolean hasCurrentPets;
+    @JsonProperty("numberOfPets")
     private int numberOfCurrentPets;
     private String approvalStatus;
 

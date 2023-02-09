@@ -299,7 +299,6 @@ h1 {
   width: 410px;
   border-radius: 7px;
 }
-
 #bottomLine {
   border-bottom: 2px solid #7acaed;
 }
