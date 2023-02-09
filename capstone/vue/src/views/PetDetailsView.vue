@@ -45,8 +45,8 @@
         </div>
       </div>
     </div>
-    <button @click="changeCurrentImage">More Pics</button>
-    <button @click="goBack">Scrollback</button>
+    <button @click="goBack">Left</button>
+    <button @click="changeCurrentImage">"Right</button>
   </div>
 </template>
 
@@ -80,14 +80,14 @@ export default {
   methods: {
     changeCurrentImage() {
       this.counter += 1;
-      if (this.counter == this.petImages.length) {
+      if (this.counter === this.petImages.length) {
         this.counter = 0;
       }
       this.currentImage = this.petImages[this.counter];
     },
     goBack() {
       this.counter -= 1;
-      if (this.counter == 0) {
+      if (this.counter === -1) {
         this.counter = this.petImages.length - 1;
       }
       this.currentImage = this.petImages[this.counter];
@@ -118,7 +118,6 @@ h1 {
 
 .card {
   background-color: rgb(253, 253, 253);
-  /* background-color: rgb(255, 255, 255, 0.5); */
   border-radius: 0 8px 8px 0;
   padding: 10px;
   width: 350px;
@@ -126,6 +125,7 @@ h1 {
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 2px 4px 4px rgb(204, 204, 204);
+  height: 475px;
 }
 
 .horizontalAlign {

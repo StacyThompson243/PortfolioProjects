@@ -1,9 +1,7 @@
 <template>
   <div class="page">
     <div class="blurredImg"></div>
-    <div class="titleDiv">
-      <h1>Volunteer Applications</h1>
-    </div>
+    <h1>Volunteer Applications</h1>
     <div id="bottomLine"></div>
     <form action="">
       <table>
