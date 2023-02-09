@@ -117,9 +117,12 @@ select {
   border-radius: 4px;
 }
 
-option {
-  padding: 0px 10px;
-  height: 34px;
-  /* border-radius: 4px; */
+.blurredImg {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  position: fixed;
+  top: 0px;
+  z-index: -2;
 }
 </style>

@@ -1,6 +1,9 @@
 <template>
   <div class="page">
-    <h1>Directory</h1>
+    <div class="blurredImg"></div>
+    <div id="titleDiv">
+      <h1>Directory</h1>
+    </div>
     <div id="bottomLine"></div>
     <form action="">
       <table>
@@ -129,8 +132,8 @@
                 $store.state.user.role === 'ROLE_ADMIN'
               "
             >
-              <button v-on:click="updateRole(volunteer)">
-                promote to Admin
+              <button class="btn" v-on:click="updateRole(volunteer)">
+                Promote
               </button>
             </td>
           </tr>
@@ -281,8 +284,20 @@ export default {
   );
   /* background-image: url("https://images.pexels.com/photos/5326905/pexels-photo-5326905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
 }
+.blurredImg {
+  background-image: url(../assets/volunteerDirectory.jpg);
+  filter: blur(3px);
+}
 h1 {
   margin-top: 92px;
+  color: rgb(245, 245, 245);
+}
+
+#titleDiv {
+  margin: auto;
+  backdrop-filter: blur(7px);
+  width: 410px;
+  border-radius: 7px;
 }
 #bottomLine {
   border-bottom: 2px solid #7acaed;
@@ -293,7 +308,7 @@ table {
   margin-top: 30px;
   border-collapse: collapse;
   background-color: white;
-  box-shadow: 2px 4px 4px rgb(204, 204, 204);
+  /* box-shadow: 2px 4px 4px rgb(204, 204, 204); */
 }
 td,
 th {

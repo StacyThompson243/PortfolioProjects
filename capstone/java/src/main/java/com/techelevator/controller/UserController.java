@@ -10,21 +10,22 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 
-    @RestController
-    @CrossOrigin
-    public class UserController {
+@RestController
+@CrossOrigin
+public class UserController {
 
-        @Autowired
-        private VolunteerDao volunteerDao;
+    @Autowired
+    private VolunteerDao volunteerDao;
 
-        @Autowired
-        private UserDao userDao;
+    @Autowired
+    private UserDao userDao;
 
-        @PreAuthorize("hasRole('ROLE_ADMIN')")
-        @PutMapping (path = "/directory/{applicationId}")
-        public void promoteToAdmin(@PathVariable int applicationId){
-            userDao.updateRole(applicationId, "ROLE_ADMIN");
-        }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping (path = "directory/{applicationId}")
+    public void promoteToAdmin(@PathVariable int applicationId){
+        userDao.updateRole(applicationId, "ROLE_ADMIN");
+    }
+
 
 
 //
