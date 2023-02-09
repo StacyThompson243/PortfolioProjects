@@ -25,7 +25,9 @@
           <label for="phoneNumber">Phone Number (1234567890): </label>
           <input
             v-model="adopter.phoneNumber"
-            id="phoneNumber" name="phoneNumber" type= "tel" max=10 min=10
+            id="phoneNumber" name="phoneNumber"  type="text"
+              maxlength="10"
+              minlength="10"
             required/></div>
 
          <div class="cityDiv">
@@ -39,7 +41,10 @@
           <label for="state">State (abbreviation): </label>
           <input
             v-model="adopter.state"
-            id="state" name="state" type= "text"
+            id="state" name="state"  type="text"
+              maxlength="2"
+              minlength="2"
+
             /></div>
 
         <div class="zipcodeDiv">
@@ -102,13 +107,14 @@ data() {
       AdoptionService.addAdoptionRequest(this.$route.params.petId, this.adopter).then((response) => {
         if (response.status === 201) {
           alert("Thank you for applying to adopt this critter!");
-          this.pet.adopterId = response.data.adopterId
-          PetService.updatePet(this.pet.petId, this.pet).then((response) => { 
-              if (response.status === 202){
-        //  back to browse pets
-          this.$router.push("/pets");
-          }
-          })
+        this.$router.push("/pets");
+        //   this.pet.adopterId = response.data.adopterId
+        //   PetService.updatePet(this.$route.params.petId, this.pet).then((response) => { 
+        //       if (response.status === 202){
+        // //  back to browse pets
+        //   this.$router.push("/pets");
+        //   }
+        //   })
         }
       });
       this.resetForm();
@@ -123,6 +129,7 @@ data() {
         zipcode: null,
         anyPets: false,
         numberOfPets: 0,
+        approvalStatus: "Pending",
       };
     }
   }

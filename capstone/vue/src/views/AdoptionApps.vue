@@ -18,11 +18,10 @@
         <th>Any Pets?</th>
         <th># of Pets</th>
         <th>Status</th>
-        <th>Action</th>
     </tr>
 </thead>
 
-<tbody>
+<!-- Not doing search as functionality not working <tbody>
     <tr>
         <td><input type="text" v-model="filters.applicationID"></td>
         <td><input type="text" v-model="filters.petID"></td>
@@ -38,7 +37,7 @@
         <option value="Yes">Yes</option>
         <option value="No">No</option>
         </select></td>
-        <td><input type="text" v-model="filters.numberOfPets"></td>
+        <td><input type="number" v-model="filters.numberOfPets"></td>
         <td>
               <select v-model="filters.approvalStatus" name="dropdown-select">
                 <option value="Pending">Pending</option>
@@ -52,7 +51,7 @@
               </button>
                </td>
     </tr>
-</tbody>
+</tbody> -->
 
 <tbody>
     <tr v-for="(adopter, key) in adoptionList" v-bind:key="key">
@@ -65,7 +64,7 @@
     <td>{{adopter.city}}</td>
     <td>{{adopter.state}}</td>
     <td>{{adopter.zipcode}}</td>
-    <td>{{adopter.anyPets}}</td>
+    <td>{{adopter.anyPets ? "Yes" : "No"}}</td>
     <td>{{adopter.numberOfPets}}</td>
     <td>{{adopter.approvalStatus}}</td>
     </tr>
