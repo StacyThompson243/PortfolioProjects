@@ -86,17 +86,14 @@ export default {
 }
 
 h1 {
-  /* text-align:initial; */
-  /* margin-left: 10vw; */
   margin-top: 92px;
 }
 
 #invalid {
   margin: auto;
   width: 80%;
-  /* display: flex; */
-  /* align-items: center; */
-  background-color: red;
+  background-color: rgb(241, 132, 114, 0.9);
+  border-radius: 5px;
 }
 
 #invalid p {
@@ -106,7 +103,6 @@ h1 {
 }
 
 .form {
-  /* margin-left: 5vw; */
   display: flex;
   flex-direction: column;
   width: 400px;

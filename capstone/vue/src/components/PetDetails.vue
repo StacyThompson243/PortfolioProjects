@@ -21,9 +21,13 @@
       </div>
     </router-link>
     <div id="editHolder">
+      <a id="addImages" v-on:click="addImage" v-if="$store.state.token != ''"
+        >Add Images</a
+      >
       <a id="update" v-on:click="setUpEdit" v-if="$store.state.token != ''"
         >Edit</a
       >
+      <!-- <router-link v-bind:to="{name: 'AddPhotosView', params: {petId: pet.petId}}">Add Photos</router-link> -->
     </div>
   </div>
 </template>
@@ -37,6 +41,13 @@ export default {
       this.$store.commit("SET_ACTIVE_PET", this.pet);
       this.$router.push({
         name: "updatePet",
+        params: { petId: this.pet.petId },
+      });
+    },
+    addImage() {
+      this.$store.commit("SET_ACTIVE_PET", this.pet);
+      this.$router.push({
+        name: "AddPhotosView",
         params: { petId: this.pet.petId },
       });
     },
@@ -91,14 +102,16 @@ a {
 
 #editHolder {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 #update {
   text-align: right;
+  margin-right: 10px;
 }
 
-#update:hover {
+#update:hover,
+#addImages:hover {
   cursor: pointer;
 }
 </style>

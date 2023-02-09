@@ -3,12 +3,18 @@
     <h1>{{ pet.petName }}</h1>
     <div id="bottomLine"></div>
     <div id="wrapper">
-      <!-- <img :src="pet.petImage" /> -->
-
-      <div v-for="(image, key) in petImages" v-bind:key='key' class="images">
-        <img :src="image.petImage" />"
+      <!-- 
+          <div
+            v-for="(image, key) in petImages"
+            v-bind:key="key"
+           >
+            <img :src="image.petImage" />"
+          </div> -->
+      <div>
+        <img :src="currentImage.petImage" />
+        <!-- <button @click="changeCurrentImage">Next</button> -->
       </div>
-      
+
       <div class="card">
         <div>
           <div class="horizontalAlign">
@@ -30,31 +36,32 @@
           <p id="description">{{ pet.description }}</p>
         </div>
         <div class="buttonContainer">
-          <router-link v-bind:to="{name: 'adoptionForm'}"> 
-          <button class="btn">Apply to Adopt</button></router-link>
+          <router-link v-bind:to="{ name: 'adoptionForm' }">
+            <button class="btn">Apply to Adopt</button></router-link
+          >
           <router-link v-bind:to="{ name: 'pets' }"
             ><button class="btn">Browse Pets</button></router-link
           >
         </div>
       </div>
-      <!-- <div id="editHolder">
-        <a id="update" v-on:click="setUpEdit" v-if="$store.state.token != ''"
-          >Edit</a
-        >
-      </div> -->
     </div>
+    <button @click="goBack">Left</button>
+    <button @click="changeCurrentImage">"Right</button>
   </div>
 </template>
 
 <script>
-import PetImageService from "../services/PetImageService.js"
+import PetImageService from "../services/PetImageService.js";
 export default {
   props: ["petId"],
-  data(){
-    return{
-    petImages: []
-    }
+  data() {
+    return {
+      petImages: [],
+      counter: 0,
+      currentImage: {},
+    };
   },
+
   computed: {
     pet() {
       return this.$store.getters.pet;
@@ -63,13 +70,29 @@ export default {
   created() {
     const activePetId = this.$route.params.petId;
     this.$store.commit("SET_ACTIVE_PET", activePetId);
-      
-      PetImageService.getAllPetImages(activePetId).then((response) => {
-      this.petImages = response.data;
-      this.$store.commit("SET_PET_IMAGES", this.petImages)
-  })
-  }
 
+    PetImageService.getAllPetImages(activePetId).then((response) => {
+      this.petImages = response.data;
+      this.$store.commit("SET_PET_IMAGES", this.petImages);
+      this.currentImage = Object.assign({}, this.petImages[0]);
+    });
+  },
+  methods: {
+    changeCurrentImage() {
+      this.counter += 1;
+      if (this.counter === this.petImages.length) {
+        this.counter = 0;
+      }
+      this.currentImage = this.petImages[this.counter];
+    },
+    goBack() {
+      this.counter -= 1;
+      if (this.counter === -1) {
+        this.counter = this.petImages.length - 1;
+      }
+      this.currentImage = this.petImages[this.counter];
+    },
+  },
 };
 </script>
 
@@ -95,7 +118,6 @@ h1 {
 
 .card {
   background-color: rgb(253, 253, 253);
-  /* background-color: rgb(255, 255, 255, 0.5); */
   border-radius: 0 8px 8px 0;
   padding: 10px;
   width: 350px;
@@ -103,6 +125,7 @@ h1 {
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 2px 4px 4px rgb(204, 204, 204);
+  height: 475px;
 }
 
 .horizontalAlign {
@@ -122,12 +145,11 @@ img {
   height: 475px;
   box-shadow: 2px 4px 4px rgb(204, 204, 204);
 }
-
-.images{
+.images {
   height: 100px;
 }
 
-p {
+main p {
   margin-top: 4px;
 }
 

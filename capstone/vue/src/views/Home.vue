@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <div class="carousel">
-      <pet-carousel />
-      <!-- <img src="" alt=""> -->
-    </div>
-    <div class="petDescription">Pet description</div>
+  <div class="page">
+    <div class="blurredImg"></div>
+    <pet-carousel />
   </div>
 </template>
 
@@ -13,6 +10,11 @@ import PetCarousel from "../components/PetCarousel.vue";
 
 export default {
   name: "home",
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
   components: {
     PetCarousel,
   },
@@ -20,9 +22,21 @@ export default {
 </script>
 
 <style scoped>
-.petDescription {
-  width: 500px;
-  height: 250px;
-  background-color: brown;
+.blurredImg {
+  background-image: url(../assets/home.jpg);
+  filter: blur(3px);
+}
+
+.page-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: blue; */
+  z-index: 999;
 }
 </style>

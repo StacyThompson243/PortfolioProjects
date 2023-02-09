@@ -46,7 +46,7 @@
               </select>
             </td>
             <td>
-              <button v-on:click.prevent="updateStatus(adopter)">
+              <button class="btn" v-on:click.prevent="updateStatus(adopter)">
                 Submit
               </button>
                </td>
@@ -115,11 +115,9 @@ export default {
       }
         if (this.filters.adopterFullName != "") {
         arr = arr.filter((eachAdoption) => {
-          return (
-            eachAdoption.adopterFullName
-              .toLowerCase()
-              .includes(this.filters.adopterFullName.toLowerCase())
-          );
+          return eachAdoption.adopterFullName
+            .toLowerCase()
+            .includes(this.filters.adopterFullName.toLowerCase());
         });
       }
       if (this.filters.email != "") {
@@ -129,7 +127,7 @@ export default {
             .includes(this.filters.email.toLowerCase());
         });
       }
-        if (this.filters.phoneNumber != "") {
+      if (this.filters.phoneNumber != "") {
         arr = arr.filter((eachAdoption) => {
           return eachAdoption.phoneNumber
             .toLowerCase()
@@ -159,20 +157,18 @@ export default {
       }
       if (this.filters.anyPets != "") {
         arr = arr.filter((eachAdoption) => {
-            let booleanValue = this.filters.anyPets == "Yes" ? true : false;
+          let booleanValue = this.filters.anyPets == "Yes" ? true : false;
 
           return eachAdoption.anyPets === booleanValue;
         });
       }
       if (this.filters.numberOfPets != "") {
         arr = arr.filter((eachAdoption) => {
-          return eachAdoption.numberOfPets
-            .includes(this.filters.numberOfPets);
+          return eachAdoption.numberOfPets.includes(this.filters.numberOfPets);
         });
       }
 
-            return arr;
-        }
+      return arr;
     },
     created(){
         AdoptionService.viewAdoptionApplications().then((response) => {
@@ -196,12 +192,141 @@ export default {
     // methods: (
     //     updateStatus(){
 
-    //     }
-    // ),
-
-}
+  //     }
+  // ),
+};
 </script>
 
-<style>
+<style scoped>
+.blurredImg {
+  background-image: url(../assets/adoptionApplications.jpg);
+  filter: blur(3px);
+}
 
+#titleDiv {
+  margin: auto;
+  backdrop-filter: blur(7px);
+  width: 410px;
+  border-radius: 7px;
+}
+
+h1 {
+  margin: 102px 0 10px 0;
+  padding: 10px;
+  color: rgb(250, 250, 250);
+}
+
+#bottomLine {
+  border-bottom: 2px solid #7acaed;
+}
+
+table {
+  width: 85%;
+  margin: auto;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  height: 45px;
+}
+
+table,
+tr,
+td,
+th {
+  border: none;
+}
+
+/* 5 */
+thead th:nth-child(1) {
+  width: 5%;
+}
+
+/* 20 */
+thead th:nth-child(2) {
+  width: 15%;
+}
+
+/* 39 */
+thead th:nth-child(3) {
+  width: 19%;
+}
+
+/* 50 */
+thead th:nth-child(4) {
+  width: 11%;
+}
+
+/* 55 */
+thead th:nth-child(5) {
+  width: 8%;
+}
+
+/* 65 */
+thead th:nth-child(6) {
+  width: 7%;
+}
+
+/* 74 */
+thead th:nth-child(7) {
+  width: 9%;
+}
+
+/* 79 */
+thead th:nth-child(8) {
+  width: 5%;
+}
+
+/* 87 */
+thead th:nth-child(9) {
+  width: 8%;
+}
+
+/* 93 */
+thead th:nth-child(10) {
+  width: 6%;
+}
+
+/* 100 */
+thead th:nth-child(11) {
+  width: 7%;
+}
+
+tr td input[type="text"],
+tr td select {
+  width: 98%;
+  margin: 1%;
+}
+
+#infoTable td {
+  padding-left: 5px;
+}
+
+#infoTable td:nth-last-child(2),
+#infoTable td:last-child {
+  padding-left: 0px;
+}
+
+.btn {
+  width: 94%;
+  padding: 8px;
+  margin: 0 3%;
+  background-color: #20a7e1;
+  color: rgb(245, 245, 245);
+}
+
+.btn:hover {
+  background-color: #1a92c5;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background: #c5e8f7;
+}
+tr:nth-child(odd) {
+  background: #fff;
+}
 </style>

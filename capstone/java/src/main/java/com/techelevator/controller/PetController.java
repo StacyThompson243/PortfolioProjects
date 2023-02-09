@@ -1,7 +1,9 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.PetDao;
+import com.techelevator.dao.PetImageDao;
 import com.techelevator.model.Pet;
+import com.techelevator.model.PetImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,6 +19,9 @@ public class PetController {
 
     @Autowired
     private PetDao petDAO;
+
+    @Autowired
+    private PetImageDao petImageDao;
 
     @GetMapping()
     public List<Pet> getAllPets(){
@@ -34,6 +39,11 @@ public class PetController {
     @PostMapping(path = "/add")
     public Pet addNewPet(@Valid @RequestBody Pet pet){
         Pet newPet = petDAO.addNewPet(pet);
+        PetImage image = new PetImage();
+        image.setPetImage(newPet.getPetImage());
+        image.setPetId(newPet.getPetId());
+        image.setPrimary(true);
+        petImageDao.addNewPetImage(image);
         return newPet;
     }
 

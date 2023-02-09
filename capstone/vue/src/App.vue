@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <page-loader /> -->
     <navigation />
     <router-view />
   </div>
@@ -7,11 +8,13 @@
 
 <script>
 import Navigation from "./components/Navigation.vue";
+// import PageLoader from "./components/PageLoader.vue"
 
 export default {
   components: {
     Navigation,
-  },
+    // PageLoader,
+  },  
 };
 </script>
 
@@ -114,9 +117,12 @@ select {
   border-radius: 4px;
 }
 
-option {
-  padding: 0px 10px;
-  height: 34px;
-  /* border-radius: 4px; */
+.blurredImg {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  position: fixed;
+  top: 0px;
+  z-index: -2;
 }
 </style>

@@ -28,9 +28,10 @@ public class PetImageController {
 
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/add")
-    public PetImage addPetImage(@RequestBody PetImage petImage){
-        return petImageDao.addNewPetImage(petImage);
+    @PostMapping("/add/{id}")
+    public PetImage addMultiplePhotos(@PathVariable int id, @RequestBody PetImage petImage){
+        System.out.println(petImage);
+        return petImageDao.addAdditional(id, petImage.getPetImage());
     }
 
     @PreAuthorize("isAuthenticated()")

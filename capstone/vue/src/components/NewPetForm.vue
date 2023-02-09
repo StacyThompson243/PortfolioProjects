@@ -42,9 +42,10 @@
               <label for="petImage">Image URL:</label>
               <input type="text" name="petImage" v-model="pet.petImage" />
             </div>
-            <button id="upload" @click.prevent="uploadImage">
-              Upload Image
-            </button>
+            <button id="upload" @click.prevent="uploadImage">Upload Image</button>
+        
+          </div>
+          <div>
           </div>
           <div id="description">
             <label for="description">Description:</label>
@@ -65,11 +66,13 @@
 <script>
 import PetService from "../services/PetService.js";
 
+
 export default {
   data() {
     return {
-      selectedImage: null,
+    
       pet: {
+        petId: '',
         petName: "",
         petImage: "",
         type: "",
