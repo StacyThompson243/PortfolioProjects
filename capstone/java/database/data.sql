@@ -41,6 +41,7 @@ values
 ('https://res.cloudinary.com/dfnprnclx/image/upload/v1675888117/pexels-ylanite-koppens-2115604_uo6vpr.jpg', false, 4),
 -- Angus
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675137395/Dogs/goldenretriever_q6xtcp.jpg', true, 5),
+('https://res.cloudinary.com/difcq8eki/image/upload/v1675137395/Dogs/goldenretriever_q6xtcp.jpg', true, 5),
 -- Smudge
 ('https://res.cloudinary.com/dfnprnclx/image/upload/v1675893868/pexels-pixabay-208984_rqiqvt.jpg', true, 6),
 ('https://res.cloudinary.com/dfnprnclx/image/upload/v1675893868/pexels-inge-wallumr%C3%B8d-126407_1_y62etv.jpg', false, 6),
