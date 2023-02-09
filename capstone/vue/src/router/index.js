@@ -14,6 +14,7 @@ import VolunteerApps from '../views/VolunteerApps.vue'
 import VolunteerDirectoryView from '../views/VolunteerDirectoryView.vue'
 import LoginFirstTime from '../views/LoginFirstTime.vue'
 import PromoteVolunteer from '../views/PromoteVolunteer.vue'
+import AddPhotosView from '../views/AddPhotosView.vue'
 
 Vue.use(Router)
 /**
@@ -119,6 +120,12 @@ const router = new Router({
       path: '/directory/:applicationId',
       name: "PromoteVolunteer",
       component: PromoteVolunteer,
+      props: true
+    },
+    {
+      path: '/images/add/:petId',
+      name: "AddPhotosView",
+      component: AddPhotosView,
       props: true
     }
 ]

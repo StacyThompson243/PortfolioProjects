@@ -15,6 +15,6 @@ export default{
         return axios.get('/volunteer/directory')
     },
     promoteToAdmin(id, volunteer){
-        return axios.patch(`/directory/${id}`, volunteer)
+        return axios.put(`/directory/${id}`, volunteer)
     }
 }

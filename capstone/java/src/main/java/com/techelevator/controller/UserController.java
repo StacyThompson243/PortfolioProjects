@@ -23,7 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
         private UserDao userDao;
 
         @PreAuthorize("hasRole('ROLE_ADMIN')")
-        @PatchMapping (path = "/directory/{applicationId}")
+        @PutMapping (path = "directory/{applicationId}")
         public void promoteToAdmin(@PathVariable int applicationId){
             userDao.updateRole(applicationId, "ROLE_ADMIN");
         }

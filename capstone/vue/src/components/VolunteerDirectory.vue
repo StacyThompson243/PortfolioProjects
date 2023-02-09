@@ -10,7 +10,7 @@
       </div> -->
       <thead>
         <tr>
-         <th>Application ID</th>
+          <th>Application ID</th>
           <th>Last Name</th>
           <th>First Name</th>
           <th>Email</th>
@@ -23,11 +23,16 @@
         </tr>
       </thead>
 
-     <tbody>
+      <tbody>
         <tr>
-           <td>
-            <input type="text" v-model="filters.applicationId" id="idFilter" placeholder="search by id" />
-          </td> 
+          <td>
+            <input
+              type="text"
+              v-model="filters.applicationId"
+              id="idFilter"
+              placeholder="search by id"
+            />
+          </td>
           <td>
             <input
               type="text"
@@ -35,7 +40,7 @@
               id="lastName"
               placeholder="seach last name"
             />
-          </td> 
+          </td>
           <td>
             <input
               type="text"
@@ -45,7 +50,12 @@
             />
           </td>
           <td>
-            <input type="text" v-model="filters.email" id="emailFilter" placeholder="search e-mail" />
+            <input
+              type="text"
+              v-model="filters.email"
+              id="emailFilter"
+              placeholder="search e-mail"
+            />
           </td>
           <td>
             <select v-model="filters.over18" id="over18Filter">
@@ -92,11 +102,11 @@
 
           <td></td>
         </tr>
-      </tbody> 
+      </tbody>
 
       <tbody>
         <tr v-for="(volunteer, key) in filterVolunteers" v-bind:key="key">
-           <td>{{volunteer.applicationId}}</td>
+          <td>{{ volunteer.applicationId }}</td>
           <td>{{ volunteer.volunteerLastName }}</td>
           <td>{{ volunteer.volunteerFirstName }}</td>
           <td>{{ volunteer.email }}</td>
@@ -108,7 +118,19 @@
           <!-- <td>{{volunteer.role}}</td> -->
           <td v-if="volunteer.role == 'ROLE_USER'">Volunteer</td>
           <td v-if="volunteer.role == 'ROLE_ADMIN'">Admin</td>
-          <router-link v-bind:to="{name: 'PromoteVolunteer', params: { applicationId: volunteer.applicationId }}"><td v-if="volunteer.role == 'ROLE_USER' && $store.state.user.role === 'ROLE_ADMIN'">promote to Admin</td></router-link>
+
+          <!-- <router-link v-bind:to="{name: 'PromoteVolunteer', params: { applicationId: volunteer.applicationId }}"> -->
+          <td
+            v-if="
+              volunteer.role == 'ROLE_USER' &&
+              $store.state.user.role === 'ROLE_ADMIN'
+            "
+          >
+            <button v-on:click="updateRole(volunteer)">
+              promote to Admin
+            </button>
+          </td>
+          <!-- </router-link> -->
         </tr>
       </tbody>
     </table>
@@ -121,22 +143,22 @@ import VolunteerService from "../services/VolunteerService.js";
 
 export default {
   name: "volunteer-directory",
-    // props: ['volunteer'],
+  // props: ['volunteer'],
   data() {
     return {
       volunteers: [],
-       filters: {
-         applicationId: "",
-         volunteerFirstName: "",
-         volunteerLastName: "",
-         email: "",
-         over18: "Show All",
-         veterinary: "Show All",
-         cleaning: "Show All",
-         dataEntry: "Show All",
-         photography: "Show All",
-         role: "",
-       },
+      filters: {
+        applicationId: "",
+        volunteerFirstName: "",
+        volunteerLastName: "",
+        email: "",
+        over18: "Show All",
+        veterinary: "Show All",
+        cleaning: "Show All",
+        dataEntry: "Show All",
+        photography: "Show All",
+        role: "",
+      },
     };
   },
   created() {
@@ -145,81 +167,124 @@ export default {
       this.$store.commit("SET_VOLUNTEERS", this.volunteers);
     });
   },
-   computed: {
+  computed: {
     filterVolunteers() {
-       let arr = this.volunteers;
+      let arr = this.volunteers;
       if (this.filters.applicationId != "") {
-         arr = arr.filter((eachVolunteer) => {
-           return (
-             eachVolunteer.applicationId == parseInt(this.filters.applicationId)
-           );
-         });
-       }
-       if (this.filters.volunteerLastName != "") {
-         arr = arr.filter((eachVolunteer) => {
-           return eachVolunteer.volunteerLastName
-             .toLowerCase()
-             .includes(this.filters.volunteerLastName.toLowerCase());
-         });
-       }
-       if (this.filters.volunteerFirstName != "") {
-         arr = arr.filter((eachVolunteer) => {
-           return eachVolunteer.volunteerFirstName
-             .toLowerCase()
-             .includes(this.filters.volunteerFirstName.toLowerCase());
-         });
-       }
-       if (this.filters.email != "") {
-         arr = arr.filter((eachVolunteer) => {
-           return eachVolunteer.email
-             .toLowerCase()
-             .includes(this.filters.email.toLowerCase());
-         });
-       }
-       if (this.filters.over18 != "Show All") {
-         arr = arr.filter((eachVolunteer) => {
-           let booleanValue = this.filters.over18 == "Yes" ? true : false;
-
-           return eachVolunteer.over18 === booleanValue;
-         });
-       }
-
-       if (this.filters.veterinary != "Show All") {
-         arr = arr.filter((eachVolunteer) => {
-           let booleanValue = this.filters.veterinary == "Yes" ? true : false;
-
-           return eachVolunteer.veterinary === booleanValue;
+        arr = arr.filter((eachVolunteer) => {
+          return (
+            eachVolunteer.applicationId == parseInt(this.filters.applicationId)
+          );
         });
-       }
-       if (this.filters.cleaning != "Show All") {
-         arr = arr.filter((eachVolunteer) => {
-           let booleanValue = this.filters.cleaning == "Yes" ? true : false;
+      }
+      if (this.filters.volunteerLastName != "") {
+        arr = arr.filter((eachVolunteer) => {
+          return eachVolunteer.volunteerLastName
+            .toLowerCase()
+            .includes(this.filters.volunteerLastName.toLowerCase());
+        });
+      }
+      if (this.filters.volunteerFirstName != "") {
+        arr = arr.filter((eachVolunteer) => {
+          return eachVolunteer.volunteerFirstName
+            .toLowerCase()
+            .includes(this.filters.volunteerFirstName.toLowerCase());
+        });
+      }
+      if (this.filters.email != "") {
+        arr = arr.filter((eachVolunteer) => {
+          return eachVolunteer.email
+            .toLowerCase()
+            .includes(this.filters.email.toLowerCase());
+        });
+      }
+      if (this.filters.over18 != "Show All") {
+        arr = arr.filter((eachVolunteer) => {
+          let booleanValue = this.filters.over18 == "Yes" ? true : false;
 
-           return eachVolunteer.cleaning === booleanValue;
-         });
-       }
-       if (this.filters.dataEntry != "Show All") {
-         arr = arr.filter((eachVolunteer) => {
-           let booleanValue = this.filters.dataEntry == "Yes" ? true : false;
+          return eachVolunteer.over18 === booleanValue;
+        });
+      }
 
-           return eachVolunteer.dataEntry === booleanValue;
-         });
-       }
-       if (this.filters.photography != "Show All") {
-         arr = arr.filter((eachVolunteer) => {
-           let booleanValue = this.filters.photography == "Yes" ? true : false;
+      if (this.filters.veterinary != "Show All") {
+        arr = arr.filter((eachVolunteer) => {
+          let booleanValue = this.filters.veterinary == "Yes" ? true : false;
 
-           return eachVolunteer.photography === booleanValue;
-         });
-       }
-       if (this.filters.role != "") {
-         arr = arr.filter((eachVolunteer) => {
-           return eachVolunteer.role.toLowerCase() == this.filters.role.toLowerCase();
-         });
-       }
-       return arr;
-     },
-    }
+          return eachVolunteer.veterinary === booleanValue;
+        });
+      }
+      if (this.filters.cleaning != "Show All") {
+        arr = arr.filter((eachVolunteer) => {
+          let booleanValue = this.filters.cleaning == "Yes" ? true : false;
+
+          return eachVolunteer.cleaning === booleanValue;
+        });
+      }
+      if (this.filters.dataEntry != "Show All") {
+        arr = arr.filter((eachVolunteer) => {
+          let booleanValue = this.filters.dataEntry == "Yes" ? true : false;
+
+          return eachVolunteer.dataEntry === booleanValue;
+        });
+      }
+      if (this.filters.photography != "Show All") {
+        arr = arr.filter((eachVolunteer) => {
+          let booleanValue = this.filters.photography == "Yes" ? true : false;
+
+          return eachVolunteer.photography === booleanValue;
+        });
+      }
+      if (this.filters.role != "") {
+        arr = arr.filter((eachVolunteer) => {
+          return (
+            eachVolunteer.role.toLowerCase() == this.filters.role.toLowerCase()
+          );
+        });
+      }
+      return arr;
+    },
+    methods: {
+      reloadPage() {
+      window.location.reload();
+    },
+      updateRole(volunteer) {
+        if (confirm("Click OK to confirm role change") == true) {
+          VolunteerService.promoteToAdmin(
+            volunteer.applicationId,
+            volunteer
+          ).then((response) => {
+            if (response.status === 200) {
+              alert("Volunteer Role has been updated");
+             
+              // this.$router.push("/volunteer/directory");
+              //  this.volunteerList = this.volunteerList.filter((eachVolunteer) => {
+              //    return eachVolunteer.status === "Pending";
+              // });
+            }
+          });
+        }
+      },
+    },
+    
+  },
+  methods: {
+    updateRole(volunteer) {
+      if (confirm("Click OK to confirm role change") == true) {
+        VolunteerService.promoteToAdmin(
+          volunteer.applicationId,
+          volunteer
+        ).then((response) => {
+          if (response.status === 200) {
+            alert("Volunteer Role has been updated");
+             this.$router.push("/volunteer/directory");
+            //  this.volunteerList = this.volunteerList.filter((eachVolunteer) => {
+            //    return eachVolunteer.status === "Pending";
+            // });
+          }
+        });
+      }
+    },
+  },
 };
 </script>
 

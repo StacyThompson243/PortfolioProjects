@@ -11,7 +11,7 @@ export default{
     },
 
     addPetImage(id, petImage){
-        return axios.get(`/${id}/edit`, petImage)
+        return axios.post(`petImage/add/${id}`, petImage)
     },
 
     addPet(pet){
