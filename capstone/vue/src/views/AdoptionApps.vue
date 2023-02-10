@@ -1,10 +1,6 @@
 <template>
-<<<<<<< HEAD
-  <div>
-=======
   <div class="page">
     <div class="blurredImg"></div>
->>>>>>> main
     <h1>Adoption Applications</h1>
     <div id="bottomLine"></div>
     <form action="">
@@ -197,14 +193,11 @@ export default {
       }
     });
   },
-<<<<<<< HEAD
-=======
   // methods: (
   //     updateStatus(){
 
   //     }
   // ),
->>>>>>> main
 };
 </script>
 
