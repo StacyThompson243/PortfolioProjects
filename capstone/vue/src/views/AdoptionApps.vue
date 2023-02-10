@@ -170,6 +170,7 @@ export default {
 
       return arr;
     },
+    },
     created(){
         AdoptionService.viewAdoptionApplications().then((response) => {
     if (response.status === 200) {

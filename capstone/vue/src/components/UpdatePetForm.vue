@@ -99,8 +99,9 @@ export default {
         gender: "",
         breed: "",
         weight: "",
-        decription: "",
+        description: "",
         adopted: "",
+        adopterId: 0,
       },
       petImage: {
         imageId: "",

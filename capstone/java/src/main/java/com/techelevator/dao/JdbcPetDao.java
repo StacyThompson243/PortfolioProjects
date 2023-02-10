@@ -54,9 +54,14 @@ public class JdbcPetDao implements PetDao{
 
     @Override
     public void editPet(int id, Pet pet) {
-        String sql = "UPDATE pets SET pet_image = ?, name = ?, type = ?, age = ?, gender = ?, weight = ?, breed = ?, description = ?, adopted = ?, adopter_id = ? WHERE pet_id = ?";
-        jdbcTemplate.update(sql, pet.getPetImage(), pet.getPetName(), pet.getType(), pet.getAge(), pet.getGender(), pet.getWeight(), pet.getBreed(), pet.getDescription(), pet.isAdopted(), pet.getAdopterId(), id);
+        String sql = "UPDATE pets SET pet_image = ?, name = ?, type = ?, age = ?, gender = ?, weight = ?, breed = ?, description = ?, adopted = ? WHERE pet_id = ?";
+        jdbcTemplate.update(sql, pet.getPetImage(), pet.getPetName(), pet.getType(), pet.getAge(), pet.getGender(), pet.getWeight(), pet.getBreed(), pet.getDescription(), pet.isAdopted(), id);
+        if(pet.getAdopterId() != 0) {
+            String newSql = "UPDATE pets SET adopter_id = ? WHERE pet_id = ?";
+            jdbcTemplate.update(sql, pet.getAdopterId(), id);
+        }
     }
+
 
     private Pet mapRowToPet(SqlRowSet rowSet){
         Pet pet = new Pet();
@@ -70,7 +75,8 @@ public class JdbcPetDao implements PetDao{
         pet.setBreed(rowSet.getString("breed"));
         pet.setDescription(rowSet.getString("description"));
         pet.setAdopted(rowSet.getBoolean("adopted"));
-        pet.setAdopterId(rowSet.getInt("adopter_id"));
+        if (rowSet.getInt("adopter_id") != 0){
+        pet.setAdopterId(rowSet.getInt("adopter_id"));}
         return pet;
     }
 }
