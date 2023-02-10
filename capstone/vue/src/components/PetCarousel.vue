@@ -4,7 +4,7 @@
       <h1>Critter Cabin</h1>
     </div>
     <div id="bottomLine"></div>
-    <div :key="petSrc.id">
+    <div :key="petId">
       <div class="card">
         <img :src="petSrc.petImage" alt="" />
         <div id="petInfo">
@@ -12,9 +12,14 @@
             <h2 id="name">{{ petSrc.petName }}</h2>
             <p id="description">{{ petSrc.description }}</p>
           </div>
-          <!-- <router-link > -->
-          <button class="btn">{{ petSrc.petName }}'s page</button>
-          <!-- </router-link> -->
+          <router-link
+            v-bind:to="{
+              name: 'petDetailsView',
+              params: { petId: petSrc.petId },
+            }"
+          >
+            <button class="btn">{{ petSrc.petName }}'s page</button>
+          </router-link>
         </div>
       </div>
     </div>

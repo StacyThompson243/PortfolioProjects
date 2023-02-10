@@ -1,16 +1,14 @@
 <template>
   <div class="page">
     <div class="blurredImg"></div>
-    <div id="titleDiv">
-      <h1>Adoption Applications</h1>
-    </div>
+    <h1>Adoption Applications</h1>
     <div id="bottomLine"></div>
     <form action="">
-      <table>
+      <table class="adoption-table">
         <thead>
           <tr>
             <th>App ID</th>
-            <!-- <th>Pet ID</th> -->
+            <th>Pet ID</th>
             <th>Adopter Full Name</th>
             <th>Email</th>
             <th>Phone Number</th>
@@ -20,54 +18,53 @@
             <th>Any Pets?</th>
             <th># of Pets</th>
             <th>Status</th>
-            <th>Action</th>
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td><input type="text" v-model="filters.applicationID" /></td>
-            <!-- <td><input type="text" v-model="filters.petID"></td> -->
-            <td><input type="text" v-model="filters.adopterFullName" /></td>
-            <td><input type="text" v-model="filters.email" /></td>
-            <td><input type="text" v-model="filters.phoneNumber" /></td>
-            <td><input type="text" v-model="filters.city" /></td>
-            <td><input type="text" v-model="filters.state" /></td>
-            <td><input type="text" v-model="filters.zipcode" /></td>
-            <td>
-              <select v-model="filters.anyPets">
-                <option value="Show All" selected="true">Show All</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </td>
-            <td><input type="text" v-model="filters.numberOfPets" /></td>
-            <td>
-              <!-- <select v-model="adopter.status" name="dropdown-select">
+        <!-- Not doing search as functionality not working <tbody>
+    <tr>
+        <td><input type="text" v-model="filters.applicationID"></td>
+        <td><input type="text" v-model="filters.petID"></td>
+        <td><input type="text" v-model="filters.adopterFullName"></td>
+        <td><input type="text" v-model="filters.email"></td>
+        <td><input type="text" v-model="filters.phoneNumber"></td>
+        <td><input type="text" v-model="filters.city"></td>
+        <td><input type="text" v-model="filters.state"></td>
+        <td><input type="text" v-model="filters.zipcode"></td>
+        <td>
+        <select v-model="filters.anyPets">
+        <option value="Show All" selected="true">Show All</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        </select></td>
+        <td><input type="number" v-model="filters.numberOfPets"></td>
+        <td>
+              <select v-model="filters.approvalStatus" name="dropdown-select">
                 <option value="Pending">Pending</option>
                 <option value="Approved">Approve</option>
                 <option value="Denied">Deny</option>
               </select>
-            </td> -->
             </td>
-
             <td>
               <button class="btn" v-on:click.prevent="updateStatus(adopter)">
                 Submit
               </button>
-            </td>
-          </tr>
-        </tbody>
+               </td>
+    </tr>
+</tbody> -->
 
-        <tbody id="infoTable">
+        <tbody>
           <tr v-for="(adopter, key) in adoptionList" v-bind:key="key">
             <td>{{ adopter.adopterId }}</td>
+            <!-- <td><router-link v-bind:to="{ name: petDetailsView}"> {{pet.petId}}</router-link></td> -->
+            <td>{{ adopter.petID }}</td>
+            <td>{{ adopter.adopterName }}</td>
             <td>{{ adopter.email }}</td>
             <td>{{ adopter.phoneNumber }}</td>
             <td>{{ adopter.city }}</td>
             <td>{{ adopter.state }}</td>
             <td>{{ adopter.zipcode }}</td>
-            <td>{{ adopter.anyPets }}</td>
+            <td>{{ adopter.anyPets ? "Yes" : "No" }}</td>
             <td>{{ adopter.numberOfPets }}</td>
             <td>{{ adopter.approvalStatus }}</td>
           </tr>
@@ -79,6 +76,7 @@
 
 <script>
 import AdoptionService from "../services/AdoptionService";
+import PetService from "../services/PetService";
 export default {
   name: "adoptionApplications",
   data() {
@@ -86,6 +84,7 @@ export default {
       adoptionList: [],
       filters: {
         applicationID: "",
+        petID: "",
         adopterFullName: "",
         email: "",
         phoneNumber: "",
@@ -108,12 +107,11 @@ export default {
           );
         });
       }
-      //   if (this.pet.petId != "") {
-      //             arr = arr.filter((eachAdoption) => {
-      //                 return (eachAdoption.petId == parseInt(this.pet.petId)
-      //       );
-      //     });
-      //   }
+      if (this.petID != "") {
+        arr = arr.filter((eachAdoption) => {
+          return eachAdoption.petID == parseInt(this.petID);
+        });
+      }
       if (this.filters.adopterFullName != "") {
         arr = arr.filter((eachAdoption) => {
           return eachAdoption.adopterFullName
@@ -175,8 +173,23 @@ export default {
   created() {
     AdoptionService.viewAdoptionApplications().then((response) => {
       if (response.status === 200) {
-        console.log("works");
         this.adoptionList = response.data;
+      }
+      for (let i = 0; i < this.adoptionList.length; i++) {
+        if (this.$store.state.pets.length == 0) {
+          PetService.getAdoptablePets().then((response) => {
+            response;
+            this.$store.commit("SET_PETS", response.data);
+          });
+        }
+        for (let j = 0; j < this.$store.state.pets.length; j++) {
+          if (
+            this.adoptionList[i].adopterId ==
+            this.$store.state.pets[j].adopterId
+          ) {
+            this.adoptionList[i].petID = this.$store.state.pets[j].petId;
+          }
+        }
       }
     });
   },
@@ -319,5 +332,9 @@ tr:nth-child(even) {
 }
 tr:nth-child(odd) {
   background: #fff;
+}
+
+td {
+  padding-left: 5px;
 }
 </style>

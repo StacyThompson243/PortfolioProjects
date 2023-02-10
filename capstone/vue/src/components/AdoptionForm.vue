@@ -51,7 +51,8 @@
           </div>
           <div>
             <label for="zipcode">Zipcode: </label>
-            <input v-model="adopter.zipcode" name="zipcode" type="text" />
+            <input v-model="adopter.zipcode" name="zipcode" type="text" maxlength="5"
+              minlength="5"/>
           </div>
         </div>
 
@@ -77,6 +78,7 @@
 
 <script>
 import AdoptionService from "../services/AdoptionService";
+import PetService from "../services/PetService";
 export default {
   data() {
     return {
@@ -91,8 +93,16 @@ export default {
         numberOfPets: 0,
         approvalStatus: "Pending",
       },
+      pet: {},
     };
   },
+      created() {
+        PetService.getPetById(this.$route.params.petId).then((response) =>{
+            if(response.status == 200){
+                this.pet = response.data;
+            }
+        })
+    },
   methods: {
     saveAdoptionRequest() {
       console.log(this.$route.params.petId);
@@ -118,6 +128,7 @@ export default {
         zipcode: null,
         anyPets: false,
         numberOfPets: 0,
+        approvalStatus: "Pending",
       };
     },
   },

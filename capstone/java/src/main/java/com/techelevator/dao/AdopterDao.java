@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AdopterDao {
 
-    Adopter applyToAdopt(Adopter adopter);
+    Adopter applyToAdopt(Adopter adopter, int id);
 
     List<Adopter> getAdoptionRequestsByStatus(String status);
 

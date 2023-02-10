@@ -101,6 +101,7 @@ export default {
         weight: "",
         description: "",
         adopted: "",
+        adopterId: 0,
       },
       petImage: {
         imageId: "",
