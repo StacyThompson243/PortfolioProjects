@@ -116,7 +116,7 @@ label {
   margin: auto;
   margin-top: 30px;
   margin-left: 9.5vw;
-  box-shadow: 8px 8px 16px rgb(122 122 122, 0.3);
+  box-shadow: 8px 8px 16px rgb(122 122 122, 0.5);
 }
 
 .row {

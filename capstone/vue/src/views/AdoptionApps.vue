@@ -248,39 +248,39 @@ thead th:nth-child(1) {
   width: 5%;
 }
 
-/* 20 */
+/* 10 */
 thead th:nth-child(2) {
-  width: 15%;
+  width: 5%;
 }
 
-/* 39 */
+/* 30 */
 thead th:nth-child(3) {
-  width: 19%;
+  width: 18%;
 }
 
 /* 50 */
 thead th:nth-child(4) {
-  width: 11%;
+  width: 20%;
 }
 
-/* 55 */
+/* 60 */
 thead th:nth-child(5) {
-  width: 8%;
+  width: 10%;
 }
 
-/* 65 */
+/* 67 */
 thead th:nth-child(6) {
-  width: 7%;
+  width: 9%;
 }
 
-/* 74 */
+/* 72 */
 thead th:nth-child(7) {
-  width: 9%;
+  width: 5%;
 }
 
 /* 79 */
 thead th:nth-child(8) {
-  width: 5%;
+  width: 7%;
 }
 
 /* 87 */
