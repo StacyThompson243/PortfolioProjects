@@ -4,7 +4,7 @@
       <h1>Critter Cabin</h1>
     </div>
     <div id="bottomLine"></div>
-    <div :key="petSrc.id">
+    <div :key="petId">
       <div class="card">
         <img :src="petSrc.petImage" alt="" />
         <div id="petInfo">
