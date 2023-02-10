@@ -33,7 +33,7 @@ public class JdbcPetDao implements PetDao{
     @Override
     public Pet getPetById(int petId) {
         Pet pet = null;
-        String sql = "SELECT pet_id, pet_image, name, type, age, gender, weight, breed, description, adopted FROM pets WHERE pet_id = ?";
+        String sql = "SELECT pet_id, pet_image, name, type, age, gender, weight, breed, description, adopted, adopter_id FROM pets WHERE pet_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, petId);
         if(results.next()) {
             pet = mapRowToPet(results);
@@ -44,7 +44,7 @@ public class JdbcPetDao implements PetDao{
     @Override
     public Pet addNewPet(Pet pet) {
         Pet newPet = null;
-        String sql = "INSERT INTO pets(pet_image, name, type, age, gender, weight, breed, description, adopted, adopter_id) VALUES(?,?,?,?,?,?,?,?,?) RETURNING pet_id;";
+        String sql = "INSERT INTO pets(pet_image, name, type, age, gender, weight, breed, description, adopted) VALUES(?,?,?,?,?,?,?,?,?) RETURNING pet_id;";
         Integer petId;
 
         petId = jdbcTemplate.queryForObject(sql, Integer.class, pet.getPetImage(), pet.getPetName(), pet.getType(), pet.getAge(), pet.getGender(), pet.getWeight(), pet.getBreed(), pet.getDescription(), pet.isAdopted());
@@ -58,11 +58,7 @@ public class JdbcPetDao implements PetDao{
         jdbcTemplate.update(sql, pet.getPetImage(), pet.getPetName(), pet.getType(), pet.getAge(), pet.getGender(), pet.getWeight(), pet.getBreed(), pet.getDescription(), pet.isAdopted(), id);
         if(pet.getAdopterId() != 0) {
             String newSql = "UPDATE pets SET adopter_id = ? WHERE pet_id = ?";
-<<<<<<< HEAD
-            jdbcTemplate.update(newSql , pet.getAdopterId(), id);
-=======
-            jdbcTemplate.update(newSql, pet.getAdopterId(), id);
->>>>>>> main
+            jdbcTemplate.update(sql, pet.getAdopterId(), id);
         }
     }
 
@@ -79,8 +75,9 @@ public class JdbcPetDao implements PetDao{
         pet.setBreed(rowSet.getString("breed"));
         pet.setDescription(rowSet.getString("description"));
         pet.setAdopted(rowSet.getBoolean("adopted"));
-        pet.setAdopterId(rowSet.getInt("adopter_id"));
-
+        if (rowSet.getInt("adopter_id") != 0){
+            pet.setAdopterId(rowSet.getInt("adopter_id"));}
         return pet;
     }
 }
+
