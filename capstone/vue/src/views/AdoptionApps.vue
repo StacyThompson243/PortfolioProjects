@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="page">
+    <div class="blurredImg"></div>
     <h1>Adoption Applications</h1>
     <div id="bottomLine"></div>
     <form action="">
@@ -332,5 +333,9 @@ tr:nth-child(even) {
 }
 tr:nth-child(odd) {
   background: #fff;
+}
+
+td {
+  padding-left: 5px;
 }
 </style>

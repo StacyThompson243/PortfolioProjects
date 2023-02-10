@@ -85,7 +85,7 @@ export default {
 h1 {
   padding: 10px;
   margin: 102px 0 10px 0;
-  color: rgb(250, 250, 250);
+  color: rgb(245, 245, 245);
   width: 800px;
 }
 
@@ -115,7 +115,8 @@ label {
   border-radius: 8px;
   margin: auto;
   margin-top: 30px;
-  margin-left: 10vw;
+  margin-left: 9.5vw;
+  box-shadow: 8px 8px 16px rgb(122 122 122, 0.3);
 }
 
 .row {
