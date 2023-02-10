@@ -132,6 +132,11 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin: 0px 0 10px 0;
+  margin-bottom: 5px;
+}
+
 .wrapper {
   display: flex;
 }

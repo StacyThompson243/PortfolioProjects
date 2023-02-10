@@ -66,11 +66,10 @@ export default {
   border-bottom: 2px solid #7acaed;
 }
 
-h1 {
+/* h1 {
   padding: 10px;
   margin: 102px 0 10px 0;
-  /* color: rgb; */
-}
+} */
 
 #titleDiv {
   margin: auto;
