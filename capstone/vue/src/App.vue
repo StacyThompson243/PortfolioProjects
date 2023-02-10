@@ -14,7 +14,7 @@ export default {
   components: {
     Navigation,
     // PageLoader,
-  },  
+  },
 };
 </script>
 
@@ -81,7 +81,7 @@ a {
   margin: auto;
   margin-top: 30px;
   background-color: #c5c4f4;
-  background: rgba(204, 204, 204, 0);
+  /* background: rgba(204, 204, 204, 0); */
   background: rgba(204, 204, 204, 0.4);
   box-shadow: 8px 8px 16px rgba(122, 122, 122, 0.3);
   width: 500px;

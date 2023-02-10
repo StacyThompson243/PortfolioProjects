@@ -10,9 +10,14 @@
            >
             <img :src="image.petImage" />"
           </div> -->
-      <div>
+      <div class="imgContainer">
         <img :src="currentImage.petImage" />
-        <!-- <button @click="changeCurrentImage">Next</button> -->
+        <div class="button-container">
+          <div id="arrowBackground">
+            <i @click="goBack" class="fa-solid fa-arrow-left"></i>
+          </div>
+          <i @click="changeCurrentImage" class="fa-solid fa-arrow-right"></i>
+        </div>
       </div>
 
       <div class="card">
@@ -45,8 +50,6 @@
         </div>
       </div>
     </div>
-    <button @click="goBack">Left</button>
-    <button @click="changeCurrentImage">"Right</button>
   </div>
 </template>
 
@@ -114,6 +117,32 @@ export default {
 
 h1 {
   margin-top: 92px;
+}
+
+.imgContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.button-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+
+i {
+  z-index: 2;
+  font-size: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  background-color: rgb(245, 245, 245, 0.5);
+}
+
+i:hover {
+  cursor: pointer;
 }
 
 .card {

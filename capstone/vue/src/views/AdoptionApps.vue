@@ -1,27 +1,27 @@
 <template>
-  <div>
-
-<h1>Adoption Applications</h1>
+  <div class="page">
+    <div class="blurredImg"></div>
+    <h1>Adoption Applications</h1>
     <div id="bottomLine"></div>
     <form action="">
-<table class="adoption-table">
-<thead>
-    <tr>
-        <th>App ID</th>
-        <th>Pet ID</th>
-        <th>Adopter Full Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zipcode</th>
-        <th>Any Pets?</th>
-        <th># of Pets</th>
-        <th>Status</th>
-    </tr>
-</thead>
+      <table class="adoption-table">
+        <thead>
+          <tr>
+            <th>App ID</th>
+            <th>Pet ID</th>
+            <th>Adopter Full Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Any Pets?</th>
+            <th># of Pets</th>
+            <th>Status</th>
+          </tr>
+        </thead>
 
-<!-- Not doing search as functionality not working <tbody>
+        <!-- Not doing search as functionality not working <tbody>
     <tr>
         <td><input type="text" v-model="filters.applicationID"></td>
         <td><input type="text" v-model="filters.petID"></td>
@@ -53,24 +53,23 @@
     </tr>
 </tbody> -->
 
-<tbody>
-    <tr v-for="(adopter, key) in adoptionList" v-bind:key="key">
-    <td>{{adopter.adopterId}}</td>
-    <!-- <td><router-link v-bind:to="{ name: petDetailsView}"> {{pet.petId}}</router-link></td> -->
-    <td>{{adopter.petID}}</td>
-    <td>{{adopter.adopterName}}</td>
-    <td>{{adopter.email}}</td>
-    <td>{{adopter.phoneNumber}}</td>
-    <td>{{adopter.city}}</td>
-    <td>{{adopter.state}}</td>
-    <td>{{adopter.zipcode}}</td>
-    <td>{{adopter.anyPets ? "Yes" : "No"}}</td>
-    <td>{{adopter.numberOfPets}}</td>
-    <td>{{adopter.approvalStatus}}</td>
-    </tr>
-</tbody>
-
-</table>
+        <tbody>
+          <tr v-for="(adopter, key) in adoptionList" v-bind:key="key">
+            <td>{{ adopter.adopterId }}</td>
+            <!-- <td><router-link v-bind:to="{ name: petDetailsView}"> {{pet.petId}}</router-link></td> -->
+            <td>{{ adopter.petID }}</td>
+            <td>{{ adopter.adopterName }}</td>
+            <td>{{ adopter.email }}</td>
+            <td>{{ adopter.phoneNumber }}</td>
+            <td>{{ adopter.city }}</td>
+            <td>{{ adopter.state }}</td>
+            <td>{{ adopter.zipcode }}</td>
+            <td>{{ adopter.anyPets ? "Yes" : "No" }}</td>
+            <td>{{ adopter.numberOfPets }}</td>
+            <td>{{ adopter.approvalStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
     </form>
   </div>
 </template>
@@ -79,41 +78,41 @@
 import AdoptionService from "../services/AdoptionService";
 import PetService from "../services/PetService";
 export default {
-    name: "adoptionApplications",
-    data(){
-        return {
-            adoptionList: [],
-            filters: {
-                applicationID: "",
-                petID: "",
-                adopterFullName: "",
-                email: "",
-                phoneNumber: "",
-                city: "",
-                state: "",
-                zipcode: "",
-                anyPets: "",
-                numberOfPets: "",
-                status: "",
-            }
-        }
-    },
-    computed: {
-        filterApplications(){
-            let arr = this.adoptionList;
-            if (this.filters.applicationID != "") {
-                arr = arr.filter((eachAdoption) => {
-                    return (eachAdoption.applicationId == parseInt(this.filters.applicationID)
+  name: "adoptionApplications",
+  data() {
+    return {
+      adoptionList: [],
+      filters: {
+        applicationID: "",
+        petID: "",
+        adopterFullName: "",
+        email: "",
+        phoneNumber: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        anyPets: "",
+        numberOfPets: "",
+        status: "",
+      },
+    };
+  },
+  computed: {
+    filterApplications() {
+      let arr = this.adoptionList;
+      if (this.filters.applicationID != "") {
+        arr = arr.filter((eachAdoption) => {
+          return (
+            eachAdoption.applicationId == parseInt(this.filters.applicationID)
           );
         });
       }
       if (this.petID != "") {
-                arr = arr.filter((eachAdoption) => {
-                    return (eachAdoption.petID == parseInt(this.petID)
-          );
+        arr = arr.filter((eachAdoption) => {
+          return eachAdoption.petID == parseInt(this.petID);
         });
       }
-        if (this.filters.adopterFullName != "") {
+      if (this.filters.adopterFullName != "") {
         arr = arr.filter((eachAdoption) => {
           return eachAdoption.adopterFullName
             .toLowerCase()
@@ -170,28 +169,32 @@ export default {
 
       return arr;
     },
-    },
-    created(){
-        AdoptionService.viewAdoptionApplications().then((response) => {
-    if (response.status === 200) {
+  },
+  created() {
+    AdoptionService.viewAdoptionApplications().then((response) => {
+      if (response.status === 200) {
         this.adoptionList = response.data;
-    }
-    for(let i=0; i < this.adoptionList.length ; i++){
-      if(this.$store.state.pets.length == 0){
-        PetService.getAdoptablePets().then((response) => { response
-      this.$store.commit("SET_PETS", response.data);
-    });
       }
-      for(let j=0;j < this.$store.state.pets.length ;j++){
-        if(this.adoptionList[i].adopterId == this.$store.state.pets[j].adopterId){
-          this.adoptionList[i].petID = this.$store.state.pets[j].petId
+      for (let i = 0; i < this.adoptionList.length; i++) {
+        if (this.$store.state.pets.length == 0) {
+          PetService.getAdoptablePets().then((response) => {
+            response;
+            this.$store.commit("SET_PETS", response.data);
+          });
+        }
+        for (let j = 0; j < this.$store.state.pets.length; j++) {
+          if (
+            this.adoptionList[i].adopterId ==
+            this.$store.state.pets[j].adopterId
+          ) {
+            this.adoptionList[i].petID = this.$store.state.pets[j].petId;
+          }
         }
       }
-    }
-})
-    },
-    // methods: (
-    //     updateStatus(){
+    });
+  },
+  // methods: (
+  //     updateStatus(){
 
   //     }
   // ),
@@ -245,39 +248,39 @@ thead th:nth-child(1) {
   width: 5%;
 }
 
-/* 20 */
+/* 10 */
 thead th:nth-child(2) {
-  width: 15%;
+  width: 5%;
 }
 
-/* 39 */
+/* 30 */
 thead th:nth-child(3) {
-  width: 19%;
+  width: 18%;
 }
 
 /* 50 */
 thead th:nth-child(4) {
-  width: 11%;
+  width: 20%;
 }
 
-/* 55 */
+/* 60 */
 thead th:nth-child(5) {
-  width: 8%;
+  width: 10%;
 }
 
-/* 65 */
+/* 67 */
 thead th:nth-child(6) {
-  width: 7%;
+  width: 9%;
 }
 
-/* 74 */
+/* 72 */
 thead th:nth-child(7) {
-  width: 9%;
+  width: 5%;
 }
 
 /* 79 */
 thead th:nth-child(8) {
-  width: 5%;
+  width: 7%;
 }
 
 /* 87 */
@@ -329,5 +332,9 @@ tr:nth-child(even) {
 }
 tr:nth-child(odd) {
   background: #fff;
+}
+
+td {
+  padding-left: 5px;
 }
 </style>

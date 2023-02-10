@@ -13,8 +13,7 @@ public class Pet {
     private String description;
     private boolean adopted;
     private String petImage;
-    @JsonProperty("adopter_id")
-    private int adopterId;
+    private int adopterId = 0;
 
     public int getAdopterId() {
         return adopterId;
