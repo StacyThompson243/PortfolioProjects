@@ -11,7 +11,7 @@ public class Pet {
     private String description;
     private boolean adopted;
     private String petImage;
-    private int adopterId;
+    private int adopterId = 0;
 
     public int getAdopterId() {
         return adopterId;

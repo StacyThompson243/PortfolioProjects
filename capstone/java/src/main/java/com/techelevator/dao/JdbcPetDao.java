@@ -44,7 +44,7 @@ public class JdbcPetDao implements PetDao{
     @Override
     public Pet addNewPet(Pet pet) {
         Pet newPet = null;
-        String sql = "INSERT INTO pets(pet_image, name, type, age, gender, weight, breed, description, adopted) VALUES(?,?,?,?,?,?,?,?,?) RETURNING pet_id;";
+        String sql = "INSERT INTO pets(pet_image, name, type, age, gender, weight, breed, description, adopted, adopter_id) VALUES(?,?,?,?,?,?,?,?,?) RETURNING pet_id;";
         Integer petId;
 
         petId = jdbcTemplate.queryForObject(sql, Integer.class, pet.getPetImage(), pet.getPetName(), pet.getType(), pet.getAge(), pet.getGender(), pet.getWeight(), pet.getBreed(), pet.getDescription(), pet.isAdopted());
@@ -58,9 +58,14 @@ public class JdbcPetDao implements PetDao{
         jdbcTemplate.update(sql, pet.getPetImage(), pet.getPetName(), pet.getType(), pet.getAge(), pet.getGender(), pet.getWeight(), pet.getBreed(), pet.getDescription(), pet.isAdopted(), id);
         if(pet.getAdopterId() != 0) {
             String newSql = "UPDATE pets SET adopter_id = ? WHERE pet_id = ?";
+<<<<<<< HEAD
             jdbcTemplate.update(newSql , pet.getAdopterId(), id);
+=======
+            jdbcTemplate.update(newSql, pet.getAdopterId(), id);
+>>>>>>> main
         }
     }
+
 
     private Pet mapRowToPet(SqlRowSet rowSet){
         Pet pet = new Pet();
@@ -75,6 +80,7 @@ public class JdbcPetDao implements PetDao{
         pet.setDescription(rowSet.getString("description"));
         pet.setAdopted(rowSet.getBoolean("adopted"));
         pet.setAdopterId(rowSet.getInt("adopter_id"));
+
         return pet;
     }
 }
