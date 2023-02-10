@@ -14,7 +14,7 @@
             Upload Image
           </button>
         </div>
-        <button class="btn" @click="addImage">Finished?</button>
+        <button class="btn" @click="addImage">Submit</button>
       </div>
     </div>
   </div>
@@ -85,7 +85,7 @@ export default {
 h1 {
   padding: 10px;
   margin: 102px 0 10px 0;
-  color: rgb(245, 245, 245);
+  /* color: rgb(245, 245, 245); */
   width: 800px;
 }
 
@@ -99,7 +99,7 @@ label {
 }
 
 .blurredImg {
-  background-image: url(../assets/addPhotos.jpg);
+  background-image: url("https://images.pexels.com/photos/8811386/pexels-photo-8811386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1  ");
 }
 
 #titleDiv {
@@ -110,13 +110,12 @@ label {
 #imgUploadDiv {
   width: 450px;
   background-color: rgba(204, 204, 204, 0.4);
-  /* padding: 10px; */
   padding: 30px 50px;
   border-radius: 8px;
   margin: auto;
   margin-top: 30px;
   margin-left: 9.5vw;
-  box-shadow: 8px 8px 16px rgb(122 122 122, 0.5);
+  box-shadow: 8px 8px 16px rgba(122, 122, 122, 0.3);
 }
 
 .row {

@@ -1,7 +1,7 @@
 <template>
   <div class="carousel">
     <div id="titleDiv">
-      <h1>Critter Cabin</h1>
+      <h1>Welcome to the Critter Cabin!</h1>
     </div>
     <div id="bottomLine"></div>
     <div :key="petId">
@@ -63,7 +63,7 @@ h1 {
 #titleDiv {
   margin: auto;
   backdrop-filter: blur(7px);
-  width: 250px;
+  width: 520px;
   border-radius: 7px;
 }
 

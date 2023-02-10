@@ -11,18 +11,13 @@
             <img :src="image.petImage" />"
           </div> -->
       <div class="imgContainer">
-        <!-- <i @click="goBack" class="fa-s fa-arrow-left"></i> -->
-        <!-- <font-awesome-icon icon="fa-sharp fa-solid fa-arrow-left" /> -->
         <img :src="currentImage.petImage" />
         <div class="button-container">
-          <!-- <button id="leftButton" @click="goBack">Left</button> -->
-          <!-- <button id="rightButton" @click="changeCurrentImage">Right</button> -->
           <div id="arrowBackground">
             <i @click="goBack" class="fa-solid fa-arrow-left"></i>
           </div>
           <i @click="changeCurrentImage" class="fa-solid fa-arrow-right"></i>
         </div>
-        <!-- <button @click="changeCurrentImage">Next</button> -->
       </div>
 
       <div class="card">
@@ -55,11 +50,6 @@
         </div>
       </div>
     </div>
-    <!-- <button @click="goBack">Left</button> -->
-
-    <i @click="goBack" class="fa-light fa-arrow-left"></i>
-
-    <!-- <button @click="changeCurrentImage">"Right</button> -->
   </div>
 </template>
 
