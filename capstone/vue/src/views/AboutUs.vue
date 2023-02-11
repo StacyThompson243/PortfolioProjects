@@ -132,17 +132,8 @@ export default {};
 </script>
 
 <style scoped>
-.page {
-  background: rgb(223, 251, 240);
-  background: linear-gradient(
-    90deg,
-    rgb(220, 251, 240) 0%,
-    rgba(227, 244, 251, 1) 100%
-  );
-}
-
 .blurredImg {
-  background-image: url("https://images.pexels.com/photos/9040611/pexels-photo-9040611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url(../assets/aboutUs.jpg);
   filter: blur(3px);
 }
 
