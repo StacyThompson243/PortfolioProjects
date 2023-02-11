@@ -227,21 +227,21 @@ export default {
     rgb(220, 251, 240) 0%,
     rgba(227, 244, 251, 1) 100%
   );
-  /* background-image: url("https://images.pexels.com/photos/5326905/pexels-photo-5326905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
 }
 .blurredImg {
   background-image: url(../assets/volunteerDirectory.jpg);
   filter: blur(3px);
 }
 h1 {
-  margin-top: 92px;
+  padding: 10px;
+  margin: 102px 0 10px 0;
   color: rgb(245, 245, 245);
 }
 
 #titleDiv {
   margin: auto;
   backdrop-filter: blur(7px);
-  width: 410px;
+  width: 200px;
   border-radius: 7px;
 }
 #bottomLine {
@@ -253,12 +253,10 @@ table {
   margin-top: 30px;
   border-collapse: collapse;
   background-color: white;
-  /* box-shadow: 2px 4px 4px rgb(204, 204, 204); */
 }
 td,
 th {
   height: 45px;
-  /* padding: 16px 0; */
 }
 table,
 tr,
