@@ -11,6 +11,7 @@
           Thank you for registering, please sign in.
         </div>
         <div class="form">
+          <p>Username</p>
           <label for="username" class="sr-only">Username</label>
           <input
             type="text"
@@ -20,6 +21,7 @@
             required
             autofocus
           />
+          <p>Password</p>
           <label for="password" class="sr-only">Password</label>
           <input
             type="password"
