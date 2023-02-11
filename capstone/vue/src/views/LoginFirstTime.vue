@@ -15,6 +15,7 @@
       <div class="form">
         <h4>Please update your password:</h4>
 
+        <p>New Password: </p>
         <label for="password" class="sr-only">New Password: </label>
         <input
           type="password"
@@ -23,7 +24,7 @@
           v-model="user.password"
           required
         />
-
+        <p>Verify New Password: </p>
         <label for="password2" class="sr-only">Confirm Password: </label
         ><input
           type="password"

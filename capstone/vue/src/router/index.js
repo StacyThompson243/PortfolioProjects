@@ -17,6 +17,7 @@ import AdoptionFormView from '../views/AdoptionFormView.vue'
 import AdoptionApps from '../views/AdoptionApps.vue'
 import PromoteVolunteer from '../views/PromoteVolunteer.vue'
 import AddPhotosView from '../views/AddPhotosView.vue'
+import AboutUs from '../views/AboutUs.vue'
 
 Vue.use(Router)
 /**
@@ -142,6 +143,14 @@ const router = new Router({
       name: "AddPhotosView",
       component: AddPhotosView,
       props: true
+    },
+    {
+      path: '/about-us',
+      name: "AboutUs",
+      component: AboutUs,
+      meta: {
+        requiresAuth: false
+        }
     }
 ]
 })

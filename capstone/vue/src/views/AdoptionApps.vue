@@ -21,38 +21,6 @@
           </tr>
         </thead>
 
-        <!-- Not doing search as functionality not working <tbody>
-    <tr>
-        <td><input type="text" v-model="filters.applicationID"></td>
-        <td><input type="text" v-model="filters.petID"></td>
-        <td><input type="text" v-model="filters.adopterFullName"></td>
-        <td><input type="text" v-model="filters.email"></td>
-        <td><input type="text" v-model="filters.phoneNumber"></td>
-        <td><input type="text" v-model="filters.city"></td>
-        <td><input type="text" v-model="filters.state"></td>
-        <td><input type="text" v-model="filters.zipcode"></td>
-        <td>
-        <select v-model="filters.anyPets">
-        <option value="Show All" selected="true">Show All</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-        </select></td>
-        <td><input type="number" v-model="filters.numberOfPets"></td>
-        <td>
-              <select v-model="filters.approvalStatus" name="dropdown-select">
-                <option value="Pending">Pending</option>
-                <option value="Approved">Approve</option>
-                <option value="Denied">Deny</option>
-              </select>
-            </td>
-            <td>
-              <button class="btn" v-on:click.prevent="updateStatus(adopter)">
-                Submit
-              </button>
-               </td>
-    </tr>
-</tbody> -->
-
         <tbody>
           <tr v-for="(adopter, key) in adoptionList" v-bind:key="key">
             <td>{{ adopter.adopterId }}</td>
@@ -193,11 +161,6 @@ export default {
       }
     });
   },
-  // methods: (
-  //     updateStatus(){
-
-  //     }
-  // ),
 };
 </script>
 

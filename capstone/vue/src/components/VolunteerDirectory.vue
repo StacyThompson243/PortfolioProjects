@@ -7,10 +7,6 @@
     <div id="bottomLine"></div>
     <form action="">
       <table>
-        <!-- <div class="filters">
-        <input type="text" v-model="search" placeholder="search last name" />
-        <input type="text" v-model="search" placeholder="search first name" />
-      </div> -->
         <thead>
           <tr>
             <th>App ID</th>
@@ -32,20 +28,6 @@
             <td>
               <input type="text" v-model="filters.volunteerFullName" />
             </td>
-            <!-- <td>
-            <input
-              type="text"
-              v-model="filters.volunteerLastName"
-              placeholder="seach last name"
-            />
-          </td>
-          <td>
-            <input
-              type="text"
-              v-model="filters.volunteerFirstName"
-              placeholder="search first name"
-            />
-          </td> -->
             <td>
               <input type="text" v-model="filters.email" />
             </td>
@@ -101,31 +83,14 @@
               {{ volunteer.volunteerFirstName }}
               {{ volunteer.volunteerLastName }}
             </td>
-            <!-- <td>{{ volunteer.volunteerFirstName }}</td> -->
             <td>{{ volunteer.email }}</td>
             <td>{{ volunteer.over18 ? "Yes" : "No" }}</td>
             <td>{{ volunteer.veterinary ? "Yes" : "No" }}</td>
             <td>{{ volunteer.cleaning ? "Yes" : "No" }}</td>
             <td>{{ volunteer.dataEntry ? "Yes" : "No" }}</td>
             <td>{{ volunteer.photography ? "Yes" : "No" }}</td>
-            <!-- <td>{{volunteer.role}}</td> -->
             <td v-if="volunteer.role == 'ROLE_USER'">Volunteer</td>
             <td v-if="volunteer.role == 'ROLE_ADMIN'">Admin</td>
-            <!-- <router-link
-            v-bind:to="{
-              name: 'PromoteVolunteer',
-              params: { applicationId: volunteer.applicationId },
-            }"
-          >
-            <td
-              v-if="
-                volunteer.role == 'ROLE_USER' &&
-                $store.state.user.role === 'ROLE_ADMIN'
-              "
-            >
-              promote to Admin
-            </td></router-link
-          > -->
             <td
               v-if="
                 volunteer.role == 'ROLE_USER' &&
@@ -146,14 +111,11 @@
 import VolunteerService from "../services/VolunteerService.js";
 export default {
   name: "volunteer-directory",
-  // props: ['volunteer'],
   data() {
     return {
       volunteers: [],
       filters: {
         applicationId: "",
-        // volunteerFirstName: "",
-        // volunteerLastName: "",
         volunteerFullName: "",
         email: "",
         over18: "Show All",
@@ -193,20 +155,6 @@ export default {
           );
         });
       }
-      // if (this.filters.volunteerLastName != "") {
-      //   arr = arr.filter((eachVolunteer) => {
-      //     return eachVolunteer.volunteerLastName
-      //       .toLowerCase()
-      //       .includes(this.filters.volunteerLastName.toLowerCase());
-      //   });
-      // }
-      // if (this.filters.volunteerFirstName != "") {
-      //   arr = arr.filter((eachVolunteer) => {
-      //     return eachVolunteer.volunteerFirstName
-      //       .toLowerCase()
-      //       .includes(this.filters.volunteerFirstName.toLowerCase());
-      //   });
-      // }
       if (this.filters.email != "") {
         arr = arr.filter((eachVolunteer) => {
           return eachVolunteer.email
@@ -264,9 +212,6 @@ export default {
           if (response.status === 200) {
             alert("Volunteer Role has been updated");
             this.$router.push("/volunteer/directory");
-            //  this.volunteerList = this.volunteerList.filter((eachVolunteer) => {
-            //    return eachVolunteer.status === "Pending";
-            // });
           }
         });
       }
@@ -282,21 +227,21 @@ export default {
     rgb(220, 251, 240) 0%,
     rgba(227, 244, 251, 1) 100%
   );
-  /* background-image: url("https://images.pexels.com/photos/5326905/pexels-photo-5326905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
 }
 .blurredImg {
   background-image: url(../assets/volunteerDirectory.jpg);
   filter: blur(3px);
 }
 h1 {
-  margin-top: 92px;
+  padding: 10px;
+  margin: 102px 0 10px 0;
   color: rgb(245, 245, 245);
 }
 
 #titleDiv {
   margin: auto;
   backdrop-filter: blur(7px);
-  width: 410px;
+  width: 200px;
   border-radius: 7px;
 }
 #bottomLine {
@@ -308,12 +253,10 @@ table {
   margin-top: 30px;
   border-collapse: collapse;
   background-color: white;
-  /* box-shadow: 2px 4px 4px rgb(204, 204, 204); */
 }
 td,
 th {
   height: 45px;
-  /* padding: 16px 0; */
 }
 table,
 tr,

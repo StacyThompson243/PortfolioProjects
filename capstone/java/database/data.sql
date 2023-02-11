@@ -88,6 +88,12 @@ values
 ('https://res.cloudinary.com/difcq8eki/image/upload/v1675981575/Dogs/husky4_gfwvsy.jpg', true, 15);
 
 
-
+insert into volunteers (first_name, last_name, email, over_18, veterinary, cleaning, data_entry, photography, status)
+values
+('Abby', 'Applegate', 'abby.applegate@email.com', true, true, true, false, false, 'Pending'),
+('Benji', 'Brown', 'benji.brown@email.com', false, false, false, true, true, 'Pending'),
+('Celia', 'Carlyle', 'ccarlyle@email.com', true, true, false, false, true, 'Pending'),
+('Darren', 'Day', 'dday@email.com', false, false, true, false, false,'Pending'),
+('Eowyn', 'Elbert', 'eowyn.e@email.com', true, true, true, true, false, 'Pending');
 
 COMMIT TRANSACTION;
